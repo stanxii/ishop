@@ -1,4 +1,2 @@
-ishop
-=====
-
-ishop for node.js
+# testProject
+### a Sails application
