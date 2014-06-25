@@ -16,7 +16,19 @@ module.exports.adapters = {
 
   // If you leave the adapter config unspecified 
   // in a model definition, 'default' will be used.
-  'default': 'disk',
+  'default': 'mongo',
+
+  //Persistent adapter for PRODUCT 
+  //data is backup and restore by auto run cron job
+  mongo: {
+	module: 'sails-mongo',
+	host: '192.168.1.111',
+	port: 27017,
+	user: 'ishop',
+	password: 'Freedom8#',
+	database: 'ishop'
+  },
+
 
   // Persistent adapter for DEVELOPMENT ONLY
   // (data is preserved when the server shuts down)

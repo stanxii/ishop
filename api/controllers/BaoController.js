@@ -18,6 +18,87 @@
 module.exports = {
     
   
+  /**
+   * Action blueprints:
+   *    `/bao/create`
+   */
+   create: function (req, res) {
+	 //create one
+        var bao =Bao.create({
+		   name: 'JZ-LP-0001',
+		   sn:'LP-000001',
+		   cat: 'LED POWER',
+		   size:'30x120x20 mm',
+		   img: '/img/lp-000001.jpg'
+		   }).done(function(err, bao) {
+	
+	         // Error handling
+	           if (err) {
+	               return console.log(err);
+	
+	           // The User was created successfully!
+	            }else {
+    		       return res.json(bao);
+    		       //return res.json(bao.toJSON());
+	               console.log("Bao created:", bao);
+	            }
+	  });    
+    // Send a JSON response
+  },
+
+
+  /**
+   * Action blueprints:
+   *    `/bao/drop`
+   */
+   drop: function (req, res) {
+    
+    // Send a JSON response
+    return res.json({
+      hello: 'world'
+    });
+  },
+
+
+  /**
+   * Action blueprints:
+   *    `/bao/tag`
+   */
+   tag: function (req, res) {
+    
+    // Send a JSON response
+    return res.json({
+      hello: 'world'
+    });
+  },
+
+
+  /**
+   * Action blueprints:
+   *    `/bao/like`
+   */
+   like: function (req, res) {
+    
+    // Send a JSON response
+    return res.json({
+      hello: 'world'
+    });
+  },
+
+
+  /**
+   * Action blueprints:
+   *    `/bao/search`
+   */
+   search: function (req, res) {
+    
+    // Send a JSON response
+    return res.json({
+      hello: 'world'
+    });
+  },
+
+
 
 
   /**

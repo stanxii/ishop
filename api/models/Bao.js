@@ -16,7 +16,7 @@ module.exports = {
 	name: 'string',
 	id: 'string',
 	cat: 'string',
-	size: 'array',
+	size: 'string',
 	img: {
 		type:'string',
 		required: 'true'
