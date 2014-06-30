@@ -3,14 +3,9 @@
 /* Controllers */
 
 angular.module('myApp.controllers', [])
-  .controller('MyCtrl1', ['$scope', '$sails','socket',  function($scope, $sails, socket) {
-	socket.emit('/bao/create', {
-		message: 'hi there!'
-	}, function (response) {
-		console.log(response);
-	});
+  .controller('MyCtrl1', ['$scope', '$sails',  function($scope, $sails ) {
   }])
-  .controller('MyCtrl2', ['$scope', '$sails','socket', function($scope, $sails, socket) {
+  .controller('MyCtrl2', ['$scope', '$sails', function($scope, $sails ) {
 	  $sails.get("/bao/create")
 	     .success(function (data) {
 	        $scope.bars = data;
