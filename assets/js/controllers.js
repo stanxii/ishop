@@ -9,16 +9,25 @@ angular.module('myApp.controllers', [])
 	}, function (response) {
 		console.log(response);
 	});
-	$sails.on("message", function (message) {
-		$scope.message = message;
-		console.log(message);
+  }])
+  .controller('MyCtrl2', ['$scope', '$sails','socket', function($scope, $sails, socket) {
+	  $sails.get("/bao/create")
+	     .success(function (data) {
+	        $scope.bars = data;
+	     })
+	     .error(function (data) {
+	        alert('Houston, we got a problem!');
+	     });
+
+           $sails.on("message", function (message) {
+	      $scope.message = message;
+	      console.log(message);
+	   });
+	   
 		/*
 		if (message.verb === "create") {
 	              $scope.bars.push(message.data);
 		 }
 		 */
-	 });
-  }])
-  .controller('MyCtrl2', ['$scope', function($scope ) {
 
   }]);
