@@ -24,6 +24,11 @@ module.exports = {
    */
    create: function (req, res) {
 	 //create one
+	var socket = req.socket;
+	var io = sails.io;
+        io.sockets.emit("message",{"hello":"fuck"});
+
+	//emit to allsockets
         var bao =Bao.create({
 		   name: 'JZ-LP-0001',
 		   sn:'LP-000001',
@@ -38,9 +43,9 @@ module.exports = {
 	
 	           // The User was created successfully!
 	            }else {
-    		       return res.json(bao);
     		       //return res.json(bao.toJSON());
 	               console.log("Bao created:", bao);
+    		       return res.json(bao);
 	            }
 	  });    
     // Send a JSON response
