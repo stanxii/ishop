@@ -3,38 +3,119 @@
 <!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<html lang="en" ng-app="myapp" ng-controller="LayoutController">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>My AngularJS App</title>
+  <title>{{title}}</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
   <link rel="stylesheet" href="css/app.css"/>
-  <!--
-  <link rel="stylesheet" href="css/stan/form.css"/>
-  -->
-  <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.css"/>
 </head>
 <body>
-  <%-body%>
-   <ul class="menu">
-	       <li><a href="#/view1">view1</a></li>
-	           <li><a href="#/view2">view2</a></li>
-		     </ul>
+	<div class="site-topbar">
+		<div class="container">
+			<div class="topbar-nav">
+				<a href="#/index" target="_blank" ng-click="" >{{title}}</a>
+				<span class="sep">|</span>
+				<a href="#/order?id={{userid}}" ng-click="" >{{ orders }}</a>
+				<span class="sep">|</span>
+				<a href="#" target="_blank" ng-click="" >{{ mobile }}</a>
+				<span class="sep">|</span>
+				<a href="#" target="_blank" ng-click="" >{{ bbs }}</a>
+				<span class="sep">|</span>
+				<a href="#/about" target="_blank" ng-click="" >{{ about }}</a>
+			</div>
+			<div class="topbar-info">
+				<a href="#/{{logIn.url}}" ng-click="" >{{ logIn.name }}</a>
+				<span class="sep">|</span>
+				<a href="#/{{signup.url}}" ng-click="" >{{ signup.name }}</a>
+			</div>
+		</div>
+	</div>
+   
 
 		       <!--[if lt IE 7]>
 		             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 			       <![endif]-->
 
-			         <div ng-view></div>
+	<div ng-view></div>
 
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
-
+	<div class="site-footer" ng-show="j_islogin">
+		<div class ="container" >
+			<div class="footer-service">
+				<ul class="list-service clearfix">
+					<li>
+						<a rel="nofollow" href="#" target="_blank" >
+							<img src="img/wrench_plus.ico" >
+							<strong>1小时快修服务</strong>
+						</a>
+					</li>
+					<li>
+						<a rel="nofollow" href="#" target="_blank" >
+							<img src="img/wall_clock.ico" >
+							<strong>7天无理由退货</strong>
+						</a>
+					</li>
+					<li>
+						<a rel="nofollow" href="#" target="_blank" >
+							<img src="img/refresh (1).ico" >
+							<strong>15天免费换货</strong>
+						</a>
+					</li>
+					<li>
+						<a rel="nofollow" href="#" target="_blank" >
+							<img src="img/gift.ico" >
+							<strong>满150包邮</strong>
+						</a>
+					</li>
+					<li>
+						<a rel="nofollow" href="#" target="_blank" >
+							<img src="img/site_map.ico" >
+							<strong>0家售后网点</strong>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="footer-links clearfix">
+				<dl class="col-links col-links-first">
+					<dt>帮助中心</dt>					
+					<dd><a rel="nofollow" href="#" target="_blank" >购物指南</a></dd>					
+					<dd><a rel="nofollow" href="#" target="_blank" >支付方式</a></dd>					
+					<dd><a rel="nofollow" href="#" target="_blank" >配送方式</a></dd>					
+				</dl>
+				<dl class="col-links">
+					<dt>服务支持</dt>					
+					<dd><a rel="nofollow" href="#" target="_blank" >售后政策</a></dd>					
+					<dd><a rel="nofollow" href="#" target="_blank" >自助服务</a></dd>					
+					<dd><a rel="nofollow" href="#" target="_blank" >相关下载</a></dd>					
+				</dl>
+				<dl class="col-links">
+					<dt>橘子之家</dt>					
+					<dd><a rel="nofollow" href="#" target="_blank" >橘子小窝</a></dd>					
+					<dd><a rel="nofollow" href="#" target="_blank" >服务网点</a></dd>					
+					<dd><a rel="nofollow" href="#" target="_blank" >预约到店服务</a></dd>					
+				</dl>
+				<div class="col-contact">
+					<p class="phone">400-100-5678</p>
+					<p>周一至周日 8:00-17:00<br>（仅收市话费）</p>
+					<a rel="nofollow" class="btn btn-primary btn-small" href="#" target="_blank" >24小时在线客服</a> 
+				</div>
+			</div>
+			<div class="footer-info clearfix">
+				<div class="info-text">
+					<p>此网站目前正在测试阶段，如发现问题请与管理人员联系，联系方式：QQ：666666666</p>
+				</div>
+			</div>
+		</div>
+	</div>
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
@@ -47,6 +128,9 @@
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/angular-sails/dist/angular-sails.js"></script>
+  <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+  <script src="bower_components/jquery/ui-bootstrap-tpls-0.11.0.min.js"></script>
+  
   <script src="js/app.js"></script>
   <script src="js/services.js"></script>
   <script src="js/controllers.js"></script>

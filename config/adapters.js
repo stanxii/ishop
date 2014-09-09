@@ -22,7 +22,7 @@ module.exports.adapters = {
   //data is backup and restore by auto run cron job
   mongo: {
 	module: 'sails-mongo',
-	host: '192.168.1.111',
+	host: 'localhost',
 	port: 27017,
 	user: 'ishop',
 	password: 'Freedom8#',

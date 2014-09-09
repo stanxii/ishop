@@ -7,4 +7,19 @@
 // In this case it is a simple value service.
 angular.module('myApp.services', []).
   value('version', '0.1');
+  
+
+/* angular.module('myApp.services',[])
+.factory('getLoginJs', ['$route', '$q', function($scope, $q){
+        return function(){
+            var delay = $q.defer(),
+            load = function(){
+                $.getScript('/htmlJs/login.js',function(){                    
+                            delay.resolve();                                
+                });
+            };
+            load();
+            return delay.promise;  
+        };
+}]); */
 
