@@ -47,7 +47,7 @@ angular.module('myApp.directives', []).
 							'<th class="column-info column-t" colspan="3" >'+
 								'<div class="column-content">'+
 									'<span class="order-status">{{order.status}}</span>'+
-									'                                                                                                                 订单号:   <a href="">{{order.sn}}</a>'+
+									'                                                                                                                 订单号:   <a href="">{{order.id}}</a>'+
 									'<span class="sep">|</span>'+
 									'{{order.addrname}}<span class="sep">|</span>{{order.orderdate}}'+
 								'</div>'+
@@ -58,22 +58,22 @@ angular.module('myApp.directives', []).
 						'<tr>'+
 							'<td class="column-detail column-l">'+
 								'<ul class="order-goods-list">'+
-                                    '<li class="first">'+
-                                        '<a target="_blank" href=""><img class="goods-thumb" src={{order.proimg}} srcset="></a>'+
-                                        '<a target="_blank" href="" class="goods-name">{{order.pro_desc}}</a>'+
-                                        '<span class="goods-price">{{order.proprice}}元</span>'+
+                                    '<li ng-repeat="pf in order.proinfo" ng-class="{first: $first}">'+
+                                        '<a target="_blank" href="{{pf.producturl}}"><img class="goods-thumb" src={{pf.imgurl}} srcset="></a>'+
+                                        '<a target="_blank" href="{{pf.producturl}}" class="goods-name">{{pf.proname}} {{pf.color}}</a>'+
+                                        '<span class="goods-price">{{pf.price}} * {{pf.count}}元</span>'+
                                         '<span class="goods-link"></span>'+                                                               
 									'</li>'+
                                 '</ul>'+
 							'</td>'+
 							'<td class="column-price">'+
-                                '<div class="order-info order-price">'+
-                                    '{{order.price * order.count}}元<br>在线支付  '+
+                                '<div class="order-price">'+
+                                    '{{order.price}}元<br>在线支付  '+
                                 '</div>'+
                             '</td>'+
 							'<td class="column-action column-r">'+
-                                '<div class="order-info order-action">'+
-                                    '<a href="">订单详情<i class="iconfont"></i></a>'+
+                                '<div class="order-action">'+
+                                    '<a href="">订单详情&gt&gt</a>'+
                                     '<a class="btn btn-primary btn-small" href="" target="_blank">立即支付</a>'+                                            
                                 '</div>'+
                             '</td>'+

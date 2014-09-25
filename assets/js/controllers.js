@@ -23,6 +23,7 @@ angular.module('myApp.controllers', ['ui.bootstrap'])
 					alert('checklogin, we got a problem!');
 			});
 		}
+
 		$scope.resetLogin = function (user) {
             if (user.name) {	
                 $scope.logIn = {
@@ -44,14 +45,22 @@ angular.module('myApp.controllers', ['ui.bootstrap'])
                 };
             }
         };
+		
+		/*$scope.mouseEnter = function(){
+			$scope.mouse = 'block';
+		};
+		$scope.mouseLeave = function(){
+			$scope.mouse = 'none';
+		};*/
 	}])
-	.controller('goodsCtrl', ['$scope', '$sails', '$location', '$modal', '$timeout',  function($scope, $sails, $location, $modal, $timeout ) {
+	.controller('goodsMobileCtrl', ['$scope', '$sails', '$location', '$modal', '$timeout',  function($scope, $sails, $location, $modal, $timeout ) {
 		/* 显示layout部分*/
 		$scope.$parent.j_islogin = true;
 		$scope.sn = $location.absUrl().substring($location.absUrl().indexOf('?') + 4);
 		$scope.isSelected = 1;
-		$scope.radioModel = 1;
+		$scope.picSelected = 1;
 		$scope.buynum = 1;
+		$scope.proConurl = '';
 		$sails.get('/user/checklogin').success(function (user) {
 			//获取购物车信息
 			if(user.name){
@@ -71,7 +80,8 @@ angular.module('myApp.controllers', ['ui.bootstrap'])
 		$sails.get('/product/findBySn',{sn: $scope.sn}).success(function (product) {
 			//获取商品信息
 			if(product){
-				$scope.productinfo = product;				
+				$scope.productinfo = product;
+				$scope.proConurl = product.pics[0];
 			}else{
 				alert('---获取商品信息错误----');
 				
@@ -88,7 +98,7 @@ angular.module('myApp.controllers', ['ui.bootstrap'])
 		
 		$scope.open = function (size) {		
 			$sails.post('/cart/create',{proname: $scope.productinfo.proname, psn: $scope.productinfo.sn, classify: $scope.productinfo.classify,
-				price: $scope.productinfo.price,
+				oldprice: $scope.productinfo.oldprice, price: $scope.productinfo.price,
 				imgurl: $scope.productinfo.imgurl, merchant: $scope.productinfo.merchant, color: $scope.productinfo.color,
 				desc: $scope.productinfo.desc, tag: $scope.productinfo.tag, buynum: $scope.buynum})
 			.success(function (r){
@@ -99,7 +109,10 @@ angular.module('myApp.controllers', ['ui.bootstrap'])
 					alert('---err---'+JSON.stringify(r));
 					alert('添加购物车失败!');
 					modalInstance.dismiss('cancel');
-				}	
+				}else if(r.sts == 3){
+					alert('添加购物车已满!');
+					modalInstance.dismiss('cancel');
+				}
 				$timeout(function() {
 				  // run my code safely here
 					$scope.$apply(function(){
@@ -138,9 +151,51 @@ angular.module('myApp.controllers', ['ui.bootstrap'])
 		  };
 		};
 		
-		$scope.$watch('radioModel',function(){
-            $scope.isSelected = $scope.radioModel;
-        });
+		$scope.changecolor = function(index){
+			switch(index){
+				case 1:
+					$scope.productinfo.color = $scope.productinfo.colors[0];
+					break;
+				case 2:
+					$scope.productinfo.color = $scope.productinfo.colors[1];
+					break;
+				case 3:
+					$scope.productinfo.color = $scope.productinfo.colors[2];
+					break;
+				default:
+					$scope.productinfo.color = $scope.productinfo.colors[0];
+					break;
+			}
+            $scope.isSelected = index;
+		};
+		
+		$scope.proCon_pics = function(index){
+			switch(index){
+				case 1:
+					$scope.proConurl =  $scope.productinfo.pics[0];
+					break;
+				case 2:
+					$scope.proConurl =  $scope.productinfo.pics[1];
+					break;
+				case 3:
+					$scope.proConurl =  $scope.productinfo.pics[2];
+					break;
+				case 4:
+					$scope.proConurl =  $scope.productinfo.pics[3];
+					break;
+				case 5:
+					$scope.proConurl =  $scope.productinfo.pics[4];
+					break;
+				default:
+					$scope.proConurl =  $scope.productinfo.pics[0];
+					break;
+					
+			
+			
+			}
+			$scope.picSelected = index;
+		}
+
 	}])
 	.controller('MyCtrl1', ['$scope', '$sails', '$location',  function($scope, $sails, $location ) {
 		/* 显示layout部分*/
@@ -160,34 +215,149 @@ angular.module('myApp.controllers', ['ui.bootstrap'])
         })
 		.error(function (data) {
 				alert('checklogin, we got a problem!');
-		});
-	
+		});		
+		
 	}])
 	.controller('cartCtrl', ['$scope', '$sails', '$location',  function($scope, $sails, $location ) {
 		/* 显示layout部分*/
 		$scope.$parent.j_islogin = true;
-		$scope.iscartempty = true;
-		$scope.number = 1;
+		$scope.iscartempty = false;
 		$scope.userid = $location.absUrl().substring($location.absUrl().indexOf('?') + 4);
-		$sails.get("/user/auth").success(function (data) {		
-			
-		})
-		.error(function (data){
-			$location.path('/login');
-		}); 
+		$sails.get('/user/checklogin').success(function (user) {
+            $scope.resetLogin(user);
+			$scope.userid = user.id;
+			if($scope.userid == ''){
+				$location.path('/login');
+			}else if($scope.userid == undefined){
+				$location.path('/login');
+			}
+        })
+		.error(function (data) {
+				alert('checklogin, we got a problem!');
+		});		
 		$sails.get("/cart/findAll").success(function (data) {	
-			alert('--cart/findAll--'+ JSON.stringify(data));
+			//alert('--cart/findAll--'+ JSON.stringify(data));
 			if(data == ''){
-				
+				$scope.iscartempty = true;
+				return;
 			}else{
 				$scope.iscartempty = false;
-				
+				$scope.carts = data;
+				$scope.pricetotal = 0.0;
+				$scope.carts.forEach(function(i,index){	
+					$scope.pricetotal += i.price * i.count; 
+					
+				});		
+				$scope.$watch('carts',function(){
+					//实时更新价格信息
+					$scope.pricetotal = 0.0;
+					$scope.carts.forEach(function(i,index){	
+						if(i.count < 1)
+							i.count = 1;
+						$scope.pricetotal += i.price * i.count; 						
+					});	
+					
+				}, true);
 			}
 		})
 		.error(function (data){
 			
-		}); 
+		}); 	
+		
+		$scope.cart_del = function(cartid){
+			if(confirm('确定删除么?')){
+				$sails.get("/cart/del",{id: cartid}).success(function (r) {	
+					if(r.sts == 0){
+						window.location.reload();
+						
+					}
+				})
+				.error(function (data){
+					
+				}); 
+			}
+			
+		};
+		
+		$scope.accounts = function(){
+			var data = $scope.carts;
+			$sails.post("/cart/ts", {data: data}).success(function (r) {	
+				//暂存购物车信息
+				$location.path('/buy/checkout');
+			});		
+		}
 	
+	}])
+	.controller('goodsTvCtrl', ['$scope', '$sails', '$location',  function($scope, $sails, $location ) {
+		/* 显示layout部分*/
+		$scope.$parent.j_islogin = true;
+		//$scope.selectedCombo = 0;
+		$scope.sn = $location.absUrl().substring($location.absUrl().indexOf('?') + 4);
+		$sails.get("/cart/count").success(function (num) {
+			if(num.sts == 0){
+				$scope.count =  num.num ;
+			}else{
+				$scope.count = 0;
+			}
+		});	
+		$sails.get('/product/findBySn',{sn: $scope.sn}).success(function (product) {
+			//获取商品信息
+			if(product){
+				$scope.productinfo = product;
+				$scope.proCombos = product.combos;
+				//alert('---combos--'+ JSON.stringify(product.combos.combo));
+			}else{
+				alert('---获取商品信息错误----');
+				
+			}
+			
+        })
+		.error(function (data) {
+				alert('product/findBySn, we got a problem!');
+		});
+		
+		$scope.chooseCombo = function( index ) {
+			$scope.selectedCombo = index;
+		}
+		
+		$scope.changeColor = function( index ) {
+			if(!$scope.selectedCombo)
+				return;
+			$scope.selectedColor = index;
+		}
+		
+		$scope.addCart = function( ) {
+			if(!$scope.selectedCombo || !$scope.selectedColor)
+				return;
+			$sails.post('/cart/create',{proname: $scope.productinfo.proname, psn: $scope.productinfo.sn, classify: $scope.productinfo.classify,
+				oleprice:$scope.productinfo.oldprice, price: $scope.proCombos.combo[$scope.selectedCombo - 1].price,
+				imgurl: $scope.productinfo.imgurl, merchant: $scope.productinfo.merchant, color: $scope.productinfo.colors[$scope.selectedColor - 1],
+				desc: $scope.productinfo.desc, tag: $scope.proCombos.combo[$scope.selectedCombo - 1].tag, buynum: 1})
+			.success(function (r){
+				if(r.sts == 2){
+					$location.path('/login');
+				}else if(r.sts == 1){
+					alert('---err---'+JSON.stringify(r));
+					alert('添加购物车失败!');
+				}else if(r.sts == 3){
+					alert('添加购物车已满!');
+				}
+				$location.path('/cart');
+				
+			});
+		}
+		
+	}])
+	.controller('confirmCtrl', ['$scope', '$sails', '$location',  function($scope, $sails, $location ) {
+		/* 显示layout部分*/
+		$scope.$parent.j_islogin = true;
+		//已下单,清除购物车信息
+		$sails.get('/cart/drop').success(function (r) {
+           
+        })
+		.error(function (data) {
+				alert('checklogin, we got a problem!');
+		});		
 	}])
 	.controller('orderCtrl', ['$scope', '$sails', '$location',  function($scope, $sails, $location ) {
 		/* 显示layout部分*/
@@ -215,53 +385,24 @@ angular.module('myApp.controllers', ['ui.bootstrap'])
 			}else{
 				$scope.count = 0;
 			}
-		});
+		});		
 		
-		//insert product
-		/*$sails.get('/product/create').success(function (r) {
-			if(r.sts == 1){
-				alert('-----create product err------');
-			}
-		});*/
 		$sails.get("/order/findAll").success(function (data) {	
 			if(data == ''){
 				
 			}else{
 				$scope.isempty = false;
 				$scope.orders = data;
-				//alert('--------'+data[0].orderdate);
+				//转换购物车信息到JSON格式，以便前端遍历
+				$scope.orders.forEach(function(order,i){
+					$scope.orders[i].proinfo = JSON.parse(order.proinfo);
+				});
+				//alert('--------'+JSON.stringify(data[0].proinfo));
 			}
 		})
 		.error(function (data){
 			
-		});
-		
-		Date.prototype.Format = function(formatStr, date)   
-		{   
-			var str = formatStr;   
-			var Week = ['日','一','二','三','四','五','六'];  
-			str=str.replace(/yyyy|YYYY/,date.getFullYear());   
-			str=str.replace(/yy|YY/,(date.getYear() % 100)>9?(date.getYear() % 100).toString():'0' + (date.getYear() % 100));   
-		  
-			str=str.replace(/MM/,date.getMonth()>9?date.getMonth().toString():'0' + date.getMonth());   
-			str=str.replace(/M/g,date.getMonth());   
-		  
-			str=str.replace(/w|W/g,Week[date.getDay()]);   
-		  
-			str=str.replace(/dd|DD/,date.getDate()>9?date.getDate().toString():'0' + date.getDate());   
-			str=str.replace(/d|D/g,date.getDate());   
-		  
-			str=str.replace(/hh|HH/,date.getHours()>9?date.getHours().toString():'0' + date.getHours());   
-			str=str.replace(/h|H/g,date.getHours());   
-			str=str.replace(/mm/,date.getMinutes()>9?date.getMinutes().toString():'0' + date.getMinutes());   
-			str=str.replace(/m/g,date.getMinutes());   
-		  
-			str=str.replace(/ss|SS/,date.getSeconds()>9?date.getSeconds().toString():'0' + date.getSeconds());   
-			str=str.replace(/s|S/g,date.getSeconds());   
-		  
-			return str;   
-		}   
-	
+		});	
 	}])
 	.controller('userinfoCtrl', ['$scope', '$sails', '$location', function($scope, $sails, $location ) {
 		/* 隐藏layout部分*/
@@ -420,17 +561,42 @@ angular.module('myApp.controllers', ['ui.bootstrap'])
 		
 		
 		$scope.userid = $location.absUrl().substring($location.absUrl().indexOf('?') + 4);
-		$sails.get("/user/auth").success(function (data) {		
-			$sails.get('/addr/findAll', {userid: $scope.userid}).success(function (result) {
-				//alert('-------------findAddrs-----------------'+ JSON.stringify(result));
-				$scope.addrs = result;
-			}).error(function (err) {
-				alert('addrfindAll, we got a problem!');
-			});
-		})
-		.error(function (data){
-			$location.path('/login');
-		});	
+		$sails.get('/user/checklogin').success(function (user) {
+            $scope.resetLogin(user);
+			$scope.userid = user.id;
+			//alert('-------0-----' +$scope.userid );
+			if($scope.userid == ''){
+				//alert('-------1-----');
+				$location.path('/login');
+			}else if($scope.userid == undefined){
+				//alert('-------2-----');
+				$location.path('/login');
+			}
+        })
+		.error(function (data) {
+				alert('checklogin, we got a problem!');
+		});		
+		$sails.get('/addr/findAll', {userid: $scope.userid}).success(function (result) {
+			//alert('-------------findAddrs-----------------'+ JSON.stringify(result));
+			$scope.addrs = result;
+		}).error(function (err) {
+			alert('addrfindAll, we got a problem!');
+		});
+		
+		$sails.get('/cart/getTs').success(function (result) {
+			//alert('-------------getTs-----------------'+ JSON.stringify(result));
+			$scope.ts = result;
+			$scope.pricetotal = 0.0;
+			$scope.buycount = 0;
+			$scope.ts.forEach(function(i,index){	
+				if(i.count < 1)
+					i.count = 1;
+				$scope.pricetotal += i.price * i.count; 
+				$scope.buycount	+= i.count;			
+			});	
+		}).error(function (err) {
+			alert('getTs, we got a problem!');
+		});
 		
 		$scope.addAddr = function () {
 			$scope.addrid = '';
@@ -485,6 +651,10 @@ angular.module('myApp.controllers', ['ui.bootstrap'])
 			});
 			$scope.iseditAddr = true;
 			
+		};
+		
+		$scope.addrSelect = function(addrid){
+			$scope.addrselected = addrid;
 		};
 		
 		$scope.proChanged = function () {
@@ -543,6 +713,10 @@ angular.module('myApp.controllers', ['ui.bootstrap'])
 				alert('请输入街道地址');
 				return;
 			}
+			if($scope.tag.length > 5) {
+				alert('标签过长');
+				return;
+			}
 			if( ($scope.province < 2) || ($scope.city.name == "城市/地区/自治州") || ($scope.district.name == "区/县") ){
 				alert('请选择省市');
 				return;
@@ -590,6 +764,26 @@ angular.module('myApp.controllers', ['ui.bootstrap'])
 			}
 			return true;
 		};
+		
+		$scope.orderComfirn = function() {
+			if($scope.addrselected =='' || $scope.addrselected == undefined){
+				alert('请选择收货地址!!');
+				return;
+			}
+			var json = {'addrid': $scope.addrselected, 'payway': '在线支付', 'cartinfo': $scope.ts, 'pricetotal': $scope.pricetotal + 10};
+			$sails.post('/order/create', json).success(function (result) {
+					if(result.sts == 0){
+						//success
+						$location.path('/buy/confirm');
+					}else{
+						alert('/order/create, we got a problem!');
+					}
+				}).error(function (err) {
+					alert('/order/create, we got a problem!');
+				});
+		
+		
+		};
 	}])
 	.controller('CarouselDemoCtrl', ['$scope', '$sails', '$location', function($scope, $sails, $location ) {	
 		$scope.myInterval = 5000;
@@ -598,12 +792,59 @@ angular.module('myApp.controllers', ['ui.bootstrap'])
 			var newWidth = 600 + slides.length;
 			slides.push({
 			    image: 'img/' + slides.length + '.png',
-			    text: ['More','Extra','Lots of','Surplus'][slides.length % 4] + ' ' +
-				['Cats', 'Kittys', 'Felines', 'Cutes'][slides.length % 4],
-				url: ['#','#','#','#'][slides.length % 4]
+			    text: ['小米','大锤','Lots of','Surplus'][slides.length % 4] + ' ' +
+				['电视', 'C1', 'Felines', 'Cutes'][slides.length % 4],
+				url: ['#/goods/mitv','#/pro_a','#','#'][slides.length % 4]
 			});
 		};
 	    for (var i=0; i<4; i++) {
 			$scope.addSlide();
 	    }
+	}])
+	.controller('testCtrl', ['$scope', '$sails', '$location',  function($scope, $sails, $location ) {
+		/* 显示layout部分*/
+		$scope.$parent.j_islogin = true;	
+		$scope.addProduct = function(){
+			var data = {sn : 'TV1000003', proname : '小米电视2', classify : 'tv',oldprice:3999, price : 3999, imgurl : '../img/product/mitv/tv-jinse.png',
+			pics : [],
+			producturl : '/goods/mitv', regdate : DateFormat('yyyy-MM-dd hh:mm:ss',new Date()), inventory : 100, color : '香槟金', colors : ['香槟金'],
+			combos:{combo:[{desc:'小米电视2 家庭影院版',tag:'含电视、soundbar及低音炮',price:3999},{desc:'小米电视2',tag:'仅电视',price:3399}]},
+			desc : '顶配 49 英寸超高清 4K 电视', tag : '测试产品'};
+			
+			//insert product
+			$sails.post('/product/create', data).success(function (r) {
+				if(r.sts == 1){
+					alert('-----create product err------');
+				}else{
+					alert('-----create product success------');
+				}
+			});
+		};
+		
+		function DateFormat(formatStr, date)   
+		{   
+			var str = formatStr;   
+			var Week = ['日','一','二','三','四','五','六'];  
+			str=str.replace(/yyyy|YYYY/,date.getFullYear());   
+			str=str.replace(/yy|YY/,(date.getYear() % 100)>9?(date.getYear() % 100).toString():'0' + (date.getYear() % 100));   
+		  
+			str=str.replace(/MM/,date.getMonth()>9?date.getMonth().toString():'0' + date.getMonth());   
+			str=str.replace(/M/g,date.getMonth());   
+		  
+			str=str.replace(/w|W/g,Week[date.getDay()]);   
+		  
+			str=str.replace(/dd|DD/,date.getDate()>9?date.getDate().toString():'0' + date.getDate());   
+			str=str.replace(/d|D/g,date.getDate());   
+		  
+			str=str.replace(/hh|HH/,date.getHours()>9?date.getHours().toString():'0' + date.getHours());   
+			str=str.replace(/h|H/g,date.getHours());   
+			str=str.replace(/mm/,date.getMinutes()>9?date.getMinutes().toString():'0' + date.getMinutes());   
+			str=str.replace(/m/g,date.getMinutes());   
+		  
+			str=str.replace(/ss|SS/,date.getSeconds()>9?date.getSeconds().toString():'0' + date.getSeconds());   
+			str=str.replace(/s|S/g,date.getSeconds());   
+		  
+			return str;   
+		} 
+	
 	}]);

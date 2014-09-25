@@ -1,0 +1,164 @@
+<div class="side-header container">
+	<div class="site-logo">
+		<a class="logo" href="/#/index" title="大橘子官网" >
+			<img src="/img/logo.jpg" />
+		</a>
+	</div>
+	<div class="header-info">
+		<div class="search-section">
+			<form id="J_searchForm" class="search-form clearfix" action="/search" method="get">
+                <input class="search-text" type="search" name="keyword" autocomplete="off" data-search-config="{'defaultWords':[&quot;大橘子&quot;,&quot;小橘子&quot;,&quot;红橘子&quot;,&quot;黄橘子&quot;]}" placeholder="搜索您需要的商品">
+                <input type="submit" class="search-btn" value="搜索" />
+                <!--[if IE 6]><div class="ie6-fix"></div><![endif]-->			
+			</form>
+		</div>
+		<div class="cart-section">
+			<a id="J_miniCart" class="mini-cart" href="/#/cart" onclick=""><img src="/img/cart.ico" />   购物车<span class="j_cartnum">({{count}})</span></a>
+			<div id="J_miniCartList" class="mini-cart-list" style="display: none;">
+				<p class="loading">数据加载中，请稍后...</p>
+			</div>
+		</div>		
+	</div>			
+</div>
+<div class="container">
+	<div class="proCon cf1">
+		<div class="proCon_pics">
+			<div class="proCon_pics_midBox">
+				<div class="imglist_right" id="mpd"> <img onmousemove="javascript:slidebp();" id="mp" 
+					style="top:0px;z-index:998;position:relative; width:100%;height:73%;display: block;" onmouseout="javascript:closebp();" ng-src="../img/product/{{proConurl}}" border=0>
+				</div>
+				<div id="bpd" style="BORDER: #cccccc 1px solid; DISPLAY: none;OVERFLOW: hidden; WIDTH: 548px;POSITION: absolute; HEIGHT: 440px;z-index:99999">
+					<div id=bpd2 style="POSITION: absolute">
+						<iframe style="Z-INDEX: -1; LEFT: 2px; WIDTH: 1000px; POSITION: absolute; HEIGHT: 1000px" 
+								src="javascript:false" frameBorder=0 scrolling="no">
+						</iframe>
+						<img id="bp" ng-src="../img/product/{{proConurl}}"> 
+					</div>
+				</div>
+				<div id="vpd" style="border: #444444 1px solid">
+					<div id="vpd2">
+						<img onmousemove="javascript:slidebp();" id="vp" style="cursor: pointer;width:384px;height:384px" onmouseout="javascript:closebp();" 
+						ng-src="../img/product/{{proConurl}}">
+					</div>
+				</div>
+				<SCRIPT language="javascript">
+					gid = 37;
+					mp_pos = getAbsPoint(object("mpd"));
+					locateZoom();
+				</SCRIPT>
+				<!--<div id="wrap" style="top:0px;z-index:998;position:relative;">
+					<a id="zoom1" href="../img/product/c1/1377394349_55_2276.png" class="cloud-zoom" rel="smoothMove:5,zoomWidth:548,zoomHeight:440,lensOpacity:0.5,softFocus:false" style="position: relative; display: block;">
+						<img id="proCon_pics_midSize" src="../img/product/c1/1377394349_55_2276.png" width="73%" height="73%" style="display: block;">
+					</a>
+					<div class="mousetrap" style="background-image: url(../img/px.gif); z-index: 999; position: absolute; width: 100%; height: 100%; left: 0px; top: 0px; cursor: crosshair;">
+					</div>
+				</div>
+				-->
+			</div>
+			<div class="proCon_pics_smallMain">
+				<div class="proCon_pics_smallBox" id="proCon_slider">
+					<ul>
+						<li ng-class='{selected: picSelected == 1}' ng-click="proCon_pics(1)">
+							<a rel="useZoom:'zoom1',smallImage:'../img/product/c1/1377394349_55_2276.png'" class="cloud-zoom-gallery" href="">
+								<img alt="大锤C1" src="../img/product/c1/1377394349_55_2276.png">
+							</a>
+						</li>
+						<li ng-class='{selected: picSelected == 2}' ng-click="proCon_pics(2)">
+							<a rel="useZoom:'zoom1',smallImage:'../img/product/c1/1377393383_95_5390.png'" class="cloud-zoom-gallery" href="">
+								<img alt="大锤C1" src="../img/product/c1/1377393383_95_5390.png">
+							</a>
+						</li>
+						<li ng-class='{selected: picSelected == 3}' ng-click="proCon_pics(3)">
+							<a rel="useZoom:'zoom1',smallImage:'../img/product/c1/1377393385_25_1165.png'" class="cloud-zoom-gallery" href="">
+								<img alt="大锤C1" src="../img/product/c1/1377393385_25_1165.png">
+							</a>
+						</li>
+						<li ng-class='{selected: picSelected == 4}' ng-click="proCon_pics(4)">
+							<a rel="useZoom:'zoom1',smallImage:'../img/product/c1/1377393386_56_3345.png'" class="cloud-zoom-gallery" href=""> 
+								<img alt="大锤C1" src="../img/product/c1/1377393386_56_3345.png">
+							</a>
+						</li>
+						<li ng-class='{selected: picSelected == 5}' ng-click="proCon_pics(5)">
+							<a rel="useZoom:'zoom1',smallImage:'../img/product/c1/1377393390_77_5538.png'" class="cloud-zoom-gallery" href="">
+								<img alt="大锤C1" src="../img/product/c1/1377393390_77_5538.png">
+							</a>
+						</li>
+						<li class="proCon_pics_smallBox_more"><a href="" target="_blank"><span>高清<br>图集</span></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="proCon_form">
+			<h2><em>{{productinfo.proname}}</em><span>商品编号：<strong>{{productinfo.sn}}</strong></span><span class="level level5"></span></h2>
+			<ul class="proCon_form_intro cfl">
+				<li class="item1">{{productinfo.desc}}</li>
+				<!-- <li class="item2">已售：76单</li> -->
+				<li class="item1"></li>
+			</ul>
+			<div class="proCon_form_cfl cfl">
+				<p class="proCon_form_price">
+					<strong class="proCon_form_price_through"><span>原价：¥</span><font>999</font></strong>
+					<strong><font class="item2" style="color:#CC0000;"></font><span>¥</span>
+					<em id="nowprice">{{productinfo.price}}</em></strong>
+				</p>
+			</div>
+			<div class="proCon_form_box">
+				<ul class="proCon_form_box_upCon">
+					<li class="proCon_form_box_usersel cfl">
+						<h3>选择颜色：</h3>
+						<div class="btn-group cf1">
+							<label ng-repeat="cr in productinfo.colors" ng-class="{'selected': isSelected == ($index+1)}" class="btn_radio" ng-click="changecolor($index+1)">{{productinfo.colors[$index]}}</label>
+						</div>
+						
+					</li>
+					<li class="cfl">
+						<h3>购买数量：</h3>						
+						<select ng-model="buynum" id="buynum">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+						</select>
+						
+					</li>
+				</ul>
+				<div class="proCon_form_box_form cfl ">
+					<dl>
+						<dt class="proCon_form_box_hasSelected">						
+						总　　计：<strong><span> ¥</span><em id="iniSelectPrice">{{productinfo.price * buynum}}</em></strong>
+						</dt>
+					</dl>
+					<script type="text/ng-template" id="cartContent.html">
+						<div id="popwin">
+							<div id="popwin_main" class="snapdiv_title_div">
+								<div id="popwin_title" class="snapdiv_title">添加成功</div>
+								<img src="../../img/closed.ico" class="snapdiv_button_close" ng-click="cancel()"></img>
+							</div>		
+							<div id="popwin_content" class="snapdiv_content">
+								<div id="popwin_html" style="width: 294px; height: 120px;">
+									<table border="0" cellpadding="0" cellspacing="0" class="dialog_table">
+										<tbody>
+											<tr>
+												<td class="dialog_table_td">
+													<div class="dialog_ico_yes"></div>
+												</td>
+												<td class="dialog_content">成功添加到购物车，请选择操作。</td>
+											</tr>
+										</tbody>
+									</table>
+									<div class="dialog_button">
+										<input type="button" value="去结算" ng-click="ok()" id="focus_button">
+									</div>
+								</div>								
+							</div>
+						</div>
+					</script>
+					<a href="" class="btn btn-primary goods-add-cart-btn" ng-click="open('sm')"><i class="icon-goods-add"></i>加入购物车</a>
+					<a href="" class="btn goods-collect-btn"><i class="icon-common-grayheart"></i>收藏</a>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>

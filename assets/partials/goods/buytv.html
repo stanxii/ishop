@@ -1,0 +1,177 @@
+<link rel="stylesheet" href="css/tv.css"/>
+<div class="side-header container">
+	<div class="site-logo">
+		<a class="logo" href="/#/index" title="大橘子官网" >
+			<img src="/img/logo.jpg" />
+		</a>
+	</div>
+	<div class="header-info">
+		<div class="search-section">
+			<form id="J_searchForm" class="search-form clearfix" action="/search" method="get">
+                <input class="search-text" type="search" name="keyword" autocomplete="off" data-search-config="{'defaultWords':[&quot;大橘子&quot;,&quot;小橘子&quot;,&quot;红橘子&quot;,&quot;黄橘子&quot;]}" placeholder="搜索您需要的商品">
+                <input type="submit" class="search-btn" value="搜索" />			
+			</form>
+		</div>
+		<div class="cart-section">
+			<a id="J_miniCart" class="mini-cart" href="/#/cart?userid={{userid}}" onclick=""><img src="/img/cart.ico" />   购物车<span class="j_cartnum">({{count}})</span></a>
+			<div id="J_miniCartList" class="mini-cart-list" style="display: none;">
+				<p class="loading">数据加载中，请稍后...</p>
+			</div>
+		</div>		
+	</div>	
+	<div class="header-nav clearfix">
+		<div id="J_categoryContainer" class="nav-category nav-category-toggled">
+			<a class="btn-category-list" href="#">全部商品分类<i class="category_arrow"></i></a>
+			<div class="nav-category-section">
+				<ul class="nav-category-list">
+					<li class="nav-category-item nav-category-item-first">
+						<div class="nav-category-content" >
+							<a class="title" href="#">购买产品A</a>
+							<div class="links">
+								<a href="#" >商品A</a>
+								<a href="#" >商品B</a>
+								<a href="#" >商品C</a>
+								<a href="#" >商品D</a>
+							</div>
+						</div>
+					</li>
+					<li class="nav-category-item">
+						<div class="nav-category-content" >
+							<a class="title" href="#">购买产品B</a>
+							<div class="links">
+								<a href="#" >商品A</a>
+								<a href="#" >商品B</a>
+								<a href="#" >商品C</a>
+								<a href="#" >商品D</a>
+							</div>
+						</div>
+					</li>
+					<li class="nav-category-item">
+						<div class="nav-category-content" >
+							<a class="title" href="#">购买产品C</a>
+							<div class="links">
+								<a href="#" >商品A</a>
+								<a href="#" >商品B</a>
+								<a href="#" >商品C</a>
+								<a href="#" >商品D</a>
+							</div>
+						</div>
+					</li>
+					<li class="nav-category-item">
+						<div class="nav-category-content" >
+							<a class="title" href="#">购买产品D</a>
+							<div class="links">
+								<a href="#" >商品A</a>
+								<a href="#" >商品B</a>
+								<a href="#" >商品C</a>
+								<a href="#" >商品D</a>
+							</div>
+						</div>
+					</li>
+					<li class="nav-category-item">
+						<div class="nav-category-content" >
+							<a class="title" href="#">购买产品E</a>
+							<div class="links">
+								<a href="#" >商品A</a>
+								<a href="#" >商品B</a>
+								<a href="#" >商品C</a>
+								<a href="#" >商品D</a>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="nav-main">
+			<ul class="nav-main-list J_menuNavMain clearfix">
+				<li class="nav-main-item">
+                    <a href="#"><span class="text">首页</span></a>
+                </li>
+				<li class="nav-main-item">
+                    <a href="#">
+						<span class="text">锤子系列</span>
+						<span class="arrow"></span>
+					</a>
+					<div class="nav-main-children">
+                        <ul class="children-list clearfix">                        
+                            <li class="first">
+                                <a class="item-detail" href="#/pro_a" >   
+									<div class="pro-A">
+										<h3>大锤子C1</h3>
+										<p>1.2G四核NFC普及版</p>
+										<p>1280*720分辨率</p>
+										<p>899元起</p>
+									</div>
+                                    <span class="thumb">									
+										<img src="/img/product/pro_1.jpg" width="160" height="160">										                                     
+                                    </span>
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="item-detail" href="#pro_b" >  
+									<div class="pro-A">
+										<h3>大锤子C2</h3>
+										<p>1.5G四核NFC旗舰版</p>
+										<p>1920*1080分辨率</p>
+										<p>1399元起</p>
+									</div>
+                                    <span class="thumb">
+                                        <img src="/img/product/pro_1.jpg" width="160" height="160">
+                                    </span>
+                                </a>
+                            </li>
+                        
+                        </ul>
+                    </div>
+                </li>
+				<li class="nav-main-item">
+                    <a href="#/goods/mitv"><span class="text">小米电视</span></a>
+                </li>
+				<li class="nav-main-item">
+                    <a href="#"><span class="text">商品C</span></a>
+                </li>
+			</ul>
+		</div>
+	</div>	
+</div>
+<div class="container">
+	<div class="choose-step">
+		<div class="choose-content J_choose_block">
+			<div class="step-unit">
+				<div class="step-title">
+					<i>1</i> <b>选择小米电视型号</b>
+				</div>
+				<ul class="step-content clearfix"> 
+					<li ng-repeat="tv in proCombos.combo" ng-class="{first: $first}" ng-click="chooseCombo($index+1)">
+						<div class="version" ng-class="{'active': selectedCombo == ($index+1)}">
+							<h4 class="name">{{tv.desc}}</h4>
+							<div class="descp">
+								{{tv.tag}}<br>{{tv.price}}元
+							</div> 
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="step-unit" ng-class="{'vague': !selectedCombo}">
+				<div class="step-title"> <i>2</i> <b>选择颜色</b> </div>
+				<ul class="step-content clearfix">
+					<li ng-repeat="cr in productinfo.colors" ng-class="{first: $first}" ng-click="changeColor($index+1)">
+						<div class="version color " ng-class="{'active': selectedColor == ($index+1)}">
+							<h4 class="name">{{cr}}</h4> <div class="descp"></div> 
+							<img src="../../img/product/mitv/tv-jinse.png" alt="" class="img">
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="next-step clearfix">
+            <div class="next-info clearfix">
+                <a class="btn J_btn_next" href="" ng-class="{'btn-primary': selectedColor && selectedCombo, 'btn-dake': !selectedColor || !selectedCombo} " 
+				ng-click="addCart()">
+                    下一步
+                </a>
+            </div>
+        </div>
+	</div>
+</div>

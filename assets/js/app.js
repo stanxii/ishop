@@ -2,7 +2,7 @@
 
 
 // Declare app level module which depends on filters, and services
-angular.module('myApp', [
+var app = angular.module('myApp', [
   'ngSails',
   'ngRoute',
   'myApp.filters',
@@ -12,8 +12,23 @@ angular.module('myApp', [
 ])
  .config(['$sailsProvider', function ($sailsProvider) {
 	    $sailsProvider.url = 'http://localhost:1337';
+		
 }]) 
  .config(['$routeProvider', function($routeProvider) {
+	app.resolveScriptDeps = function(dependencies){
+		return function($q,$rootScope){
+			var deferred = $q.defer();
+			$script(dependencies, function() {
+				// all dependencies have now been loaded by $script.js so resolve the promise
+				$rootScope.$apply(function()
+				{
+					deferred.resolve();
+				});
+			});
+ 
+			return deferred.promise;
+		}
+	};
   $routeProvider.when('/index', {templateUrl: 'partials/index.html', controller: 'MyCtrl1'});
   $routeProvider.when('/logout', {templateUrl: 'partials/logout.html', controller: 'logoutCtrl'});
   $routeProvider.when('/login', {templateUrl: 'partials/login.html', controller: 'loginCtrl'});
@@ -22,10 +37,25 @@ angular.module('myApp', [
   $routeProvider.when('/changeP', {templateUrl: 'partials/changeP.html', controller: 'userinfoCtrl'});
   $routeProvider.when('/user/address', {templateUrl: 'partials/address.html', controller: 'addressCtrl'});
   $routeProvider.when('/cart', {templateUrl: 'partials/cart.html', controller: 'cartCtrl'});
-  $routeProvider.when('/order', {templateUrl: 'partials/order.html', controller: 'orderCtrl'});
+  $routeProvider.when('/order', {templateUrl: 'partials/order.html', controller: 'orderCtrl'});  
+  $routeProvider.when('/buy/checkout', {templateUrl: 'partials/checkout.html', controller: 'addressCtrl'});
+  $routeProvider.when('/buy/confirm', {templateUrl: 'partials/confirm.html', controller: 'confirmCtrl'});
+  $routeProvider.when('/about', {templateUrl: 'partials/about.html'});
+  
   $routeProvider.when('/pro_a', {templateUrl: 'partials/product_a.html', controller: ''});
   $routeProvider.when('/pro_b', {templateUrl: 'partials/product_b.html', controller: ''});
-  $routeProvider.when('/goods/c1', {templateUrl: 'partials/goods/c1.html', controller: 'goodsCtrl'});
-  $routeProvider.when('/about', {templateUrl: 'partials/about.html'});
+  $routeProvider.when('/goods/mobile', {
+										templateUrl: 'partials/goods/buymobile.html',
+										controller: 'goodsMobileCtrl', 
+										resolve: {
+											deps: app.resolveScriptDeps([
+												'js/bp.js'
+											])
+										}
+									}
+  );
+  $routeProvider.when('/static/buyTV', {templateUrl: 'partials/goods/buytv.html', controller: 'goodsTvCtrl'});
+  $routeProvider.when('/goods/mitv', {templateUrl: 'partials/goods/mitv.html', controller: ''});
+  $routeProvider.when('/test', {templateUrl: 'partials/test.html', controller: 'testCtrl'});
   $routeProvider.otherwise({redirectTo: '/index'});
 }]); 

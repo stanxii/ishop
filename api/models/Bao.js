@@ -14,13 +14,11 @@ module.exports = {
   	nickname: 'string'
   	*/
 	name: 'string',
-	id: 'string',
-	cat: 'string',
-	size: 'string',
-	img: {
-		type:'string',
-		required: 'true'
+	sn: {
+		type:'integer',
+		autoIncrement: 'true'
 	}
+
     
   }
 
