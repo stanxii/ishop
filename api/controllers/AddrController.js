@@ -140,7 +140,7 @@ module.exports = {
 		   zipcode: zipcode,
 		   street: street,
 		   tag: tag
-		}).done(function(err, addr) {
+		}).exec(function createCB(err, addr) {
 			//console.log('--create----xxxx----'+JSON.stringify(addr));
 			if(err){
 				console.log('--err--------'+err);
@@ -159,7 +159,7 @@ module.exports = {
     var addrid = req.param('addrid');
     Address.destroy({
 	  id: addrid
-	}).done(function(err) {
+	}).exec(function deleteCB(err) {
 	  // Error handling
 	  if (err) {
 		return console.log(err);
@@ -310,7 +310,7 @@ module.exports = {
    */
    findById: function (req, res) {
     var addrid = req.param('addrid');
-	Address.find({id: addrid}).done(function(err,addr){
+	Address.find({id: addrid}).exec(function findCB(err,addr){
 		if(err){
 			return console.log(err);
 		}
@@ -328,7 +328,7 @@ module.exports = {
     var userid = req.session.userid;
     // Send a JSON response
 	//console.log('------/addr/findAll----'+userid);
-	Address.find({userid: userid}).done(function(err,addrs){
+	Address.find({userid: userid}).exec(function findCB(err,addrs){
 		if(err){
 			return console.log(err);
 		}
@@ -466,15 +466,5 @@ module.exports = {
 		  console.log('Updated user to have name '+updated[0].name);
 		  return res.json( {sts: 0} );
 		});
-	},
-
-
-
-  /**
-   * Overrides for the settings in `config/controllers.js`
-   * (specific to AddrController)
-   */
-  _config: {}
-
-  
+	}
 };

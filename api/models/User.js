@@ -9,14 +9,14 @@
 module.exports = {
 
   attributes: {
-    name: {
+    username: {
 		type:'string',
-		required: 'true',
-		unique: true
+		unique: true,
+		required: true
 	},
     password: {
 		type:'string',
-		required: 'true'
+		required: true
 	},
     // Override toJSON instance method
     // to remove password value

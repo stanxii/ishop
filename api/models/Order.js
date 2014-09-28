@@ -11,14 +11,14 @@ module.exports = {
   attributes: {
   	sn: {
 		type:'integer',
-		autoIncrement: 'true'
+		autoIncrement: true
 	},
 	status: {
 		type: 'string',
 		enum: ['等待付款', '已付款', '已关闭']
 	},
 	orderdate:{
-		type:'datetime',
+		type:'string',
 		required: 'true'
 	},
 	price: {

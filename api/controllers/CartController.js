@@ -65,19 +65,19 @@ module.exports = {
 		console.log('------not -authenticated------');
 		return res.json({sts: 2});
 	};
-	Cart.count({userid: req.session.userid}).exec(function(err,r){
+	Cart.count({userid: req.session.userid}).exec(function countCB(err,r){
 		if(err){
 			// Send a JSON response
 			console.log('-------'+JSON.stringify(err));
 			return res.json({sts: 1});
 		};
 		console.log('------cart count----'+ r);
-		if(r > 15){
+		if(r > 10){
 			return res.json({sts: 3});//购物车已满
 		};
 	});
 	Cart.create({userid: req.session.userid, sn: sn, proname: proname, classify: classify, price: price, imgurl: imgurl,
-		count: buynum, desc: desc, tag: tag, color: color, merchant: merchant}).exec(function(err, r){
+		count: buynum, desc: desc, tag: tag, color: color, merchant: merchant}).exec(function createCB(err, r){
 		if(err){
 			// Send a JSON response
 			console.log('-------'+JSON.stringify(err));
@@ -96,7 +96,7 @@ module.exports = {
    del: function (req, res) {
     var id = req.param('id');
     // Send a JSON response
-	Cart.destroy({id: id}).exec(function (err,r){
+	Cart.destroy({id: id}).exec(function  deleteCB(err,r){
 		if(err){
 			// Send a JSON response
 			console.log('-------'+JSON.stringify(err));
@@ -112,7 +112,7 @@ module.exports = {
    */
    drop: function (req, res) {
     // Send a JSON response
-	Cart.destroy().exec(function (err,r){
+	Cart.destroy().exec(function  deleteCB(err,r){
 		if(err){
 			// Send a JSON response
 			console.log('-------'+JSON.stringify(err));
@@ -149,7 +149,7 @@ module.exports = {
    */
    findAll: function (req, res) {
     var userid = req.session.userid;
-	Cart.find({userid: userid}).exec(function(err, result) {
+	Cart.find({userid: userid}).exec(function findCB(err, result) {
 		if(err){
 			return res.json({sts: 2});
 		}
@@ -165,7 +165,7 @@ module.exports = {
    */
    count: function (req, res) {
     var userid = req.session.userid;
-	Cart.count({userid: userid}).exec(function(err,num){
+	Cart.count({userid: userid}).exec(function countCB(err,num){
 		if(err){
 			return res.json({sts: 2});
 		}
@@ -182,15 +182,5 @@ module.exports = {
 		}
 	});
     
-  },
-
-
-
-  /**
-   * Overrides for the settings in `config/controllers.js`
-   * (specific to CartController)
-   */
-  _config: {}
-
-  
+  }
 };

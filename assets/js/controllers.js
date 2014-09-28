@@ -524,7 +524,17 @@ angular.module('myApp.controllers', ['ui.bootstrap'])
 		$scope.register = function () {
 			var username = $scope.username;
 			var password = $scope.password;
-			$sails.get("/user/findOne", {username: username}).success(function (user) {
+			$sails.post("/user/create", {username: username,password: password}).success(function (user) {
+						//alert('---user---'+user.username);
+						localStorage.setItem("username",username);
+						localStorage.setItem("password","");
+						localStorage.setItem("remember",false);
+						$location.path('/login');
+					})
+					.error(function (data) {
+						alert('Houston, we got a problem!');
+					});
+			/*$sails.get("/user/findOne", {username: username}).success(function (user) {
 				if(user != null){
 					alert('User has exist!');
 					
@@ -540,7 +550,7 @@ angular.module('myApp.controllers', ['ui.bootstrap'])
 						alert('Houston, we got a problem!');
 					});
 				}
-			})
+			})*/
 			
 		};
 	}])

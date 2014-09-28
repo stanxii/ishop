@@ -1,3 +1,3 @@
-# testProject
-ssss
-### a Sails application
+# ishop
+
+a [Sails](http://sailsjs.org) application

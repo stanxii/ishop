@@ -53,6 +53,7 @@ module.exports = {
 	var proname = req.param('proname');
 	var classify = req.param('classify');
 	var price = req.param('price');
+	var oldprice = req.param('oldprice');
 	var imgurl = req.param('imgurl');
 	var pics = req.param('pics');
 	var producturl = req.param('producturl');
@@ -66,9 +67,9 @@ module.exports = {
     // Send a JSON response
 	console.log('------------product create------------------');
 	Product.create({
-		sn: sn, classify: classify, price: price, imgurl: imgurl,pics:pics, proname: proname,
+		sn: sn, classify: classify, price: price, oldprice: oldprice, imgurl: imgurl,pics:pics, proname: proname,
 		regdate: regdate, inventory: inventory, color:color, colors:colors, combos:combos, desc: desc, tag: tag, producturl: producturl
-	}).exec( function(err, r){
+	}).exec( function createCB(err, r){
 		if(err){
 			console.log(JSON.stringify(err));
 			return res.json({
@@ -115,7 +116,7 @@ module.exports = {
    findBySn: function (req, res) {
     var sn = req.param('sn');
 	console.log('--------findBySn----------'+ sn);
-	Product.findOne({sn: sn}).done(function(err, result){
+	Product.findOne({sn: sn}).exec(function findOneCB(err, result){
 		if(err){
 			console.log('--------findBySn err----------'+JSON.stringify(err));
 			return false;
@@ -146,15 +147,7 @@ module.exports = {
    *    `/product/findAll`
    */
    findAll: function (req, res) {
-    Product.runCommand("text", {search: "小米"}).done(function(err, result){
-		if(err){
-			console.log('--------findBySn err----------'+JSON.stringify(err));
-			return false;
-		}
-		// Send a JSON response
-		console.log('--------findBySn ----------'+ JSON.stringify(result));
-		return res.json(result);
-	});
+
 
   },
 
@@ -169,16 +162,5 @@ module.exports = {
     return res.json({
       hello: 'world'
     });
-  },
-
-
-
-
-  /**
-   * Overrides for the settings in `config/controllers.js`
-   * (specific to ProductController)
-   */
-  _config: {}
-
-  
+  }
 };

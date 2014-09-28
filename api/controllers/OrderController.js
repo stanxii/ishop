@@ -55,15 +55,15 @@ module.exports = {
 	var pricetotal = req.param('pricetotal');
 	var status = '等待付款';
 	var orderdate = DateFormat('yyyy-MM-dd hh:mm:ss',new Date());
-	//console.log('--cartinfo---'+ cartinfo);
-	Address.find({id: addrid}).done(function(err,addr){
+	console.log('--orderdate---'+ orderdate);
+	Address.find({id: addrid}).exec(function findCB(err,addr){
 		if(err){
 			return console.log(err);
 		};
 		Order.create({
 			price:pricetotal, status:status, orderdate:orderdate, userid:req.session.userid, 
 			addrid:addrid, addrname: addr[0].name, proinfo:cartinfo
-		}).exec( function(err, result){
+		}).exec( function createCB(err, result){
 			if(err){
 				console.log('----err---'+ JSON.stringify(err));
 				return res.json({
@@ -103,7 +103,7 @@ module.exports = {
     //var userid = req.param('userid');
     // Send a JSON response
 	//console.log('------/order/findAll----'+req.session.userid);
-	Order.find({ where: {userid: req.session.userid}, sort:'createdAt DESC'}).exec(function(err,result){
+	Order.find({ where: {userid: req.session.userid}, sort:'createdAt DESC'}).exec(function findCB(err,result){
 		if(err){
 			return console.log(err);
 		}		
@@ -124,13 +124,5 @@ module.exports = {
     return res.json({
       hello: 'world'
     });
-  },	
-
-  /**
-   * Overrides for the settings in `config/controllers.js`
-   * (specific to OrderController)
-   */
-  _config: {}
-
-  
+  }
 };
