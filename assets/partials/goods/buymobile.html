@@ -58,31 +58,12 @@
 			<div class="proCon_pics_smallMain">
 				<div class="proCon_pics_smallBox" id="proCon_slider">
 					<ul>
-						<li ng-class='{selected: picSelected == 1}' ng-click="proCon_pics(1)">
-							<a rel="useZoom:'zoom1',smallImage:'../img/product/c1/1377394349_55_2276.png'" class="cloud-zoom-gallery" href="">
-								<img alt="大锤C1" src="../img/product/c1/1377394349_55_2276.png">
+						<li ng-repeat="imgurl in productinfo.pics" ng-class='{selected: picSelected == $index + 1}' ng-click="proCon_pics($index + 1)">
+							<a rel="useZoom:'zoom1',smallImage:'../img/product/{{imgurl}}'" class="cloud-zoom-gallery" href="">
+								<img alt="大锤" src="../img/product/{{imgurl}}">
 							</a>
 						</li>
-						<li ng-class='{selected: picSelected == 2}' ng-click="proCon_pics(2)">
-							<a rel="useZoom:'zoom1',smallImage:'../img/product/c1/1377393383_95_5390.png'" class="cloud-zoom-gallery" href="">
-								<img alt="大锤C1" src="../img/product/c1/1377393383_95_5390.png">
-							</a>
-						</li>
-						<li ng-class='{selected: picSelected == 3}' ng-click="proCon_pics(3)">
-							<a rel="useZoom:'zoom1',smallImage:'../img/product/c1/1377393385_25_1165.png'" class="cloud-zoom-gallery" href="">
-								<img alt="大锤C1" src="../img/product/c1/1377393385_25_1165.png">
-							</a>
-						</li>
-						<li ng-class='{selected: picSelected == 4}' ng-click="proCon_pics(4)">
-							<a rel="useZoom:'zoom1',smallImage:'../img/product/c1/1377393386_56_3345.png'" class="cloud-zoom-gallery" href=""> 
-								<img alt="大锤C1" src="../img/product/c1/1377393386_56_3345.png">
-							</a>
-						</li>
-						<li ng-class='{selected: picSelected == 5}' ng-click="proCon_pics(5)">
-							<a rel="useZoom:'zoom1',smallImage:'../img/product/c1/1377393390_77_5538.png'" class="cloud-zoom-gallery" href="">
-								<img alt="大锤C1" src="../img/product/c1/1377393390_77_5538.png">
-							</a>
-						</li>
+						
 						<li class="proCon_pics_smallBox_more"><a href="" target="_blank"><span>高清<br>图集</span></a></li>
 					</ul>
 				</div>
@@ -97,7 +78,7 @@
 			</ul>
 			<div class="proCon_form_cfl cfl">
 				<p class="proCon_form_price">
-					<strong class="proCon_form_price_through"><span>原价：¥</span><font>999</font></strong>
+					<strong class="proCon_form_price_through"><span>原价：¥</span><font>{{productinfo.oldprice}}</font></strong>
 					<strong><font class="item2" style="color:#CC0000;"></font><span>¥</span>
 					<em id="nowprice">{{productinfo.price}}</em></strong>
 				</p>
