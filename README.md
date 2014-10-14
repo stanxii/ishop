@@ -1,3 +1,9 @@
 # login
 
-a [Sails](http://sailsjs.org) application
+
+
+cd root dir
+npm install
+cd assets
+bower install
+sails lift
