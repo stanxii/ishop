@@ -1,5 +1,5 @@
 {
-  "name": "ishop",
+  "name": "login",
   "private": true,
   "version": "0.0.0",
   "description": "a Sails application",
@@ -30,8 +30,8 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/anonymous node/sails user/ishop.git"
+    "url": "git://github.com/stan/login.git"
   },
-  "author": "anonymous node/sails user",
+  "author": "stan",
   "license": ""
 }
