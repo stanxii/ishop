@@ -1,0 +1,24 @@
+﻿<div class="container">
+	<div class="l_header">
+		<h1 id="l_logo">
+			<a href="http://192.168.1.249:1337/" target="_top"><img src="/img/logo.jpg"></a>
+		</h1>
+	</div>
+	<div class="l_body clearfix">
+		<form class="box login" ng-submit="login()">
+			<fieldset class="boxBody">
+			  <label>用户名:</label>
+			  <input type="text" tabindex="1" ng-model="username" placeholder="PremiumPixel" required>
+			  <label><a href="#" class="rLink" tabindex="5">忘记密码?</a>密码:</label>
+			  <input type="password" tabindex="2" ng-model="password" required>
+			</fieldset>
+			<footer>
+			  <label><input type="checkbox" ng-model="remember" tabindex="3">记住密码</label>
+			  <input type="submit" class="btnLogin" value="登录" tabindex="4">
+			</footer>
+		</form>
+		<div class="abc">
+			<img src="/img/l_logo.jpg">
+		</div>
+	</div>
+</div>
