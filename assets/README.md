@@ -43,6 +43,9 @@ We have preconfigured `npm` to automatically run `bower` so we can simply do:
 
 ```
 npm install
+cd assets
+bower install
+bower install angular-sails
 ```
 
 Behind the scenes this will also call `bower install`.  You should find that you have two new

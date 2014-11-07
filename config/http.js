@@ -10,10 +10,24 @@
  */
 
 var passport = require('passport')
+    , LocalStrategy = require('passport-local').Strategy
     , GitHubStrategy = require('passport-github').Strategy
     , FacebookStrategy = require('passport-facebook').Strategy
     , GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
     , TwitterStrategy = require('passport-twitter').Strategy;
+
+var localHander = function(username, password, done) {
+  process.nextTick(function() {  
+    User.findOne({ username: username, password: password }, function(err, user) {
+      if (err) { return done(err); }
+      if (!user) {
+        return done(null, false, { message: 'Incorrect username or password.' });
+      }
+      
+      return done(null, user);
+    });
+  });  
+}
 
 var verifyHandler = function(token, tokenSecret, profile, done) {
   process.nextTick(function() {
@@ -140,6 +154,8 @@ module.exports.http = {
   ****************/
   customMiddleware: function(app) {
 
+    passport.use(new LocalStrategy(localHander));
+    
     passport.use(new GitHubStrategy({
       clientID: "92685ae9b29935a246a1",
       clientSecret: "b2afcdc430daeaa945bc9655b425888cf68f63a7",

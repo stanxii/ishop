@@ -10,7 +10,7 @@ var passport = require('passport');
 module.exports = {
 
   index: function(req, res) {
-    res.view();
+    res.view(user);
   },
 
   logout: function(req, res) {
@@ -18,6 +18,24 @@ module.exports = {
     res.redirect('/');
   },
 
+  local: function(req, res) {
+    passport.authenticate('local', { failureRedirect: '/login' }, function(err, user) {
+      req.logIn(user, function(err) {
+        if (err) {
+          console.log(err);
+          //res.view('500');
+          res.json({sts:0});
+          return;
+        }
+
+        console.log(user);
+        res.json({sts:0});
+        //res.redirect('/');
+        return;
+      });
+    })(req, res);
+  },
+  
   // http://developer.github.com/v3/
   // http://developer.github.com/v3/oauth/#scopes
   github: function(req, res) {
@@ -30,6 +48,7 @@ module.exports = {
         }
 
         res.redirect('/');
+        
         return;
       });
     })(req, res);
