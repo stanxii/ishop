@@ -4,21 +4,6 @@
 			<a href="http://192.168.1.249:1337/" target="_top"><img src="/img/logo.jpg"></a>
 		</h1>
 	</div>
-
-	<form action="/auth/local/" method="post">
-      <div>
-        <label>Username:</label>
-        <input type="text" name="username" />
-        <br/>
-      </div>
-      <div>
-        <label>Password:</label>
-        <input type="password" name="password" />
-      </div>
-      <div>
-        <input type="submit" value="Submit" />
-      </div>
-    </form>
     
 	<div class="l_body clearfix">
 		<form class="box login"  ng-submit="login()">
@@ -33,6 +18,10 @@
 			  <input type="submit" class="btnLogin" value="登录" tabindex="4">
 			</footer>
 		</form>
+		<div class="other login">
+			<h1 id="main-title">其他登录方式</h1>
+			<a href="/auth/github/" class="btn">with GitHub</a>
+		</div>
 		<div class="abc">
 			<img src="/img/l_logo.jpg">
 		</div>

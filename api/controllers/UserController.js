@@ -19,19 +19,41 @@ module.exports = {
    * `UserController.create()`
    */
   create: function (req, res) {
-    var name = req.param('username');
+    var username = req.param('username');
 	var password = req.param('password');
 	var enpass = encryptPassword(password);
 	//console.log('--------name:'+name);
+	User.findOne({username:username}, function(err, user){
+		if(err){
+			console.log('---fidnone user error'+ JSON.stringify(err) )
+			return res.json({sts:2});
+		}
+		if(user){
+			//user exist do not need register
+			return res.json({sts:1, user: user});
+		}
+	});
+
+    
+	//user not exist now will create 
 	User.create({
-		   username: name,
+		   username: username,
 		   password: enpass
 		}).exec(function createCB(err, user) {
 			if(err){
 				console.log('--create----error----'+JSON.stringify(err));
+				return res.json({sts:3});
 			}
 			console.log('--create----xxxx----'+JSON.stringify(user));
-		    return res.json(user);
+			console.log('--now get objid to string='+ JSON.stringify(user.toJSON()));
+			User.update({username:username}, {uid:user.toJSON().id}, function(err, user){
+				if(err){
+					console.log('--update user uid error' + JSON.stringify(err));	
+					return res.json({sts:4});
+				}
+				return res.json({sts:0, user: user});
+			});			
+		    
 		});
   },
 

@@ -2,7 +2,7 @@
 	<div class="site-logo">
 		<a class="logo" href="/#/index" title="大橘子官网" >
 			<img src="app/img/logo.jpg" />
-		</a>
+		</a>		
 	</div>
 	<div class="header-info">
 		<div class="search-section">
@@ -25,7 +25,13 @@
 			<div id="J_miniCartList" class="mini-cart-list" style="display: none;">
 				<p class="loading">数据加载中，请稍后...</p>
 			</div>
-		</div>		
+		</div>	
+		<div class="logout-section">
+		  <h1 id="main-title" >Hi </h1> 
+		  <input type="text"  ng-model="username"></input>
+          <p>You've successfully logged in.</p>
+          <a class="btn" href="/logout">Logout</a>
+		</div>	
 	</div>
 	<div class="header-nav clearfix">
 		<div id="J_categoryContainer" class="nav-category">

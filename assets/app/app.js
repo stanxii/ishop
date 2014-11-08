@@ -6,8 +6,7 @@ angular.module('myApp', [
   'ngRoute',
   'myApp.index',
   'myApp.login',
-  'myApp.view1',
-  'myApp.view2',
+  'myApp.register',
   'myApp.version'
 ]).
 config(['$sailsProvider', function ($sailsProvider) {

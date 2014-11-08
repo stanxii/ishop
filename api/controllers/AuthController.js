@@ -7,6 +7,8 @@
 
 var passport = require('passport');
 
+
+
 module.exports = {
 
   index: function(req, res) {
@@ -24,12 +26,12 @@ module.exports = {
         if (err) {
           console.log(err);
           //res.view('500');
-          res.json({sts:0});
+          res.json({sts:1});
           return;
         }
 
         console.log(user);
-        res.json({sts:0});
+        res.json({sts:0, user: user});
         //res.redirect('/');
         return;
       });

@@ -16,9 +16,17 @@ var passport = require('passport')
     , GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
     , TwitterStrategy = require('passport-twitter').Strategy;
 
+
+var crypto = require('crypto');
+
+function encryptPassword(password) {
+  return crypto.createHash("md5").update(password).digest("base64");
+}
+
 var localHander = function(username, password, done) {
   process.nextTick(function() {  
-    User.findOne({ username: username, password: password }, function(err, user) {
+    var enpass = encryptPassword(password);
+    User.findOne({ username: username, password: enpass }, function(err, user) {
       if (err) { return done(err); }
       if (!user) {
         return done(null, false, { message: 'Incorrect username or password.' });
