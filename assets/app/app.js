@@ -7,7 +7,8 @@ angular.module('myApp', [
   'myApp.index',
   'myApp.login',
   'myApp.register',
-  'myApp.version'
+  'myApp.version',
+  'myApp.admin.index'
 ]).
 config(['$sailsProvider', function ($sailsProvider) {
 	    $sailsProvider.url = 'http://192.168.1.249:1337';
