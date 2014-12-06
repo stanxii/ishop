@@ -25,29 +25,33 @@ angular.module('myApp.login', ['ngRoute'])
 			password: $scope.password,
 			remember: $scope.remember
 		};
-		$http.post("/auth/local/", user).success(function (res) {
-			if(res.sts != 0){
-				alert('用户名不存在，请先注册！');
-				$location.path("/register");
-				return;
-			}
-			
-			if(res.sts == 0){
-				sessionStorage.setItem("username",$scope.username);
-				sessionStorage.setItem("uid",res.user.uid);
-				//alert('---remember2---'+remember);
-				if($scope.remember){					
-					sessionStorage.setItem("password",$scope.password);
-					sessionStorage.setItem("remember", true);
-				}				
-				
-				//$scope.resetLogin({name: username,id: res.userid});
-				/* 显示layout部分*/
-				$scope.$parent.j_islogin = true;
-				$location.path('/');
-			}else{
-				alert('密码不正确！');
-			}
+		$http.post("/auth/local/", user).success(function (data) {
+
+			if(!data || data.success==false){
+                alert("Failed Login");
+            }else{
+                alert("Successful login");
+                sessionStorage.token = data.token;
+                sessionStorage.user = JSON.stringify(data.user);
+
+                $location.path("/");
+            } 
+
+			//test2
+
+            //test
+			$http({
+				method:'get',
+				url: "http://localhost:1337/user",
+				headers: {'Authorization': 'Bearer '+(sessionStorage.token || '')}
+			    })
+			    .success(function (data){            	            
+	                alert(JSON.stringify(data));
+	            })
+	            .error(function (err) {	            
+	                alert("Authorization failed" + err);
+	            });
+						
 		})
 		.error(function (res) {
 			alert('Login, we got a problem!');

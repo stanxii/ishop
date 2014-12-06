@@ -31,6 +31,9 @@ module.exports.routes = {
   * `assets` directory)                                                      *
   *                                                                          *
   ***************************************************************************/
+  /*login path*/
+  'post /auth/local': 'AuthController.local',
+  'get /auth/logout': 'AuthController.logout',
 
   '/': {
     view: 'homepage'

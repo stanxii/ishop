@@ -11,23 +11,15 @@ angular.module('myApp.index', ['ngRoute'])
 
 .controller('IndexCtrl', ['$scope', '$sails', '$location', function($scope, $sails, $location) {
 	
-		$scope.username = sessionStorage.getItem("username");
+		
+	$scope.logout = function () {
+		sessionStorage.token=null;
+        $.get("http://localhost:1337/auth/logout", function(data){
+            alert("Logged out!"); 
+        });
+	};
 
-		//check if user is login in session
-		if($scope.username){
-			$scope.$parent.j_islogin = true;
-			//获取购物车信息
-			
-			$scope.uid = sessionStorage.getItem("uid");
-			$sails.post("/cart/count",{uid: $scope.uid}).success(function (res) {
-				if(res.sts == 0){
-					$scope.count =  num.num ;
-				}else{
-					$scope.count = 0;
-				}
-			});
-			
-        };
+		
 }])
 
 .controller('CarouselDemoCtrl', ['$scope', '$sails', '$location', function($scope, $sails, $location ) {	

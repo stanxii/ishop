@@ -28,7 +28,6 @@ angular.module('myApp.register', ['ngRoute'])
 						}else{
 							//register error navgiate register error
 							$location.path('/register');
-
 						}
 			})
 			.error(function (data) {

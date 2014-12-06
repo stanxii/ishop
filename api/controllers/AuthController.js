@@ -6,7 +6,8 @@
  */
 
 var passport = require('passport');
-
+var jwt = require('jsonwebtoken');
+var secret = 'ewfn09qu43f09qfj94qf*&H#(R';
 
 
 module.exports = {
@@ -16,25 +17,38 @@ module.exports = {
   },
 
   logout: function(req, res) {
-    req.logout();
-    res.redirect('/');
+        req.logout();
+        res.send({
+            success: true,
+            message: 'logoutSuccessful'
+        });
   },
 
   local: function(req, res) {
-    passport.authenticate('local', { failureRedirect: '/login' }, function(err, user) {
-      req.logIn(user, function(err) {
-        if (err) {
-          console.log(err);
-          //res.view('500');
-          res.json({sts:1});
-          return;
-        }
-
-        console.log(user);
-        res.json({sts:0, user: user});
-        //res.redirect('/');
-        return;
-      });
+    passport.authenticate('local',  function(err, user) {
+      if ((err) || (!user)) {
+                res.send({
+                    success: false,
+                    message: 'invalidPassword'
+                });
+                return;
+            }else{
+                if (err) {
+                    res.send({
+                        success: false,
+                        message: 'unknownError',
+                        error: err
+                    });
+                } else {
+                    
+                    var token = jwt.sign(user, secret, { expiresInMinutes: 60*24 });
+                    res.send({
+                        success: true,
+                        user: user,
+                        token: token
+                    });
+                }
+            }
     })(req, res);
   },
   
