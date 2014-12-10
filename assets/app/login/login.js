@@ -40,11 +40,7 @@ angular.module('myApp.login', ['ngRoute'])
 			//test2
 
             //test
-			$http({
-				method:'get',
-				url: "http://localhost:1337/user",
-				headers: {'Authorization': 'Bearer '+(sessionStorage.token || '')}
-			    })
+			$http.get("http://localhost:1337/user")
 			    .success(function (data){            	            
 	                alert(JSON.stringify(data));
 	            })
