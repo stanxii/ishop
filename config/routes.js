@@ -32,8 +32,9 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
   /*login path*/
-  'post /auth/local': 'AuthController.local',
-  'get /auth/logout': 'AuthController.logout',
+  'post /api/v1/account/register': 'UserController.register',
+  'post /api/v1/account/signin': 'AuthController.sign',
+  'get  /api/v1/account/logout': 'AuthController.logout',
 
   '/': {
     view: 'homepage'

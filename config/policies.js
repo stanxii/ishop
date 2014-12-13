@@ -50,11 +50,12 @@ module.exports.policies = {
 	// }
 
   //stan custom access before controller token based
-    '*': "hasToken",
+    //'*': "hasToken",
     UserController: {
-        "create": true,
+        "register": true,
     },
-    AuthController: {
+    AuthController: {      
         '*': true,
+        'logout':"hasToken"
     }
 };

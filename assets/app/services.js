@@ -56,8 +56,8 @@ appServices.factory('UserService', function ($http) {
             return $http.get(options.api.base_url + '/user/logout');
         },
 
-        register: function(username, password, passwordConfirmation) {
-            return $http.post(options.api.base_url + '/user/register', {username: username, password: password, passwordConfirmation: passwordConfirmation });
+        register: function(usermail, password, passwordConfirmation, role) {
+            return $http.post(options.api.base_url + '/api/v1/account/register', {usermail: usermail, password: password, passwordConfirmation: passwordConfirmation, role:role });
         }
     }
 });

@@ -1,5 +1,10 @@
 'use strict';
 
+
+var options = {};
+options.api = {};
+options.api.base_url = "http://192.168.1.249:1337";
+
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
   'ngSails',

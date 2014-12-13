@@ -9,30 +9,24 @@ angular.module('myApp.register', ['ngRoute'])
   });
 }])
 
-.controller('RegisterCtrl', ['$scope', '$http', '$sails', '$location', function($scope, $http, $sails, $location) {
-	/* 隐藏layout部分*/
-	/* 隐藏layout部分*/
-		$scope.$parent.j_islogin = false;
-		$scope.register = function () {
-			var username = $scope.username;
-			var password = $scope.password;
-			$sails.post("/user/create", {username: username,password: password}).success(function (res) {
-						//alert('---user---'+user.username);
-						//successful
-						if(0 == res.sts){													    
-						    $location.path('/login');
-						}													
-						else if(1 == res.sts){
-							//user exist already do not need register							
-							$location.path('/login');							
-						}else{
-							//register error navgiate register error
-							$location.path('/register');
-						}
-			})
-			.error(function (data) {
-				alert('Houston, we got a problem!');
-			});
-		};
+.controller('RegisterCtrl', ['$scope', '$http', '$sails', '$location', '$window', 'UserService', 'AuthenticationService',
+          function($scope, $http, $sails, $location, $window, UserService, AuthenticationService) {
 	
+    
+	$scope.register = function register(usermail, password, passwordConfirm, role) {       
+            if (AuthenticationService.isAuthenticated) {
+
+                $location.path("/coder/basic");
+            }
+            else {
+                var role="coder";
+                UserService.register(usermail, password, passwordConfirm, role).success(function(data) {
+                    $location.path("/coder/basic");
+                }).error(function(status, data) {
+                    console.log(status);
+                    console.log(data);
+                });
+            }
+        }
+			
 }]);

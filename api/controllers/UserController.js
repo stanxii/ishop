@@ -5,56 +5,67 @@
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
  
-var crypto = require('crypto');
+// var crypto = require('crypto');
 
-function encryptPassword(password) {
-	return crypto.createHash("md5").update(password).digest("base64");
-}
+// function encryptPassword(password) {
+// 	return crypto.createHash("md5").update(password).digest("base64");
+// }
 
 module.exports = {
 	
 
-
   /**
    * `UserController.create()`
    */
-  create: function (req, res) {
-    var username = req.param('username');
+  register: function (req, res) {
+    var usermail = req.param('usermail');
 	var password = req.param('password');
-	var enpass = encryptPassword(password);
+	var role = req.param('role');
+
+	
+
+	var passwordConfirmation = req.body.passwordConfirmation || '';
+
+	if (usermail == '' || password == '' || password != passwordConfirmation) {
+		return res.send(400);
+	}
+
+	//var enpass = encryptPassword('conformPassword');
+
 	//console.log('--------name:'+name);
-	User.findOne({username:username}, function(err, user){
+	User.find()
+	.where({usermail:usermail})
+	.then(function(err, user){
 		if(err){
 			console.log('---fidnone user error'+ JSON.stringify(err) )
-			return res.json({sts:2});
+			return res.send(400);
 		}
 		if(user){
 			//user exist do not need register
-			return res.json({sts:1, user: user});
+			return res.send(10001);
+		}else{
+			//create
+			//user not exist now will create 
+			User.create({
+				   usermail: usermail,
+				   password: password,
+				   role: role
+				}).exec(function createCB(err, user) {
+					if(err){
+						console.log('--create----error----'+JSON.stringify(err));
+						return res.send(400);
+					}
+					console.log('--create----xxxx----'+JSON.stringify(user));
+					console.log('--now get objid to string='+ JSON.stringify(user.toJSON()));
+
+					return res.send(200);
+				    
+				});	
 		}
 	});
 
     
-	//user not exist now will create 
-	User.create({
-		   username: username,
-		   password: enpass
-		}).exec(function createCB(err, user) {
-			if(err){
-				console.log('--create----error----'+JSON.stringify(err));
-				return res.json({sts:3});
-			}
-			console.log('--create----xxxx----'+JSON.stringify(user));
-			console.log('--now get objid to string='+ JSON.stringify(user.toJSON()));
-			User.update({username:username}, {uid:user.toJSON().id}, function(err, user){
-				if(err){
-					console.log('--update user uid error' + JSON.stringify(err));	
-					return res.json({sts:4});
-				}
-				return res.json({sts:0, user: user});
-			});			
-		    
-		});
+	
   },
 
 
@@ -82,26 +93,7 @@ module.exports = {
   },
 
 
-  /**
-   * `UserController.auth()`
-   */
-  auth: function (req, res) {
-    return res.json({status: 0});//success
-  },
-
-
-  /**
-   * `UserController.checklogin()`
-   */
-  checklogin: function (req, res) {
-    if(req.session.authenticated){
-		//console.log('--find----userid----'+req.session.userid);
-		return res.json({name: req.session.user,id: req.session.userid});//success
-	}else{
-		return res.json({name: '', id:''});//false
-	}
-  },
-
+  
 
   /**
    * `UserController.login()`

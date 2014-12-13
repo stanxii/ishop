@@ -24,7 +24,7 @@ module.exports = {
         });
   },
 
-  local: function(req, res) {
+  sign: function(req, res) {
     passport.authenticate('local',  function(err, user) {
       if ((err) || (!user)) {
                 res.send({
