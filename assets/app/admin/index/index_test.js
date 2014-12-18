@@ -1,15 +1,15 @@
 'use strict';
 
-describe('myApp.index module', function() {
+describe('myApp.admin.index module', function() {
 
-  beforeEach(module('myApp.index'));
+  beforeEach(module('myApp.admin.index'));
 
   describe('index controller', function(){
 
     it('should ....', inject(function($controller) {
       //spec body
-      var indexCtrl = $controller('IndexCtrl');
-      expect(indexCtrl).toBeDefined();
+      var adminIndexCtrl = $controller('AdminIndexCtrl');
+      expect(adminIndexCtrl).toBeDefined();
     }));
 
   });

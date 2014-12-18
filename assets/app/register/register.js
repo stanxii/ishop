@@ -12,6 +12,7 @@ angular.module('myApp.register', ['ngRoute'])
 .controller('RegisterCtrl', ['$scope', '$http', '$sails', '$location', '$window', 'UserService', 'AuthenticationService',
           function($scope, $http, $sails, $location, $window, UserService, AuthenticationService) {
 	
+    $scope.role="coder";
     
 	$scope.register = function register(usermail, password, passwordConfirm, role) {       
             if (AuthenticationService.isAuthenticated) {
@@ -19,10 +20,14 @@ angular.module('myApp.register', ['ngRoute'])
                 $location.path("/coder/basic");
             }
             else {
-                var role="coder";
-                UserService.register(usermail, password, passwordConfirm, role).success(function(data) {
+                
+                UserService.register(usermail, password, passwordConfirm, $scope.role).success(function(data) {
                     $location.path("/coder/basic");
                 }).error(function(status, data) {
+                    //user already exist in db, nav to login
+                    if(1001 == data){                        
+                            $location.path("/login");                        
+                    }
                     console.log(status);
                     console.log(data);
                 });

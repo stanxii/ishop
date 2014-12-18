@@ -37,7 +37,7 @@ appServices.factory('TokenInterceptor', function ($q, $window, $location, Authen
             if (rejection != null && rejection.status === 401 && ($window.sessionStorage.token || AuthenticationService.isAuthenticated)) {
                 delete $window.sessionStorage.token;
                 AuthenticationService.isAuthenticated = false;
-                $location.path("/admin/login");
+                $location.path("/login");
             }
 
             return $q.reject(rejection);
@@ -48,16 +48,17 @@ appServices.factory('TokenInterceptor', function ($q, $window, $location, Authen
 
 appServices.factory('UserService', function ($http) {
     return {
-        signIn: function(username, password) {
-            return $http.post(options.api.base_url + '/user/signin', {username: username, password: password});
+        signIn: function(usermail, password,role) {
+            return $http.post('/api/v1/account/signin', {username: usermail, password: password, role:role});
         },
 
         logOut: function() {
-            return $http.get(options.api.base_url + '/user/logout');
+            return $http.get('/user/logout');
         },
 
         register: function(usermail, password, passwordConfirmation, role) {
-            return $http.post(options.api.base_url + '/api/v1/account/register', {usermail: usermail, password: password, passwordConfirmation: passwordConfirmation, role:role });
+            //return $http.post(options.api.base_url + '/api/v1/account/register', {usermail: usermail, password: password, passwordConfirmation: passwordConfirmation, role:role });
+            return $http.post('/api/v1/account/register', {usermail: usermail, password: password, passwordConfirmation: passwordConfirmation, role:role });
         }
     }
 });

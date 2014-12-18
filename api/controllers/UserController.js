@@ -5,11 +5,11 @@
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
  
-// var crypto = require('crypto');
+ var crypto = require('crypto');
 
-// function encryptPassword(password) {
-// 	return crypto.createHash("md5").update(password).digest("base64");
-// }
+ function encryptPassword(password) {
+ 	return crypto.createHash("md5").update(password).digest("base64");
+ }
 
 module.exports = {
 	
@@ -30,41 +30,34 @@ module.exports = {
 		return res.send(400);
 	}
 
-	//var enpass = encryptPassword('conformPassword');
 
-	//console.log('--------name:'+name);
-	User.find()
-	.where({usermail:usermail})
-	.then(function(err, user){
-		if(err){
-			console.log('---fidnone user error'+ JSON.stringify(err) )
-			return res.send(400);
+	User.count({usermail:usermail}).exec(function countCB(error, found) {
+		if(error){
+				console.log('--create----error----'+JSON.stringify(err));
+				return res.send(400);
 		}
-		if(user){
-			//user exist do not need register
-			return res.send(10001);
-		}else{
-			//create
-			//user not exist now will create 
-			User.create({
-				   usermail: usermail,
-				   password: password,
-				   role: role
-				}).exec(function createCB(err, user) {
-					if(err){
-						console.log('--create----error----'+JSON.stringify(err));
-						return res.send(400);
-					}
-					console.log('--create----xxxx----'+JSON.stringify(user));
+	 	console.log('There are ' + found + ' users called User---'+ usermail);
+	 	if(0 == found){
+	 		var enpass = encryptPassword(password);
+	 		User.create({
+			   usermail: usermail,
+			   password: enpass,
+			   role: role
+			}).exec(function createCB(error,user){
+				if(error){
+					console.log('--create----error----'+JSON.stringify(err));
+					return res.send(400);
+				}
+		  			console.log('Created user with name '+user.usermail);
+		  			console.log('--create----xxxx----'+JSON.stringify(user));
 					console.log('--now get objid to string='+ JSON.stringify(user.toJSON()));
-
 					return res.send(200);
-				    
-				});	
-		}
+	  			});
+	 	}else{
+	 		//user already exist cant register
+	 		return res.send(1001);
+	 	}	 
 	});
-
-    
 	
   },
 
