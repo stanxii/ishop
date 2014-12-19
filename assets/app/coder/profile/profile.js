@@ -9,6 +9,19 @@ angular.module('myApp.coder.profile', ['ngRoute'])
   });
 }])
 
-.controller('CoderProfileCtrl', ['$scope', '$http', '$sails', '$location', function($scope, $http, $sails, $location) {
+.controller('CoderProfileCtrl', ['$scope', '$http', '$sails', '$location', '$window', 'UserService', 'AuthenticationService',
+	function($scope, $http, $sails, $location, $window, UserService, AuthenticationService) {
 	/* 隐藏layout部分*/
+
+	$scope.getprofile = function getprofile() {
+
+		var user= JSON.parse($window.sessionStorage.user);
+		$http.post('/api/v1/profile/create', {userid: user.id});
+
+
+		$http.get('/profile/');
+
+		console.log('kkkk');
+	}
+
 }]);

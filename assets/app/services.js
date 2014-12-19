@@ -63,3 +63,21 @@ appServices.factory('UserService', function ($http) {
     }
 });
 
+
+// appServices.factory('ProfileService', function ($http) {
+//     return {
+//         signIn: function(usermail, password,role) {
+//             return $http.post('/api/v1/account/signin', {username: usermail, password: password, role:role});
+//         },
+
+//         logOut: function() {
+//             return $http.get('/user/logout');
+//         },
+
+//         register: function(usermail, password, passwordConfirmation, role) {
+//             //return $http.post(options.api.base_url + '/api/v1/account/register', {usermail: usermail, password: password, passwordConfirmation: passwordConfirmation, role:role });
+//             return $http.post('/api/v1/account/register', {usermail: usermail, password: password, passwordConfirmation: passwordConfirmation, role:role });
+//         }
+//     }
+// });
+
