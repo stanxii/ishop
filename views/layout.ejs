@@ -10,11 +10,11 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="app/bower_components/html5-boilerplate/css/normalize.css">
-  <link rel="stylesheet" href="app/bower_components/html5-boilerplate/css/main.css">  
+  <link rel="stylesheet" href="app/bower_components/html5-boilerplate/css/main.css">
   <link rel="stylesheet" href="app/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="app/bower_components/bootstrap/dist/css/bootstrap-theme.min.css"/>
   <link rel="stylesheet" href="app/css/app.css"/>
-  
+
   <script src="app/bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 <body>
@@ -23,41 +23,40 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
-  <header id="header" class="main-header">
+<header id="header">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="wrapper">
-    
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <ul class="nav navbar-nav">
-        <li>
-          <a href="/" class="main-header--logo">
+      <div class="header-logo">
+        <a href="/">
           <img src="app/images/logo.png" alt="unDrizzle"/>
         </a>
-        </li>
-        <li class="active">        
+      </div>
+      <ul class="nav navbar-nav main-nav-list">
+        <li class="menu-item nav-coder">
           <a href="#/index">我是程序员</a>
         </li>
-        <li class="">
+        <li class="menu-item nav-company">
           <a href="#team">我是企业</a>
         </li>
-        <li class="nav-bold-item menu-item nav-problem">
+        <li class="menu-item nav-problem">
           <a href="#/development">常见问题</a>
         </li>
-        <li class="nav-bold-item menu-item nav-invite">
+        <li class="menu-item nav-invite">
           <a href="#/development">邀请朋友</a>
         </li>
-        <li class="navigation">
+        <li class="menu-item">
           <a href="#/register">注册</a>
         </li>
-        <li class="navigation">
-          <a href="#/signin">登录</a>
+        <li class="menu-item">
+          <a href="#/login">登录</a>
         </li>
       </ul>
-    </nav>
-  </div>
+    </div>
+  </nav>
 </header>
   <div ng-view></div>
 
-  
+
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
@@ -67,7 +66,7 @@
   <script src="/socket.io/socket.io.js"></script>
   <script type="text/javascript" src="app/bower_components/sails.io.js/dist/sails.io.js"></script>
   <script src="app/bower_components/script.js/dist/script.min.js"></script>
-  
+
   <script src="app/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="app/bower_components/angular/angular.js"></script>
   <script src="app/bower_components/angular-route/angular-route.js"></script>
@@ -79,7 +78,7 @@
   <script src="app/register/register.js"></script>
   <script src="app/admin/index/index.js"></script>
   <script src="app/coder/profile/profile.js"></script>
-
+  <script src="js/scripts.js"></script>
   <script src="app/components/version/version.js"></script>
   <script src="app/components/version/version-directive.js"></script>
   <script src="app/components/version/interpolate-filter.js"></script>
