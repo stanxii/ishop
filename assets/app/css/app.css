@@ -61,6 +61,8 @@ a:hover {
   border-radius: 3px;
   background: #ffffff;
   padding-bottom: 30px;
+  padding-left: 0;
+  padding-right: 0;
 }
 .login-head {
   margin-top: 40px;
@@ -149,9 +151,18 @@ a:hover {
 }
 /* register */
 .coder {
-  height: 45px;
-  font-size: 18px;
-  color: #65656e;
+  padding: 1rem;
+  font-size: 2rem;
+  color: #787985;
   text-align: center;
-  background: #727272;
+  background: #e6e7eb;
+  cursor: pointer;
+}
+.hr {
+  padding: 1rem;
+  font-size: 2rem;
+  color: #787985;
+  text-align: center;
+  background: #e6e7eb;
+  cursor: pointer;
 }
