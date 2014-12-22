@@ -147,3 +147,11 @@ a:hover {
 .login-button:hover {
   background: #54c9a8;
 }
+/* register */
+.coder {
+  height: 45px;
+  font-size: 18px;
+  color: #65656e;
+  text-align: center;
+  background: #727272;
+}
