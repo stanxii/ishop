@@ -21,15 +21,19 @@
            <label class="text-label email-label" for="email">Email</label>
          </div>
          <div class="text-top">
-           <input id="email" class="text-input-email" type="text" placeholder="邮箱" name="email" ng-model="register.usermail" />
+           <input id="email" class="form-control" type="text" placeholder="邮箱" name="email" ng-model="register.usermail" />
          </div>
          <div class="label-top">
            <label class="text-label name-label" for="password">Password</label>
            <label class="text-label password-label" for="confirmpwd">Password</label>
          </div>
-         <div class="text-bottom">
-           <input id="password" class="text-input-password" type="password" placeholder="密码" name="password" ng-model="register.password">
-           <input id="confirmpwd" class="text-input-confirmpwd" type="password" placeholder="确认密码" name="confirmpwd" ng-model="register.passwordConfirmation">
+         <div class="text-bottom  has-feedback">
+           <input id="password" class="form-control" type="password" placeholder="密码" name="password" ng-model="register.password">
+           <span class="form-control-feedback fui-lock"></span>
+         </div>
+         <div class="has-feedback">
+           <input id="confirmpwd" class="form-control" type="password" placeholder="确认密码" name="confirmpwd" ng-model="register.passwordConfirmation">
+           <span class="form-control-feedback fui-lock"></span>
          </div>
          <div class="wings">
            <div class="wings-wing"></div>
@@ -172,7 +176,8 @@
           </div>
          </div>
          <div class="reg-end">
-           <button type="submit" class="btn reg-button input-half" ng-click="register(register.usermail, register.password, register.passwordConfirmation, register.role)">注册</button>
+           <md-button class="md-raised md-primary" ng-click="register(register.usermail, register.password, register.passwordConfirmation, register.role)">注册</md-button>
+           <RaisedButton label="Primary" primary={true} />
          </div>
        </form>
    </div>
