@@ -1,17 +1,18 @@
 ﻿<div class="container">
  <div class="row">
   <div class="col-md-8 col-md-offset-2 login-box">
-    <div class="col-md-6 coder selected">程序员</div>
-    <div class="col-md-6 hr" ng-click="hrbodyclick">HR</div>
-     <div class="coder-body" ng-show="coderbody = true">
-       <div class="coder-sign-github">
-         <div class="coder-github">
-           <div class="github-mark">
-            <a class="button-github" href="/user/auth/github">用Github账号登录</a>
-           </div>
-         </div>
-       </div>
-       <div class="wings">
+    <div ng-init="signtype= true">
+      <div class="col-md-6 coder" ng-click="signtype = true" ng-class="{selected:signtype}">程序员</div>
+      <div class="col-md-6 hr" ng-click="signtype = false" ng-class="{selected:!signtype}">HR</div>
+      <div ng-show="signtype" class="regtypeChange">
+       <h2>程序员注册页面</h2>
+      </div>
+      <div ng-show="!signtype" class="regtypeChange">
+        <h2>HR注册页面</h2>
+      </div>
+    </div>
+
+      <!-- <div class="wings">
          <div class="wings-wing"></div>
          <span class="text-register">立即注册</span>
          <div class="wings-wing"></div>
@@ -179,9 +180,8 @@
            <md-button class="md-raised md-primary" ng-click="register(register.usermail, register.password, register.passwordConfirmation, register.role)">注册</md-button>
            <RaisedButton label="Primary" primary={true} />
          </div>
-       </form>
-   </div>
-   <div class="hr-body" ng-show="hrbody"></div>
+       </form> -->
+
   </div>
  </div>
 </div>

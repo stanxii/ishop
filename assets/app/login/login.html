@@ -10,14 +10,17 @@
           <a class="login-third-right" href="/user/auth/stack overflow">Stack Overflow</a>
           <div class="signin-middle">
             <label class="label-text">邮箱</label>
-            <input id="email" class="text-input" type="text" placeholder="邮箱"  name="email" ng-model="user.username"/>
+            <div class="has-feedback">
+              <input id="email" class="form-control input-lg" type="text" placeholder="邮箱"  name="email" ng-model="user.username"/>
+              <span class="mdi-communication-forum"></span>
+            </div>
             <div class="signin-password">
               <label class="label-text">密码</label>
-              <input id="password" class="text-input" type="password" placeholder="密码" ng-model="user.password" />
+                <input id="password" class="form-control input-lg" type="password" placeholder="密码" ng-model="user.password" />
             </div>
           </div>
           <div class="signin-end">
-            <button type="submit" class="login-button" ng-click="signIn(user.username, user.password, 'coder')">登录</button>
+            <button type="submit" class="btn btn-primary" ng-click="signIn(user.username, user.password, 'coder')">登录</button>
           </div>
           <div class="signin-bottom">
             <a class="link" href="/users/password/new">忘记密码?</a>

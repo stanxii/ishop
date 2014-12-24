@@ -78,7 +78,7 @@ a:hover {
   background: #a4a5ad;
   border: 1px solid #a4a5ad;
   margin-top: 40px;
-  width: 49.8%;
+  width: 49.5%;
 }
 .login-third-right {
   padding: 8px 0;
@@ -90,7 +90,7 @@ a:hover {
   border: 1px solid #a4a5ad;
   margin-top: 40px;
   float: right;
-  width: 49.8%;
+  width: 49.5%;
 }
 .login-third-left:hover {
   background: #787985;
@@ -107,18 +107,6 @@ a:hover {
   color: #65656e;
   font-size: 17px;
 }
-.text-input {
-  width: 100%;
-  padding: 8px 8px;
-  border-radius: 0.2rem;
-  background-color: #ffffff;
-  border: 0.1rem solid #babbc1;
-  overflow: visible;
-}
-.text-input:focus {
-  border-color: #4c9bda;
-  outline: 0 none;
-}
 .signin-password {
   margin-top: 15px;
 }
@@ -132,22 +120,8 @@ a:hover {
 .signin-bottom .link:hover {
   color: #3974a3;
 }
-.login-button {
-  background: #1cb78c;
-  border: 1px solid #1cb78c;
-  border-radius: 3px;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 25px;
-  width: 100%;
-  color: #fff;
-  margin: 0 auto;
-}
 .signin-end {
   margin-top: 50px;
-}
-.login-button:hover {
-  background: #54c9a8;
 }
 /* register */
 .coder {
@@ -166,3 +140,44 @@ a:hover {
   background: #e6e7eb;
   cursor: pointer;
 }
+.selected {
+  background: #ffffff;
+}
+.regtypeChange.ng-hide-add {
+  -webkit-animation: 0s regtypeChange-add;
+  -moz-animation: 0s regtypeChange-add;
+  animation: 0s regtypeChange-add;
+}
+.regtypeChange.ng-hide-remove {
+  -webkit-animation: 0s regtypeChange-remove;
+  -moz-animation: 0s regtypeChange-remove;
+  animation: 0s regtypeChange-remove;
+}
+@keyframes regtypeChange-add {
+  from {opacity: 1;}
+  to {opacity: 0;}
+}
+@-webkit-keyframes regtypeChange-add {
+  from {opacity: 1;}
+  to {opacity: 0;}
+}
+@-moz-keyframes regtypeChange-add {
+  from {opacity: 1;}
+  to {opacity: 0;}
+}
+@keyframes regtypeChange-remove{
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+@-webkit-keyframes regtypeChange-remove {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+@-moz-keyframes regtypeChange-remove {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+
+
+

@@ -6,6 +6,7 @@ angular.module('myApp', [
   'ngSails',
   'ngRoute',
   'ngMaterial',
+  'ngAnimate',
   'myApp.index',
   'myApp.login',
   'myApp.register',
