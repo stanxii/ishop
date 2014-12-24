@@ -100,12 +100,8 @@ a:hover {
   background: #787985;
   text-decoration: none;
 }
-.signin-middle {
+.signin-email {
   margin-top: 50px;
-}
-.label-text {
-  color: #65656e;
-  font-size: 17px;
 }
 .signin-password {
   margin-top: 15px;
@@ -120,7 +116,7 @@ a:hover {
 .signin-bottom .link:hover {
   color: #3974a3;
 }
-.signin-end {
+.signin-button {
   margin-top: 50px;
 }
 /* register */
