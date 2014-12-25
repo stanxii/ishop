@@ -5,8 +5,6 @@
 angular.module('myApp', [
   'ngSails',
   'ngRoute',
-  'ngMaterial',
-  'ngAnimate',
   'myApp.index',
   'myApp.login',
   'myApp.register',
@@ -24,7 +22,8 @@ config(['$sailsProvider', function ($sailsProvider) {
 
 }]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/index'});
+    $routeProvider.otherwise({redirectTo: '/index'});
+
 }]).
 run(function($rootScope, $location, $window, AuthenticationService) {
     $rootScope.$on("$routeChangeStart", function(event, nextRoute, currentRoute) {

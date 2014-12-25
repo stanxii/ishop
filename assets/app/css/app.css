@@ -104,7 +104,7 @@ a:hover {
   margin-top: 50px;
 }
 .signin-password {
-  margin-top: 15px;
+  margin-top: 35px;
 }
 .signin-bottom {
   margin-top: 30px;
@@ -118,6 +118,30 @@ a:hover {
 }
 .signin-button {
   margin-top: 50px;
+}
+.form-control-wrapper .floating-label {
+  color: #1cb78c;
+  font-size: 20px;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 2px;
+  transition: all 0.2s ease 0s;
+}
+.form-control-wrapper .form-control:not(.empty) ~ .floating-label {
+  font-size: 20px;
+  opacity: 1;
+  top: -20px;
+}
+.hint {
+  color: #1cb78c;
+  font-size: 90%;
+}
+.btn-full {
+  padding: 5px 0;
+  width: 100%;
+  font-size: 25px;
 }
 /* register */
 .coder {
