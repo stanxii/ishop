@@ -10,12 +10,26 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="app/bower_components/html5-boilerplate/css/normalize.css">
-  <link rel="stylesheet" href="app/bower_components/html5-boilerplate/css/main.css">  
+  <link rel="stylesheet" href="app/bower_components/html5-boilerplate/css/main.css">
+
   <link rel="stylesheet" href="app/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="app/bower_components/bootstrap/dist/css/bootstrap-theme.min.css"/>
   <link rel="stylesheet" href="app/css/app.css"/>
-  
+
+
   <script src="app/bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+
+  <link rel="stylesheet" href="app/bower_components/bootstrap-material-design/dist/css/ripples.min.css"/>
+  <link href="app/bower_components/bootstrap-material-design/dist/css/material-wfont.min.css" rel="stylesheet">
+
+  <!--
+  <link rel="stylesheet" href="app/bower_components/bootstrap-material-design/dist/css/material.min.css"/>
+  -->
+
+  <!--
+  <link rel="stylesheet" href="app/bower_components/bootstrap-material-design/dist/css/material-wfont.min.css"/>
+  -->
+
+
 </head>
 <body>
 
@@ -25,7 +39,7 @@
 
   <header id="header" class="main-header">
     <div class="wrapper">
-    
+
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <ul class="nav navbar-nav">
         <li>
@@ -33,7 +47,7 @@
           <img src="app/images/logo.png" alt="unDrizzle"/>
         </a>
         </li>
-        <li class="active">        
+        <li class="active">
           <a href="#/index">我是程序员</a>
         </li>
         <li class="">
@@ -57,31 +71,57 @@
 </header>
   <div ng-view></div>
 
-  
+
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
   <!-- add by stan for socket.io -->
+
   <script src="app/bower_components/jquery/dist/jquery.min.js"></script>
+
+
+  <!--
   <script src="/socket.io/socket.io.js"></script>
+  -->
+
   <script type="text/javascript" src="app/bower_components/sails.io.js/dist/sails.io.js"></script>
+
+
   <script src="app/bower_components/script.js/dist/script.min.js"></script>
-  
+
+  <script src="app/bower_components/bootstrap-material-design/dist/js/ripples.min.js"></script>
+  <script src="app/bower_components/bootstrap-material-design/dist/js/material.min.js"></script>
+
+  <!--
   <script src="app/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  -->
+
   <script src="app/bower_components/angular/angular.js"></script>
   <script src="app/bower_components/angular-route/angular-route.js"></script>
+  <script src="app/bower_components/angular-route/angular-messages.js"></script>
   <script src="app/bower_components/angular-sails/dist/angular-sails.js"></script>
   <script src="app/services.js"></script>
+  <script src="app/directives.js"></script>
   <script src="app/app.js"></script>
   <script src="app/index/index.js"></script>
   <script src="app/login/login.js"></script>
   <script src="app/register/register.js"></script>
   <script src="app/admin/index/index.js"></script>
-  <script src="app/coder/profile/profile.js"></script>
+  <script src="app/coder/profile/index/profile.js"></script>
+  <script src="app/coder/profile/edit/edit.js"></script>
+
 
   <script src="app/components/version/version.js"></script>
   <script src="app/components/version/version-directive.js"></script>
   <script src="app/components/version/interpolate-filter.js"></script>
+
+
+  <script>
+    $(document).ready(function() {
+      $.material.init();
+    });
+  </script>
+
 </body>
 </html>

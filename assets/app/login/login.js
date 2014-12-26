@@ -15,14 +15,14 @@ angular.module('myApp.login', ['ngRoute'])
 	$scope.$parent.j_islogin = false;
 	$scope.username = sessionStorage.getItem("username");
 	$scope.password = sessionStorage.getItem("password");
-	
+
 	////////////////////////////////////
 
 	$scope.signIn = function signIn(usermail, password, role) {
             if (usermail != null && password != null && role !=null) {
 
                 UserService.signIn(usermail, password, role).success(function(data) {
-                    
+
                     AuthenticationService.isAuthenticated = true;
                     //$window.sessionStorage.user = JSON.stringify(data.user);
                     $window.sessionStorage.user = JSON.stringify(data.user);
@@ -32,16 +32,16 @@ angular.module('myApp.login', ['ngRoute'])
                     	$location.path("/coder/profile");
                     else
                     	$location.path("/");
-                    
+
                     // if("coder" == data.user.role){
                     // 	$location.path("/coder/basic");
                     // }
                     // else if("hr" == data.user.role){
-                    // 	$location.path("/hr/company");	
+                    // 	$location.path("/hr/company");
                     // }
                     // else
-                    // 	$location.path("/");	
-                    		
+                    // 	$location.path("/");
+
                 }).error(function(status, data) {
                     console.log(status);
                     console.log(data);
@@ -49,8 +49,10 @@ angular.module('myApp.login', ['ngRoute'])
             }
         }
 
-	//////////////////////////////////////
 
+
+
+/////////////////////////////////////////
 	// $scope.login = function () {
 	// 	var user = {
 	// 		username: $scope.username,
@@ -67,19 +69,19 @@ angular.module('myApp.login', ['ngRoute'])
  //                sessionStorage.user = JSON.stringify(data.user);
 
  //                $location.path("/");
- //            } 
+ //            }
 
 	// 		//test2
 
  //            //test
 	// 		$http.get("http://localhost:1337/user")
-	// 		    .success(function (data){            	            
+	// 		    .success(function (data){
 	//                 alert(JSON.stringify(data));
 	//             })
-	//             .error(function (err) {	            
+	//             .error(function (err) {
 	//                 alert("Authorization failed" + err);
 	//             });
-						
+
 	// 	})
 	// 	.error(function (res) {
 	// 		alert('Login, we got a problem!');

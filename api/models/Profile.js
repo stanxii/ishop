@@ -18,6 +18,10 @@ module.exports = {
 		model: 'personalInfo'
 	},
 
+	jobPreferences: {
+		model: 'jobPreferences'
+	},
+
 	education: {
 		model: 'education'
 	},
