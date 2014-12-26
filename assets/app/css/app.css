@@ -10,6 +10,9 @@ a:hover {
   text-decoration: none;
 }
 /* header */
+.header {
+  background: #191919;
+}
 .header-logo {
   display: inline-block;
   margin-top: 1em;
@@ -23,14 +26,15 @@ a:hover {
 }
 .main-nav-list {
   margin-left: 120px;
+  margin-top: 20px;
 }
 .main-nav-list li a {
   display: block;
   font-size: 2rem;
   text-decoration: none;
-  margin: 25px 15px 0 15px;
+  margin: 5px 15px 0 15px;
   color: #ffffff !important;
-  padding: 0 0 5px 0;
+  padding: 0 0 5px 0 !important;
 }
 .main-nav-list .menu-item:hover > a {
   border-bottom: 2px solid #bbb;
@@ -142,6 +146,10 @@ a:hover {
   padding: 5px 0;
   width: 100%;
   font-size: 25px;
+}
+.icon-email {
+  display: inline-block;
+  float: right;
 }
 /* register */
 .coder {

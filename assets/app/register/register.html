@@ -5,18 +5,17 @@
       <div class="col-md-6 coder" ng-click="signtype = true" ng-class="{selected:signtype}">程序员</div>
       <div class="col-md-6 hr" ng-click="signtype = false" ng-class="{selected:!signtype}">HR</div>
       <div ng-show="signtype" class="regtypeChange">
-       <h2>程序员注册页面</h2>
+        <div class="wings">
+          <div class="wings-wing"></div>
+          <span class="text-register">立即注册</span>
+          <div class="wings-wing"></div>
+        </div>
       </div>
       <div ng-show="!signtype" class="regtypeChange">
         <h2>HR注册页面</h2>
       </div>
     </div>
-    <input type="text" class="form-control floating-label" placeholder="密码" ng-model="user.password">
-      <!-- <div class="wings">
-         <div class="wings-wing"></div>
-         <span class="text-register">立即注册</span>
-         <div class="wings-wing"></div>
-       </div>
+
        <form name="signup_form" novalidate accept-charset="UTF-8" class="reg-form"  >
          <div class="label-top">
            <label class="text-label email-label" for="email">Email</label>
