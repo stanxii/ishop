@@ -15,17 +15,18 @@ angular.module('myApp', [
   'myApp.coder.profile.edit',
   'myApp.appServices',
   'myapp.appDirectives'
-
 ]).
 config(function ($httpProvider) {
     $httpProvider.interceptors.push('TokenInterceptor');
 }).
 config(['$sailsProvider', function ($sailsProvider) {
-	    $sailsProvider.url = 'http://192.168.1.249:1337';
+    //$sailsProvider.url = 'localhost:1337';
+		$sailsProvider.url = 'http://192.168.1.249:1337';
 
 }]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/index'});
+    $routeProvider.otherwise({redirectTo: '/index'});
+
 }]).
 run(function($rootScope, $location, $window, AuthenticationService) {
     $rootScope.$on("$routeChangeStart", function(event, nextRoute, currentRoute) {

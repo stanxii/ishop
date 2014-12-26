@@ -1,35 +1,27 @@
-﻿<div class="layout">
-  <div class="signin">
-    <div class="box">
+﻿<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 login-box">
       <form name="signin_form" novalidate>
-        <div class="signin-head">
-          <h1 class="text-h1">登录</h1>
+        <div class="login-head">
+          <h1>登录</h1>
         </div>
-        <div class="signin-third">
-          <div class="stack">
-            <a class="button" href="/users/auth/github">GitHub</a>
-          </div>
-          <div class="stack">
-            <a class="button" href="/user/auth/stack overflow">Stack Overflow</a>
-          </div>
-        </div>
-        <div class="signin-middle">
+        <div class="col-md-10 col-md-offset-1">
+          <a class="login-third-left" href="/users/auth/github">GitHub</a>
+          <a class="login-third-right" href="/user/auth/stack overflow">Stack Overflow</a>
           <div class="signin-email">
-            <label class="float-left">邮箱</label>
-            <input id="email" class="text-input input-full" type="text" placeholder="用户邮箱"  name="email" ng-model="user.username"/>
+            <input type="email" class="form-control floating-label" data-hint="请输入你的邮箱" placeholder="邮箱" ng-model="user.username">
           </div>
           <div class="signin-password">
-            <label class="float-left">密码</label>
-            <input id="password" class="text-input input-full" type="password" ng-model="user.password" />
+            <input type="password" class="form-control floating-label" data-hint="请输入你的密码" placeholder="密码" ng-model="user.password">
           </div>
-        </div>
-        <div class="reg-end">          
-          <button type="submit" class="btn btn-default" ng-click="signIn(user.username, user.password, 'coder')">Sign In</button>
-        </div>
-        <div class="signin-bottom">
-          <a class="link" href="/users/password/new">忘记密码?</a>
-          <span>•</span>
-          <a class="link" href="#/register">立即注册</a>
+          <div class="signin-button">
+            <button class="btn btn-primary btn-full" ng-click="signIn(user.username, user.password, 'coder')">登录</button>
+          </div>
+          <div class="signin-bottom">
+            <a class="link" href="/users/password/new">忘记密码?</a>
+            <span>•</span>
+            <a class="link" href="#/register">立即注册</a>
+          </div>
         </div>
       </form>
     </div>

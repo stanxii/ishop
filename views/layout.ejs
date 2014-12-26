@@ -11,11 +11,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="app/bower_components/html5-boilerplate/css/normalize.css">
   <link rel="stylesheet" href="app/bower_components/html5-boilerplate/css/main.css">
+<<<<<<< HEAD
 
   <link rel="stylesheet" href="app/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="app/css/app.css"/>
 
 
+=======
+  <link rel="stylesheet" href="app/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="app/bower_components/bootstrap-material-design/dist/css/ripples.min.css">
+  <link rel="stylesheet" href="app/bower_components/bootstrap-material-design/dist/css/material.min.css">
+  <link rel="stylesheet" href="app/css/app.css"/>
+
+>>>>>>> 9e53ee6ad6d03ea9e3580656304e6de79e5e2a10
   <script src="app/bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
 
   <link rel="stylesheet" href="app/bower_components/bootstrap-material-design/dist/css/ripples.min.css"/>
@@ -37,8 +45,10 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
-  <header id="header" class="main-header">
+<header id="header">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="wrapper">
+<<<<<<< HEAD
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <ul class="nav navbar-nav">
@@ -48,26 +58,35 @@
         </a>
         </li>
         <li class="active">
+=======
+      <div class="header-logo">
+        <a href="/">
+          <img src="app/images/logo.png" alt="unDrizzle"/>
+        </a>
+      </div>
+      <ul class="nav navbar-nav main-nav-list">
+        <li class="menu-item nav-coder">
+>>>>>>> 9e53ee6ad6d03ea9e3580656304e6de79e5e2a10
           <a href="#/index">我是程序员</a>
         </li>
-        <li class="">
+        <li class="menu-item nav-company">
           <a href="#team">我是企业</a>
         </li>
-        <li class="nav-bold-item menu-item nav-problem">
+        <li class="menu-item nav-problem">
           <a href="#/development">常见问题</a>
         </li>
-        <li class="nav-bold-item menu-item nav-invite">
+        <li class="menu-item nav-invite">
           <a href="#/development">邀请朋友</a>
         </li>
-        <li class="navigation">
+        <li class="menu-item">
           <a href="#/register">注册</a>
         </li>
-        <li class="navigation">
-          <a href="#/signin">登录</a>
+        <li class="menu-item">
+          <a href="#/login">登录</a>
         </li>
       </ul>
-    </nav>
-  </div>
+    </div>
+  </nav>
 </header>
   <div ng-view></div>
 
@@ -77,6 +96,7 @@
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
   <!-- add by stan for socket.io -->
+<<<<<<< HEAD
 
   <script src="app/bower_components/jquery/dist/jquery.min.js"></script>
 
@@ -94,10 +114,18 @@
   <script src="app/bower_components/bootstrap-material-design/dist/js/material.min.js"></script>
 
   <!--
+=======
+  <script src="js/socket.io.js"></script>
+  <script src="js/sails.io.js"></script>
+  <script src="app/bower_components/jquery/dist/jquery.min.js"></script>
+>>>>>>> 9e53ee6ad6d03ea9e3580656304e6de79e5e2a10
   <script src="app/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   -->
 
   <script src="app/bower_components/angular/angular.js"></script>
+  <script src="js/arrive-2.0.0.min.js"></script>
+  <script src="app/bower_components/bootstrap-material-design/dist/js/ripples.min.js"></script>
+  <script src="app/bower_components/bootstrap-material-design/dist/js/material.min.js"></script>
   <script src="app/bower_components/angular-route/angular-route.js"></script>
   <script src="app/bower_components/angular-route/angular-messages.js"></script>
   <script src="app/bower_components/angular-sails/dist/angular-sails.js"></script>
@@ -108,6 +136,7 @@
   <script src="app/login/login.js"></script>
   <script src="app/register/register.js"></script>
   <script src="app/admin/index/index.js"></script>
+
   <script src="app/coder/profile/index/profile.js"></script>
   <script src="app/coder/profile/edit/edit.js"></script>
 
@@ -117,6 +146,7 @@
   <script src="app/components/version/interpolate-filter.js"></script>
 
 
+  <script src="js/scripts.js"></script>
   <script>
     $(document).ready(function() {
       $.material.init();
