@@ -14,7 +14,7 @@ angular.module('myApp', [
   'myApp.coder.profile.index',
   'myApp.coder.profile.edit',
   'myApp.appServices',
-  'myapp.appDirectives'
+  'myApp.appDirectives'
 ]).
 config(function ($httpProvider) {
     $httpProvider.interceptors.push('TokenInterceptor');
