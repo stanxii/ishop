@@ -1,10 +1,10 @@
 'use strict';
 
-angular.module('myApp.coder.profile', ['ngRoute'])
+angular.module('myApp.coder.profile.index', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/coder/profile', {
-    templateUrl: 'app/coder/profile/profile.html',
+  $routeProvider.when('/coder/profile/index', {
+    templateUrl: 'app/coder/profile/index/profile.html',
     controller: 'CoderProfileCtrl'
   });
 }])
@@ -16,7 +16,15 @@ angular.module('myApp.coder.profile', ['ngRoute'])
 	$scope.getprofile = function getprofile() {
 
 		var user= JSON.parse($window.sessionStorage.user);
-		$http.post('/api/v1/profile/create', {userid: user.id});
+
+    var personInfo = {};
+    var jobPreferences = {};
+    var education = {};
+    var workHistory = {};
+    var summary = {};
+    var profile = {userid: user.id};
+
+		$http.post('/api/v1/profile/create', personInfo, jobPreferences, education, workHistory, summary, profile);
 
 
 		$http.get('/profile/');

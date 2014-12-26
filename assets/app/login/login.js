@@ -49,8 +49,10 @@ angular.module('myApp.login', ['ngRoute'])
             }
         }
 
-	//////////////////////////////////////
 
+
+
+/////////////////////////////////////////
 	// $scope.login = function () {
 	// 	var user = {
 	// 		username: $scope.username,

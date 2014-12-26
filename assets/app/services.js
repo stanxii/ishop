@@ -64,6 +64,19 @@ appServices.factory('UserService', function ($http) {
 });
 
 
+appServices.factory('fakeQueryService', function($timeout, $q) {
+  var FAKE_TIMEOUT = 2000;
+  return function(username, fakeInvalidData) {
+    var defer = $q.defer();
+    $timeout(function() {
+      fakeInvalidData.indexOf(username) == -1
+        ? defer.resolve()
+        : defer.reject();
+    }, FAKE_TIMEOUT);
+    return defer.promise;
+  }
+});
+
 // appServices.factory('ProfileService', function ($http) {
 //     return {
 //         signIn: function(usermail, password,role) {

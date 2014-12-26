@@ -5,20 +5,23 @@
 angular.module('myApp', [
   'ngSails',
   'ngRoute',
+  'ngMessages',
   'myApp.index',
   'myApp.login',
   'myApp.register',
   'myApp.version',
   'myApp.admin.index',
-  'myApp.coder.profile',
-  'myApp.appServices'
+  'myApp.coder.profile.index',
+  'myApp.coder.profile.edit',
+  'myApp.appServices',
+  'myApp.appDirectives'
 ]).
 config(function ($httpProvider) {
     $httpProvider.interceptors.push('TokenInterceptor');
 }).
 config(['$sailsProvider', function ($sailsProvider) {
-    $sailsProvider.url = 'localhost:1337';
-		//$sailsProvider.url = 'http://192.168.1.249:1337';
+    //$sailsProvider.url = 'localhost:1337';
+		$sailsProvider.url = 'http://192.168.1.249:1337';
 
 }]).
 config(['$routeProvider', function($routeProvider) {
