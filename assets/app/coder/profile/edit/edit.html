@@ -1,94 +1,98 @@
-﻿<row>
-  <div class="row">
-    <div class="col-md-4">
-    </div>
+﻿<div class="row navbar-fixed-top approval-head" >
+  <ul class="nav nav-tabs " >
+    <li >Required for approval:</li>
+    <li ><a href="#personalInfo">Personal Info</a></li>
+    <li ><a href="#jobPreferences">Job Preferences</a></li>
+    <li ><a  href="#education">Education</a></li>
+    <li ><a href="#workHistory">Work History</a></li>
+    <li ><a href="#summary">Summary</a></li>
+  </ul>
+</div>
 
-    <div class="col-md-8">
-
-      <form name="my_form" class="main-form container ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-email ng-valid-record-taken ng-valid-record-loading ng-valid-minlength ng-valid-maxlength ng-valid-password-characters"  ng-submit="submit()" novalidate="">
-        <div class="control-group">
-          <label for="input_first_name">Name:</label>
-          <div class="row">
-            <div class="col-md-6">
-              <input class="form-control ng-dirty ng-valid ng-valid-required" type="text" name="first_name" id="input_first_name" ng-model="data.first_name" required="">
-              <!-- ngIf: interacted(my_form.first_name) --><div class="error-messages ng-scope ng-inactive" ng-if="interacted(my_form.first_name)" ng-messages="my_form.first_name.$error" ng-messages-include="form-messages"><!-- ngMessage: required --><!-- ngMessage: minlength --><!-- ngMessage: maxlength --><!-- ngMessage: email --><!-- ngMessage: pattern --><!-- ngMessage: password-characters -->
-              <!-- ngMessage: required -->
-            </div><!-- end ngIf: interacted(my_form.first_name) -->
-            </div>
-            <div class="col-md-6">
-              <input class="form-control ng-dirty ng-valid ng-valid-required" type="text" name="last_name" id="input_last_name" ng-model="data.last_name" required="">
-              <!-- ngIf: interacted(my_form.last_name) --><div class="error-messages ng-scope ng-inactive" ng-if="interacted(my_form.last_name)" ng-messages="my_form.last_name.$error" ng-messages-include="form-messages"><!-- ngMessage: required --><!-- ngMessage: minlength --><!-- ngMessage: maxlength --><!-- ngMessage: email --><!-- ngMessage: pattern --><!-- ngMessage: password-characters -->
-              <!-- ngMessage: required -->
-            </div><!-- end ngIf: interacted(my_form.last_name) -->
-            </div>
-          </div>
-        </div>
-
-        <div class="control-group">
-          <label for="input_username">Choose your Username:</label>
-          <input class="form-control ng-dirty ng-valid-required ng-valid-minlength ng-valid-record-taken ng-valid ng-valid-record-loading" type="text" name="username" id="input_username" ng-model="data.username" ng-minlength="6" fake-remote-record-validator="fakeUsernames" required="">
-          <!-- ngIf: interacted(my_form.username) --><div class="error-messages ng-scope ng-inactive" ng-if="interacted(my_form.username)" ng-messages="my_form.username.$error" ng-messages-include="form-messages"><!-- ngMessage: required --><!-- ngMessage: minlength --><!-- ngMessage: maxlength --><!-- ngMessage: email --><!-- ngMessage: pattern --><!-- ngMessage: password-characters -->
-          <!-- ngMessage: required -->
-          <!-- ngMessage: record-loading -->
-          <!-- ngMessage: record-taken -->
-        </div><!-- end ngIf: interacted(my_form.username) -->
-        </div>
-
-        <div class="control-group">
-          <label for="input_email_address">Email Address:</label>
-          <input class="form-control ng-dirty ng-valid-required ng-valid-email ng-valid-record-taken ng-valid ng-valid-record-loading" type="email" name="email_address" id="input_email_address" ng-model="data.email_address" fake-remote-record-validator="fakeEmails" required="">
-          <!-- ngIf: interacted(my_form.email_address) --><div class="error-messages ng-scope ng-inactive" ng-if="interacted(my_form.email_address)" ng-messages="my_form.email_address.$error" ng-messages-include="form-messages"><!-- ngMessage: required --><!-- ngMessage: minlength --><!-- ngMessage: maxlength --><!-- ngMessage: email --><!-- ngMessage: pattern --><!-- ngMessage: password-characters -->
-          <!-- ngMessage: required -->
-          <!-- ngMessage: record-loading -->
-          <!-- ngMessage: record-taken -->
-        </div><!-- end ngIf: interacted(my_form.email_address) -->
-        </div>
-
-        <div class="control-group">
-          <label for="input_password">Create a password:</label>
-          <input class="form-control ng-dirty ng-valid-required ng-valid-minlength ng-valid-maxlength ng-valid ng-valid-password-characters" type="password" name="password" id="input_password" ng-model="data.password" ng-minlength="6" ng-maxlength="12" password-characters-validator="" required="">
-          <!-- ngIf: interacted(my_form.password) --><div class="error-messages ng-scope ng-inactive" ng-if="interacted(my_form.password)" ng-messages="my_form.password.$error" ng-messages-include="form-messages"><!-- ngMessage: required --><!-- ngMessage: minlength --><!-- ngMessage: maxlength --><!-- ngMessage: email --><!-- ngMessage: pattern --><!-- ngMessage: password-characters --></div><!-- end ngIf: interacted(my_form.password) -->
-        </div>
-
-        <div class="control-group">
-          <label for="input_password_confirm">Confirm your password:</label>
-          <input class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength ng-valid-minlength" type="password" name="password_confirm" id="input_password_confirm" ng-model="data.password_confirm" ng-minlength="6" ng-maxlength="12" password-characters-validator="" match-validator="data.password" required="">
-          <!-- ngIf: interacted(my_form.password_confirm) -->
-        </div>
-
-        <div class="control-group">
-          <label for="input_dob">Birthday:</label>
-          <input class="form-control ng-pristine ng-invalid ng-invalid-required" type="date" name="dob" id="input_dob" ng-model="data.dob" required="">
-          <!-- ngIf: interacted(my_form.dob) -->
-        </div>
-
-        <div class="control-group">
-          <label for="input_gender">Gender:</label>
-          <select class="form-control ng-pristine ng-invalid ng-invalid-required" name="gender" id="input_gender" ng-model="data.gender" ng-options="gender for gender in genders" required=""><option value="?" selected="selected"></option><option value="0">Male</option><option value="1">Female</option></select>
-          <!-- ngIf: interacted(my_form.gender) -->
-        </div>
-
-        <div class="control-group">
-          <label for="input_phone">Phone Number:</label>
-          <input class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-pattern" type="text" name="phone" id="input_phone" ng-model="data.phone" ng-pattern="phoneNumberRegex" required="">
-          <!-- ngIf: interacted(my_form.phone) -->
-        </div>
-
-        <div class="control-group">
-          <label for="input_location">Location:</label>
-          <select class="form-control ng-pristine ng-invalid ng-invalid-required" name="location" id="input_location" ng-model="data.location" ng-options="location.code as location.name for location in locations" required=""><option value="?" selected="selected"></option><option value="0">Afghanistan</option><option value="1">Åland Islands</option><option value="2">Albania</option><option value="3">Algeria</option><option value="4">American Samoa</option><option value="5">AndorrA</option><option value="6">Angola</option><option value="7">Anguilla</option><option value="8">Antarctica</option><option value="9">Antigua and Barbuda</option><option value="10">Argentina</option><option value="11">Armenia</option><option value="12">Aruba</option><option value="13">Australia</option><option value="14">Austria</option><option value="15">Azerbaijan</option><option value="16">Bahamas</option><option value="17">Bahrain</option><option value="18">Bangladesh</option><option value="19">Barbados</option><option value="20">Belarus</option><option value="21">Belgium</option><option value="22">Belize</option><option value="23">Benin</option><option value="24">Bermuda</option><option value="25">Bhutan</option><option value="26">Bolivia</option><option value="27">Bosnia and Herzegovina</option><option value="28">Botswana</option><option value="29">Bouvet Island</option><option value="30">Brazil</option><option value="31">British Indian Ocean Territory</option><option value="32">Brunei Darussalam</option><option value="33">Bulgaria</option><option value="34">Burkina Faso</option><option value="35">Burundi</option><option value="36">Cambodia</option><option value="37">Cameroon</option><option value="38">Canada</option><option value="39">Cape Verde</option><option value="40">Cayman Islands</option><option value="41">Central African Republic</option><option value="42">Chad</option><option value="43">Chile</option><option value="44">China</option><option value="45">Christmas Island</option><option value="46">Cocos (Keeling) Islands</option><option value="47">Colombia</option><option value="48">Comoros</option><option value="49">Congo</option><option value="50">Congo, The Democratic Republic of the</option><option value="51">Cook Islands</option><option value="52">Costa Rica</option><option value="53">Cote D"Ivoire</option><option value="54">Croatia</option><option value="55">Cuba</option><option value="56">Cyprus</option><option value="57">Czech Republic</option><option value="58">Denmark</option><option value="59">Djibouti</option><option value="60">Dominica</option><option value="61">Dominican Republic</option><option value="62">Ecuador</option><option value="63">Egypt</option><option value="64">El Salvador</option><option value="65">Equatorial Guinea</option><option value="66">Eritrea</option><option value="67">Estonia</option><option value="68">Ethiopia</option><option value="69">Falkland Islands (Malvinas)</option><option value="70">Faroe Islands</option><option value="71">Fiji</option><option value="72">Finland</option><option value="73">France</option><option value="74">French Guiana</option><option value="75">French Polynesia</option><option value="76">French Southern Territories</option><option value="77">Gabon</option><option value="78">Gambia</option><option value="79">Georgia</option><option value="80">Germany</option><option value="81">Ghana</option><option value="82">Gibraltar</option><option value="83">Greece</option><option value="84">Greenland</option><option value="85">Grenada</option><option value="86">Guadeloupe</option><option value="87">Guam</option><option value="88">Guatemala</option><option value="89">Guernsey</option><option value="90">Guinea</option><option value="91">Guinea-Bissau</option><option value="92">Guyana</option><option value="93">Haiti</option><option value="94">Heard Island and Mcdonald Islands</option><option value="95">Holy See (Vatican City State)</option><option value="96">Honduras</option><option value="97">Hong Kong</option><option value="98">Hungary</option><option value="99">Iceland</option><option value="100">India</option><option value="101">Indonesia</option><option value="102">Iran, Islamic Republic Of</option><option value="103">Iraq</option><option value="104">Ireland</option><option value="105">Isle of Man</option><option value="106">Israel</option><option value="107">Italy</option><option value="108">Jamaica</option><option value="109">Japan</option><option value="110">Jersey</option><option value="111">Jordan</option><option value="112">Kazakhstan</option><option value="113">Kenya</option><option value="114">Kiribati</option><option value="115">Korea, Democratic People"S Republic of</option><option value="116">Korea, Republic of</option><option value="117">Kuwait</option><option value="118">Kyrgyzstan</option><option value="119">Lao People"S Democratic Republic</option><option value="120">Latvia</option><option value="121">Lebanon</option><option value="122">Lesotho</option><option value="123">Liberia</option><option value="124">Libyan Arab Jamahiriya</option><option value="125">Liechtenstein</option><option value="126">Lithuania</option><option value="127">Luxembourg</option><option value="128">Macao</option><option value="129">Macedonia, The Former Yugoslav Republic of</option><option value="130">Madagascar</option><option value="131">Malawi</option><option value="132">Malaysia</option><option value="133">Maldives</option><option value="134">Mali</option><option value="135">Malta</option><option value="136">Marshall Islands</option><option value="137">Martinique</option><option value="138">Mauritania</option><option value="139">Mauritius</option><option value="140">Mayotte</option><option value="141">Mexico</option><option value="142">Micronesia, Federated States of</option><option value="143">Moldova, Republic of</option><option value="144">Monaco</option><option value="145">Mongolia</option><option value="146">Montserrat</option><option value="147">Morocco</option><option value="148">Mozambique</option><option value="149">Myanmar</option><option value="150">Namibia</option><option value="151">Nauru</option><option value="152">Nepal</option><option value="153">Netherlands</option><option value="154">Netherlands Antilles</option><option value="155">New Caledonia</option><option value="156">New Zealand</option><option value="157">Nicaragua</option><option value="158">Niger</option><option value="159">Nigeria</option><option value="160">Niue</option><option value="161">Norfolk Island</option><option value="162">Northern Mariana Islands</option><option value="163">Norway</option><option value="164">Oman</option><option value="165">Pakistan</option><option value="166">Palau</option><option value="167">Palestinian Territory, Occupied</option><option value="168">Panama</option><option value="169">Papua New Guinea</option><option value="170">Paraguay</option><option value="171">Peru</option><option value="172">Philippines</option><option value="173">Pitcairn</option><option value="174">Poland</option><option value="175">Portugal</option><option value="176">Puerto Rico</option><option value="177">Qatar</option><option value="178">Reunion</option><option value="179">Romania</option><option value="180">Russian Federation</option><option value="181">RWANDA</option><option value="182">Saint Helena</option><option value="183">Saint Kitts and Nevis</option><option value="184">Saint Lucia</option><option value="185">Saint Pierre and Miquelon</option><option value="186">Saint Vincent and the Grenadines</option><option value="187">Samoa</option><option value="188">San Marino</option><option value="189">Sao Tome and Principe</option><option value="190">Saudi Arabia</option><option value="191">Senegal</option><option value="192">Serbia and Montenegro</option><option value="193">Seychelles</option><option value="194">Sierra Leone</option><option value="195">Singapore</option><option value="196">Slovakia</option><option value="197">Slovenia</option><option value="198">Solomon Islands</option><option value="199">Somalia</option><option value="200">South Africa</option><option value="201">South Georgia and the South Sandwich Islands</option><option value="202">Spain</option><option value="203">Sri Lanka</option><option value="204">Sudan</option><option value="205">Suriname</option><option value="206">Svalbard and Jan Mayen</option><option value="207">Swaziland</option><option value="208">Sweden</option><option value="209">Switzerland</option><option value="210">Syrian Arab Republic</option><option value="211">Taiwan, Province of China</option><option value="212">Tajikistan</option><option value="213">Tanzania, United Republic of</option><option value="214">Thailand</option><option value="215">Timor-Leste</option><option value="216">Togo</option><option value="217">Tokelau</option><option value="218">Tonga</option><option value="219">Trinidad and Tobago</option><option value="220">Tunisia</option><option value="221">Turkey</option><option value="222">Turkmenistan</option><option value="223">Turks and Caicos Islands</option><option value="224">Tuvalu</option><option value="225">Uganda</option><option value="226">Ukraine</option><option value="227">United Arab Emirates</option><option value="228">United Kingdom</option><option value="229">United States</option><option value="230">United States Minor Outlying Islands</option><option value="231">Uruguay</option><option value="232">Uzbekistan</option><option value="233">Vanuatu</option><option value="234">Venezuela</option><option value="235">Viet Nam</option><option value="236">Virgin Islands, British</option><option value="237">Virgin Islands, U.S.</option><option value="238">Wallis and Futuna</option><option value="239">Western Sahara</option><option value="240">Yemen</option><option value="241">Zambia</option><option value="242">Zimbabwe</option></select>
-          <!-- ngIf: interacted(my_form.location) -->
-        </div>
-
-        <input class="form-control" type="submit">
-      </form>
-
-    </div>
+<div class="row approval-head">
+  <div class="col-sm-3 col-md-2 sidebar">
+        <ul class="nav nav-sidebar">
+          <li><a href="#personalInfo">Personal Info</a></li>
+          <li><a href="#jobPreferences">Job Preferences</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#workHistory">Work History</a></li>
+          <li><a href="#summary">Summary</a></li>
+        </ul>
   </div>
+  <div class="col-sm-9  col-md-10  main ">
+    <div class="row placeholder">
+    <span>
+      仓央嘉措原名洛桑仁钦仓央嘉措，原西藏六世达赖喇嘛。其之父扎西丹增，原居错那宗。其母为赞普后裔，名叫次旺拉姆。仓央嘉措诞生于 1683年(藏历第十一绕迥水猪年）3月1日。
+1697 年（藏历第十二绕迥火牛年）被藏王第司 ·桑杰嘉措认定为五世达赖喇嘛的转世灵童。同年年燃灯节之际，第六世达赖喇嘛仓央嘉措在布达拉宫的司喜平措大殿，在丹增达赖汗和第悉·桑结嘉措等藏蒙僧俗官员的参加下，举行了坐床典礼。清朝康熙皇帝从大局
+考虑，派出章嘉呼图克图等参加了典礼，并赏赐了无数珍宝。
+1698年（藏历土虎年），仓央嘉措至哲蚌寺，建立最初的法缘，从《菩提道次第广论》的开首处，进行了经文传承，开始听取法相经典。第悉教授其梵文声韵知识。另外，还从班禅大师及甘丹寺主持、萨迦、格鲁、宁玛等派有道上师学习大量显密经典。第悉对于仓央嘉措的学习，管理得非常严格。
+仓央嘉措成长的时代，恰值西藏政治动荡，内外各种矛盾接连不断地开始出现之际。1700年（藏历铁龙年），丹增达赖汗在西藏去世。其次子拉藏鲁白遂来至前藏，承袭了乃父职位。蒙古施主当中对此也产生了赞同与反对的两种意见。另外，第悉对第五世达赖喇嘛的圆寂进行了长期保密，这引起了清朝康熙帝的不满。在西藏内部，由于第悉独断专行，长期“ 匿丧”，身穿袈裟而又公开蓄养“主母”等行为，招致哲蚌寺、色拉寺部分首脑表现出不满情绪，等等。
+各种矛盾错综复杂，仓央嘉措感到“失望，学习也无益处”，遂变得懒散起来，且喜好游乐，放荡不羁。
+1702 年（藏历水马年六月），仓央嘉措 20岁时，第悉劝其受比丘戒。他听从劝告。前往扎什伦布寺与班禅大师洛桑益西相见。第五世班禅的传记里说 ，“休说他受比丘戒，就连原先受的出家戒也无法阻挡地抛弃了。最后，以我为首的众人皆请求其不要换穿俗人服装，以近事男戒而受比丘戒，在转法轮。但是，终无效应，只得将经过情形详细呈报第悉。仓央嘉措在扎什伦布寺居 17日后返回拉萨。”（《五世班禅洛桑益西自传 ·明晰品行月亮》 209页）自那以后，仓央嘉措便穿起俗人衣服，任意而为。白天在龙王潭内射箭、饮酒、唱歌 ，恣意嬉戏。还到拉萨近郊去游玩，与年轻女子寻欢作乐，放弃了戒行。
+拉藏汗利用第六世达赖喇嘛仓央嘉措与第悉·桑结嘉措之间的矛盾，制造越来越多的麻烦。第悉企图投毒杀害拉藏汗的说法传开以后，藏蒙福田、施主之间的矛盾更加尖锐。公元1705年（藏历木鸡年）一月，第六世达赖喇嘛、吉雪第巴、拉木降神人、色拉、哲蚌二寺堪布、政府各要员、班禅大师的代表、蒙古诸施主等，集议如何解决矛盾。最后议决，第悉·桑结嘉措辞去地方政府的职务，将贡嘎宗拨给他作为食邑；拉藏汗保留 “地方政府蒙古王”的称号，返回青海驻牧。但是，实际上双方都没有打算执行决议。拉藏汗从拉萨出发以后 ，在羊八井、当雄等地驻留多日，缓缓抵达那曲。在那曲集结了藏北各地的蒙古军队，准备打仗。他借口第悉未遵守决议，仍然呆在布达拉宫内干预政府的一切事务，从那里折返拉萨。当年5月，拉藏汗在当雄将蒙古军队分为两路，一路由他亲自率领，从澎波而来；另一路由
+其妻次仁扎西及部分军官率领，从堆龙德庆而来。当时，色拉、哲蚌二寺的上师、密宗院的轨范师以及班禅大师的代表等人闻讯后，急忙先后赶去劝阻。请求汗王罢兵。但是，遭到拒绝。公元 1705年（藏历第十二绕迥木鸡年）七月第悉·桑结嘉措被抓获，押至堆龙德庆的朗孜村立刻斩首。从此以后，蒙古人拉藏汗统治前后长达 12年。
+当时，在西藏地方政府的框架中，噶厦和孜康属于重要的机构。孜康机构既检查稽核政
+府收支，又主持培养官员的学校。不久，杀害第悉·桑结嘉措的凶狠王妃次仁扎西也死去了。
+拉藏汗掌握大权以后，对第六世达赖喇嘛多方责难。还特派人员赴京师，谗言桑结嘉措勾结准噶尔人，准备反叛朝廷。还说，第悉 ·桑结嘉措在布达拉宫立的仓央嘉措不是第五世达赖喇嘛真正的转世灵童，他终日沉湎于酒色，不守清规，请予废立。康熙帝即派侍郎赫寿等人赴藏，敕封拉藏汗为 “翊法恭顺汗”，赐金印一颗。命将仓央嘉措从布达拉宫的职位上废除，“执献京师”。
+遵照谕旨，废掉仓央嘉措以后，不久即“解送”北京。在哲蚌寺前的参尼林卡为其送行时，哲蚌寺僧人将其强行抢至该寺的甘丹颇章宫中。拉藏汗闻报后，立即派兵包围了哲蚌寺，寺僧们亦准备武力抵抗，双方即将发生流血冲突。仓央嘉措见此情形于心不忍，便自动走到蒙古军中，立地平息了这场一触即发的战斗。然后，从北路进京，抵达青海的贡噶诺尔时圆寂，时年 25岁。这是传记中的普遍说法。所以，布宫里唯独没有六世达赖的灵塔。
+其后，拉藏汗将生于公元 1686年（藏历火虎年）的活佛阿旺益西嘉措认定为第六世达赖喇嘛，将其迎至布达拉宫坐床，他在位 11年。但是，西藏僧俗群众皆不承认他是达赖喇嘛的转世灵童。白噶尔增巴·益西嘉措坐床以后，拉藏汗便上奏康熙皇帝，请求皇帝承认他是达赖喇嘛，并赐金印。皇帝依奏，赐金印一颗，印文为：“敕封第六世达赖喇嘛之印”，被修改为“敕赐第六世达赖喇嘛之印。”（《印鉴清册》11页）
+为了稳定西藏当时的混乱局面，康熙帝于公元 1713年（藏历第十二绕迥水蛇年）册封第五世班禅洛桑益西为“班禅额尔德尼”，赐金册、金印。命他协助拉藏汗管理好西藏地方事务。从此，历代班禅的“额尔德尼”名号便确定下来。
+二、死因之谜
+六世达赖的死因，成了一个永远的迷。
+传说一，仓央嘉措在押解进京途中，病逝于青海湖；
+传说二，仓央嘉措在路上被政敌拉藏汗秘密杀害；
+传说三，仓央嘉措被清帝囚禁于五台山，抑郁而终；
+传说四，好心的解差将仓央嘉措私自释放，他最后成为青海湖边的一个普通牧人，诗酒风流过完余生。
+流传最广的一种说法，也就是“密传”《琵琶音》的说法。“于火猪年当法王（即仓央嘉措）25岁时，被请往内地。”“次第行至东如措纳时，皇帝诏谕严厉，众人闻旨，惶恐已极。担心性命难保，无有良策以对。于是异口同声对我（仓央嘉措）恳求道：‘您已获自主，能现仙逝状或将形体隐去。若不如此，则我等势必被斩首 。’求告再三。仓央嘉措无限悲伤，话别之后，遽然上路，朝东南方向而去……此后，他经打箭炉至内地的峨眉山等地去朝山拜佛。然后，又到前后藏、印度、尼泊尔、甘肃、五台山、青海、蒙古等地云游，讲经说法，广结善缘，创下无穷精妙业绩。
+据近年来的考古发现证实，仓央嘉措在内蒙阿拉善地区弘法利生，最后圆寂于此。腾格里沙漠中的承庆寺（六世达赖的圆寂地）、昭化寺（法体停放地）和贺兰山广宗寺（真身舍利存入处）就见证了六世达赖这一段生命历程。
+六世达赖于乾隆十一年（ 1746）5月8日坐化，年 64岁。乾隆二十二年(1757 年)六世达赖弟子阿旺多尔济依照师父生前的意旨在贺兰山中修造广宗寺，寺内供奉着六世达赖灵塔(六世达赖肉身)。
+乾隆二十五年(1760年)，清廷为该寺赐名“广宗寺”，授予镌有藏满蒙汉四种文字寺名的乾隆御笔金匾。此匾的落款为“大清乾隆岁次闰八月十六日”，从此南寺有了这个正式名称。
+1966 年文化大革命开始，造反派闯入南寺，捣毁了六世达赖灵塔，强迫僧侣们自己破坏六世达赖肉身，还焚烧了大量佛像、佛经。守寺的少数喇嘛当做牛鬼蛇神加以批斗后赶出寺院，一些无家可归的僧人被驱逐到附近社队。 70年代初，将南寺的庙宇全部拆除，木料用作他途，财产由有关部门低价变卖处理。南寺变成了一片废墟。
+后由一老喇嘛将仓央嘉措遗骨偷偷火化，留有舍利存于寺内。
+十一届三中全会以后，宗教信仰自由政策重新得以落实。 1981年南寺部分僧人来到原寺址盖起蒙古包和帐篷，举行了夏季祈愿法会，并由罗卜桑宁吾，尚巴丹达尔，丹比宁吾等人出资出力．在原葛根仓房的遗址上盖建了 15间平顶佛堂，把桑吉拉布坦精心捡起收藏的六世达赖骨灰重新造塔供奉。在旗人民政府批准下成立的南寺管理、筹措资金。从 1989年开始新建了有歇山式屋顶的 30间殿堂。1990年7月初新殿举行了开光仪式。
+三、达娃卓玛和六世达赖的情缘
+五世达赖喇嘛六十六岁时在布达拉宫圆寂，他手下的总管第悉桑结嘉措自作主张隐瞒了达赖喇嘛的死讯，他向外公布说达赖老了，又有病，需要每天在密室里闭关静坐，研习佛法，不愿公开露面，同时，他秘密派人四处寻访五世达赖的转世灵童。
+在山南的措那地方，他们找到了一个聪明可爱的儿童，认定他是五世达赖的转世，把他接到措那城堡悄悄供养起来，到了 15岁时，在布达拉宫大殿坐床，他就是六世达赖仓央嘉措。仓央嘉措不喜欢被人当神佛一样供养在布达拉宫里，每天从早到晚没完没了的诵经礼佛使他非常厌烦，他就穿上俗人的衣服戴上长长的假发，化名唐桑旺布，溜到拉萨八角街或布达拉宫下的雪村，找男朋女友玩耍，享受世俗生活的欢乐。他写的一些诗歌，反映了他过着活佛和俗人的双重生活，其中有两首是这样写的：
+在那东方山顶/ 升起皎洁月亮/ 年轻姑娘面容/ 渐渐浮现心上
+黄昏去会情人/ 黎明大雪飞扬/ 莫说瞒与不瞒/ 脚印已留雪上
+守门的狗儿/ 你比人还机灵/ 别说我黄昏出去/ 别说我拂晓才归
+人家说我的闲话/ 自以说得不差/ 少年我轻盈步履/ 曾走过女店主家
+常想活佛面孔/ 从不展现眼前/ 没想情人容颜/ 时时映在心中
+住在布达拉宫/ 我是持明仓央嘉措/ 住在山下拉萨/ 我是浪子宕桑旺波
+仓央嘉措在布达拉宫后面林园的湖中小岛上，修建了一座名叫龙王潭的精美楼阁，在这里邀集拉萨城里的男女青年，在一起唱歌跳舞，饮酒狂欢，仓央嘉措编写了很多的情歌，让大家演唱，这些情歌很快在西藏传唱开来，很受人们的喜爱。在龙王潭，仓央嘉措结识了一个来自琼结地方的姑娘，名叫达娃卓玛，达娃卓玛容貌美丽，性情温柔，嗓音甜美，一双又黑又亮的大眼睛像刚刚酿就的葡萄酒，看一眼就能把人醉倒。仓央嘉措和她特别相知相爱，好像一个人是另一个人的影子，白天他们在一起歌舞游玩，夜里常常幽会。仓央嘉措非常喜欢达娃卓玛，认为是神灵的赐于，前世的缘份，他写了这样一首歌来表达自己的心情：
+拉萨人烟稠密 琼结人儿美丽 我心心相印的人儿 是琼结地方来的
+俗话说，甜青稞往往酿成苦酒，快乐往往变成悲哀。后来仓央嘉措发现达娃卓玛好些天没有到龙王潭来了，给她捎信约会，也像撒在水里的糌粑一样没有回音，亲自到她住处拜访，只见门上挂着一把大锁，跟邻居们打听，才知道达娃卓玛被她父母带回了琼结好多天了。
+仓央嘉措像丢了心爱的珍宝，心里特别难过。他失魂落魄，烦闷的时候，编写了前面那首“不要再说琼结琼结”的歌。从此，仓洋嘉措再没见过达娃卓玛，达娃卓玛成了他梦中的情人。
+四、仓央嘉措达赖转世灵童及灵异传说
+达娃卓玛回到琼结以后，生儿育女过日子， 但她一天也没把六世达赖喇嘛仓央嘉措忘记，她白天想着他，夜里也想着他，仓央嘉措更是在梦里常常和她相会。在思念中只过了几年，六世达赖喇嘛仓央嘉措就圆寂了，去世时才二十四岁。为了寻找六世达赖喇嘛的转世灵童，活佛和官员们认真查找了六世达赖的遗物，以求得寻找线索。他们在仓央嘉措的诗歌中，发现了这样一首暗示性很强的诗：
+云间白色的仙鹤啊，
+请把翅膀借给我，
+我不会往很远的地方飞，
+   我到理塘转转就回来。
+根据这首诗歌的意思，人们认为六世达赖很可能在理塘地方转世，他们去了理塘，通过多方面验证，找到了一个聪明富态的男孩，后来这个男孩被迎请到布达拉宫坐床，他就是七世达赖喇嘛格桑嘉措。格桑嘉措虽然出生在理塘，可是他的父亲罗桑达吉跟琼结有很深的关系。罗桑达吉出生在江孜地方，从小在琼结日乌德寺当喇嘛，后来和寺庙头人发生冲撞，为免遭迫害，他连夜逃出琼结跑到拉萨，到哲蚌寺给一个大活佛当佣人。有一次他赶马帮到了四川省的理塘，在一条河边看见从上游漂下一个人，他救起来一看，是一位年轻女子。这女子是附近一户人家的女儿，淌水过河时不小心被水冲走了。这家人非常感谢，决定将姑娘嫁给他为妻，罗桑达吉十分高兴，将事情办完以后，遂和姑娘完婚，在理塘定居下来。不久他们就有了一个孩子，就是后来成了七世达赖的格桑嘉措。
+罗桑达吉本是个穷喇嘛，一夜之间成了佛父，拥有了地位和财富。在拉萨布达拉宫住了一些日子，他又回到琼结，提出要在日乌德寺新修一座弥勒强巴佛殿，塑一尊两人高的弥勒强巴佛镏金铜像。人们议论纷纷，有的说他是要感谢琼结地方的神灵，保佑他生了一个当达赖的孩子；也有人说他是为了在日乌德寺的头人面前显示一下自己。这时候，达娃卓玛虽然已经老了，但因为她和六世达赖喇嘛的关系人人皆知，很受人们的尊重和爱戴。佛像开光之前，罗桑达吉专程前去拜会了达娃卓玛，并诚恳地请她参加佛像的开光仪式，达娃卓玛感谢佛父的盛情，开光那天，她专门为佛像供奉了一条自己精心编织的七彩围裙，这条围裙被作
+为圣物装藏在佛像里面。
+一晃二百年过去了，“文化革命”时，一伙人冲进日乌德寺造反，他们捣毁了强巴佛殿，推倒了强巴佛像，一个名叫洛热娃的骡马贩子，趁人不备，从强巴佛的肚子里，将达娃卓玛供奉的那条颜色依然鲜艳的围裙偷偷揣进怀里带回了家，他喜孜孜地叫老婆围上，不料他老婆一围上这条围裙，便感到天眩地转，急忙解下来，后来又有几个人围过，但都一样，没有办法，洛热娃只好又把围裙送回原来的地方。
+五、近代文学作品中关于六世达赖喇嘛的文章选自中国社会出版社出版《透明的女性》东方竹子著
+仓央嘉措一六八三年（清康熙二十二年）生于门隅。
+他的父母是门巴族，世代信奉宁玛派佛教——红教。红教僧人可以结婚生子。他的父亲是个自负清高贫穷落魄的红教喇嘛。仓央嘉措的家先居门隅的宇松，后因亲戚迫害，仓央嘉措一家弃家出走，后居达旺的乌坚林。
+五世达赖喇嘛圆寂之后，还在母腹中的仓央嘉措懵懵懂懂地被认定为转世灵童。那时的他怎知这意味着什么，更无法明白围绕着他的权力之争。他的父母更没有想到做了堂堂的六世达赖后的儿子居然会成了藏王第巴桑杰嘉措与和硕特蒙古部的拉藏汗权力斗争中可怜的牺牲品。当时，和硕特蒙古部定居于青海柴达木，统治青海、西藏部分地区。
+当时，西藏的黄教在蒙的扶持下刚刚成为政教合一的宗教不久，但还没有真正的统治地位，处在藏族与蒙族两方权力的夹持中。原来，五世达赖在世时，苯教与黄教、红教与黄教的斗争十分激烈。黄教为了自救，五世达赖与四世班禅一起向新疆地区的卫拉特蒙古部求援 。卫拉特四部之一的和硕特部首领固始汗为避内部矛盾，寻求新的发展，答应了黄教的请求。
+一六三六年（崇祯九年），固始汗率兵南下青海，击溃却图汗，在青海湖西的柴达木开辟了自己的天下。一六三九年（崇祯十二年），固始汗成立了一个保护黄教的“圣神同盟”，第一次远征攻破支持苯教的白利土司顿月多吉等。第二次远征固始汗进入西藏，推翻红教的保护者藏巴的政权，迎五世达赖坐床于布达拉宫，获五世达赖所赠的 “诺门汗”（法王）称号与主教助理的职位。一六四二年，和硕特部固始汗曾孙与第巴之间的明争暗斗以第巴的失败而告一段落。  一六四三年罗卜赞用两年时间在布达拉山上原西藏古代国王宫殿的原址上建立了自己的圣殿。黄教从形式上正式成为西藏政教合一的统治宗教。
+桑杰嘉措在五世达赖死前三年出任第巴，对政事多专权。五世达赖死后康熙还诏封为土伯特国王。然而驻青海的蒙和硕部继承汗位的拉藏汗对西藏起监护作用，双方政治上相互牵制引起的矛盾日益激化。
+仓央嘉措十五岁以前，虽然处于桑杰嘉措的严密控制之下，但家庭的温馨、母亲格外的宠爱使小仓央嘉措自由自在，无忧无虑地长大。由于仓央嘉措生于美丽的门隅，而门隅又是情歌之乡，正是这些情歌，唤醒了仓央嘉措朦胧的性意识使得小小的仓央嘉措对男女恩爱、儿女情长有一种神秘的向往。
+父母为红教徒的仓央嘉措，年方弱冠，聪明英俊，能歌善舞，终于有了热恋的姑娘：
+“我与姑娘相见／山南门隅林里／除了能言鹦鹉／谁人都不知晓 /……”
+五世达赖圆寂后，当时摄政的藏王桑杰嘉措与和硕特蒙古部的拉藏汗争权，对五世达赖的死和六世达赖的立均密而不宣。小仓央嘉措也乐于在家做自己的神仙。一六九六年（康熙三十五年）康熙御驾亲征，平定了准噶尔蒙古部的叛乱。藏王慑于清廷的威力，于（一六九七年）康熙三十六年密奏康熙：“明年密奏言，为众生不幸，第五世达赖喇嘛于壬戌年（一六八二年，阳水狗年）示寂，转生静体，今十五岁矣……因当时吐伯特与拉达克部有战事，恐唐古特（西藏）民人生变，故秘不发丧……”藏王于次年迎仓央嘉措到布达拉宫举行坐床典礼，仓央嘉措正式为六世达赖喇嘛时已是热恋中的十五岁的风华美少年。仓央嘉措拜五世班禅为师，剃发受戒。青海与柴达木的和硕特王国与它在西藏的保护国，在固始汗与重孙拉藏汗（一七○○—一七一七年）都是以黄教的保护者身份出现。拉藏汗热心主持选举活佛的宗教仪式，在西藏干涉反对掌有实权的大臣。拉藏汗攻击桑杰嘉措“以一年幼的达赖喇嘛为护符而掌握黄教政权”。并不愿意成为达赖喇嘛的仓央嘉措作为五世达赖转世灵童的公开与五世达赖死讯的公开，同时进行。现在想起来是多么不可思议：一个生命的死与一个生命的生本只相差一年，可是这种秘密的交替居然经历了漫漫十五年。
+仓央嘉措在政治的风口浪尖上被推出同样并非藏王桑杰嘉措所自愿 ，藏王的使者在密奏康熙后，自京返藏途中宣布六世达赖已厌世。接着康熙“以第巴（藏王）始终反复持两端，乃追还其使，传集各蒙古宣示密封。”藏王政治上陷入困境，仓央嘉措的处境更是可想而知。
+据西藏人民出版社出的（仓央嘉措及其情歌研究）、民间资料及我的采访表明：仓央嘉措不愿出任六世达赖一方面是他正沉溺于热恋；一方面他天然是一个淡泊名利心志高远的“超凡脱俗”之人，不论是他曾怎样地想沉沦于凡俗之中。
+对的！仓央嘉措心里最最不可割舍的是热恋的姑娘。突然被公布为
+    </span>
+    </div>
+
+  </div>
+</div>
 
 
-
-
-</row>
 
 
