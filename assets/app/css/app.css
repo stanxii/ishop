@@ -2,21 +2,13 @@ body {
   background: #f1f2f4;
 }
 
-/* header */
-.header {
-  background: #191919;
-}
+
 .header-logo {
   display: inline-block;
   margin-top: 1em;
   float: left;
 }
-.wrapper {
-  text-align: center;
-  margin: 0 auto;
-  max-width: 1000px;
-  height: 60px;
-}
+
 .main-nav-list {
   margin-left: 120px;
   margin-top: 20px;
@@ -198,9 +190,43 @@ body {
   from {opacity: 0;}
   to {opacity: 1;}
 }
+
 /*  profile */
 .approval-head {
   margin-top: 62px;
+.wings {
+  margin-bottom: 2rem;
+  display: table;
+  width: 100%;
+  margin-top: 50px;
+}
+.wings-wing:before {
+  background-color: #00c0f7;
+  height: 0.1rem;
+  bottom: 0;
+  content: "";
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: -0.1rem;
+  vertical-align: middle;
+}
+.wings-wing {
+  display: inline-block;
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+.text-register {
+  font-weight: 300;
+  font-style: normal;
+  color: #ed9d13;
+  padding: 0.2rem;
+  display: table-cell;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 0.1rem;
 }
 
 @media (min-width: 768px){
