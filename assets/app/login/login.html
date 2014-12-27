@@ -1,29 +1,50 @@
-﻿<div class="container">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3 login-box">
-      <form name="signin_form" novalidate>
-        <div class="login-head">
-          <h1>登录</h1>
-        </div>
-        <div class="col-md-10 col-md-offset-1">
-          <a class="login-third-left" href="/users/auth/github">GitHub</a>
-          <a class="login-third-right" href="/user/auth/stack overflow">Stack Overflow</a>
-          <div class="signin-email">
-            <input type="email" class="form-control floating-label" data-hint="请输入你的邮箱" placeholder="邮箱" ng-model="user.username">
-          </div>
-          <div class="signin-password">
-            <input type="password" class="form-control floating-label" data-hint="请输入你的密码" placeholder="密码" ng-model="user.password">
-          </div>
-          <div class="signin-button">
-            <button class="btn btn-primary btn-full" ng-click="signIn(user.username, user.password, 'coder')">登录</button>
-          </div>
-          <div class="signin-bottom">
-            <a class="link" href="/users/password/new">忘记密码?</a>
-            <span>•</span>
-            <a class="link" href="#/register">立即注册</a>
-          </div>
-        </div>
-      </form>
+﻿
+<div class="row">
+  <nav class="navbar  navbar-fixed-top navbar-background-color">
+    <div class="navbar-header">
+      <a class="navbar-brand logo" href="#/index">
+        <img alt="Logo black" class="logo-black" src="app/images/logo.png"/>
+      </a>
     </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#/">招聘高手</a></li>
+        <li><a href="#/">推荐</a></li>
+        <li><a href="#/coder/profile/index">profile</a></li>
+        <li><a href="#/coder/profile/edit#personInfo">profile edit personInfo</a></li>
+        <li><a href="#/">如何使用</a></li>
+        <li><a href="#/login">登录</a></li>
+        <li><a href="#/register">获得Offer</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 login-box">
+    <form name="signin_form" novalidate>
+      <div class="login-head">
+        <h1>登录</h1>
+      </div>
+      <div class="col-md-10 col-md-offset-1">
+        <a class="login-third-left" href="/users/auth/github">GitHub</a>
+        <a class="login-third-right" href="/user/auth/stack overflow">Stack Overflow</a>
+        <div class="signin-email">
+          <input type="email" class="form-control floating-label" data-hint="请输入你的邮箱" placeholder="邮箱" ng-model="user.username">
+        </div>
+        <div class="signin-password">
+          <input type="password" class="form-control floating-label" data-hint="请输入你的密码" placeholder="密码" ng-model="user.password">
+        </div>
+        <div class="signin-button">
+          <button class="btn btn-primary btn-full" ng-click="signIn(user.username, user.password, 'coder')">登录</button>
+        </div>
+        <div class="signin-bottom">
+          <a class="link" href="/users/password/new">忘记密码?</a>
+          <span>•</span>
+          <a class="link" href="#/register">立即注册</a>
+        </div>
+      </div>
+    </form>
   </div>
 </div>
+

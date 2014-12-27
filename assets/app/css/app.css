@@ -8,6 +8,9 @@ body {
   margin-top: 1em;
   float: left;
 }
+.navbar-background-color {
+  background-color: #36373E;
+}
 
 .main-nav-list {
   margin-left: 120px;
@@ -192,8 +195,10 @@ body {
 }
 
 /*  profile */
-.approval-head {
+.container-margin-top {
   margin-top: 62px;
+}
+
 .wings {
   margin-bottom: 2rem;
   display: table;
@@ -229,7 +234,7 @@ body {
   width: 0.1rem;
 }
 
-@media (min-width: 768px){
+
   .sidebar {
     position: fixed;
     top: 51px;
@@ -248,4 +253,8 @@ body {
     margin-right: -21px;
     margin-bottom: 20px;
     margin-left: -20px;
+  }
+
+  .logo img {
+    width: 170px;
   }

@@ -1,186 +1,120 @@
-﻿<div class="container">
- <div class="row">
-  <div class="col-md-8 col-md-offset-2 login-box">
-    <div ng-init="signtype= true">
-      <div class="col-md-6 coder" ng-click="signtype = true" ng-class="{selected:signtype}">程序员</div>
-      <div class="col-md-6 hr" ng-click="signtype = false" ng-class="{selected:!signtype}">HR</div>
-      <div ng-show="signtype" class="regtypeChange ">
-        <div class="wings">
-          <div class="wings-wing"></div>
-          <span class="text-register">立即注册</span>
-          <div class="wings-wing"></div>
-        </div>
-      </div>
-      <div ng-show="!signtype" class="regtypeChange">
-        <h2>HR注册页面</h2>
+﻿<div class="row">
+  <nav class="navbar  navbar-fixed-top navbar-background-color">
+    <div class="navbar-header">
+      <a class="navbar-brand logo" href="/">
+        <img alt="Logo black" class="logo-black" src="app/images/logo.png"/>
+      </a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">招聘高手</a></li>
+        <li><a href="#">推荐</a></li>
+        <li><a href="#/coder/profile/index">profile</a></li>
+        <li><a href="#/coder/profile/edit#personInfo">profile edit personInfo</a></li>
+        <li><a href="#/">如何使用</a></li>
+        <li><a href="#/login">登录</a></li>
+        <li><a href="#/register">获得Offer</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<div class="row">
+<div class="col-md-8 col-md-offset-2 login-box">
+  <div ng-init="signtype= true">
+    <div class="col-md-6 coder" ng-click="signtype = true" ng-class="{selected:signtype}">程序员</div>
+    <div class="col-md-6 hr" ng-click="signtype = false" ng-class="{selected:!signtype}">HR</div>
+    <div ng-show="signtype" class="regtypeChange ">
+      <div class="wings">
+        <div class="wings-wing"></div>
+        <span class="text-register">立即注册</span>
+        <div class="wings-wing"></div>
       </div>
     </div>
-
-       <form name="signup_form" novalidate accept-charset="UTF-8" class="reg-form"  >
-         <div class="label-top">
-           <label class="text-label email-label" for="email">Email</label>
-         </div>
-         <div class="text-top">
-           <input id="email" class="form-control" type="text" placeholder="邮箱" name="email" ng-model="register.usermail" />
-         </div>
-         <div class="label-top">
-           <label class="text-label name-label" for="password">Password</label>
-           <label class="text-label password-label" for="confirmpwd">Password</label>
-         </div>
-         <div class="text-bottom  has-feedback">
-           <input id="password" class="form-control" type="password" placeholder="密码" name="password" ng-model="register.password">
-           <span class="form-control-feedback fui-lock"></span>
-         </div>
-         <div class="has-feedback">
-           <input id="confirmpwd" class="form-control" type="password" placeholder="确认密码" name="confirmpwd" ng-model="register.passwordConfirmation">
-           <span class="form-control-feedback fui-lock"></span>
-         </div>
-         <div class="wings">
-           <div class="wings-wing"></div>
-           <span class="text-register">擅长的技能</span>
-           <div class="wings-wing"></div>
-         </div>
-         <div class="talents">
-           <span class="checkbox">
-             <label>
-               <input type="checkbox" value="1">C/C++
-             </label>
-           </span>
-           <span class="checkbox">
-             <label>
-               <input type="checkbox" value="2">Java
-             </label>
-           </span>
-           <span class="checkbox">
-             <label>
-               <input type="checkbox" value="3">.Net
-             </label>
-           </span>
-           <span class="checkbox">
-             <label>
-               <input type="checkbox" value="4">Android
-             </label>
-           </span>
-           <span class="checkbox">
-             <label>
-               <input type="checkbox" value="5">IOS
-             </label>
-           </span>
-           <span class="checkbox">
-             <label>
-               <input type="checkbox" value="6">HTML/CSS
-             </label>
-           </span>
-           <span class="checkbox">
-             <label>
-               <input type="checkbox" value="7">PHP
-             </label>
-           </span>
-           <span class="checkbox">
-             <label>
-               <input type="checkbox" value="8">node.js
-             </label>
-           </span>
-           <span class="checkbox">
-             <label>
-               <input type="checkbox" value="9">Ruby
-             </label>
-           </span>
-           <span class="checkbox">
-             <label>
-               <input type="checkbox" value="10">Python
-             </label>
-           </span>
-           <span class="checkbox">
-             <label>
-               <input type="checkbox" value="11">Javascript
-             </label>
-           </span>
-           <span class="checkbox">
-             <label>
-               <input type="checkbox" value="12">Go
-             </label>
-           </span>
-           <span class="checkbox">
-             <label>
-               <input type="checkbox" value="13">ActionScript
-             </label>
-           </span>
-           <span class="checkbox">
-             <label>
-               <input type="checkbox" value="14">Data Scientist
-             </label>
-           </span>
-           <span class="checkbox">
-             <label>
-               <input type="checkbox" value="15">安全工程师
-             </label>
-           </span>
-           <span class="checkbox">
-             <label>
-               <input type="checkbox" value="16">测试工程师
-             </label>
-           </span>
-         </div>
-         <div class="wings">
-           <div class="wings-wing"></div>
-           <span class="text-register">期望工作的地点</span>
-           <div class="wings-wing"></div>
-         </div>
-         <div class="talent-location">
-           <span class="radio">
-             <label for="talent-location-0">
-               <div class="talent-radio">
-                 <input class="radio_buttons" id="talent-location-0" type="radio" value="0">北京
-               </div>
-             </label>
-           </span>
-            <span class="radio">
-             <label for="talent-location-1">
-               <div class="talent-radio">
-                 <input class="radio_buttons" id="talent-location-1" type="radio" value="1">上海
-               </div>
-             </label>
-           </span>
-            <span class="radio">
-             <label for="talent-location-2">
-               <div class="talent-radio">
-                 <input class="radio_buttons" id="talent-location-2" type="radio" value="2">深圳
-               </div>
-             </label>
-           </span>
-            <span class="radio">
-             <label for="talent-location-3">
-               <div class="talent-radio">
-                 <input class="radio_buttons" id="talent-location-3" type="radio" value="3">杭州
-               </div>
-             </label>
-           </span>
-            <span class="radio">
-             <label for="talent-location-4">
-               <div class="talent-radio">
-                 <input class="radio_buttons" id="talent-location-4" type="radio" value="4">其他
-               </div>
-               <input id="other-location" class="other-input" type="text" placeholder="其他">
-             </label>
-           </span>
-         </div>
-         <div class="terms-service">
-           <div class="terms">
-            <label>
-              <input id="terms-of-service" type="checkbox" value="1" checked="checked">我已阅读并同意
-            </label>
-           </div>
-          <div class="service">
-            <a target="_blank" href="/terms-of-service">unDrizzle注册协议</a>
-          </div>
-         </div>
-         <div class="reg-end">
-           <md-button class="md-raised md-primary" ng-click="register(register.usermail, register.password, register.passwordConfirmation, register.role)">注册</md-button>
-           <RaisedButton label="Primary" primary={true} />
-         </div>
-       </form> -->
-
+    <div ng-show="!signtype" class="regtypeChange">
+      <h2>HR注册页面</h2>
+    </div>
   </div>
- </div>
+
+     <form name="signup_form" novalidate accept-charset="UTF-8" class="reg-form"  >
+       <div class="label-top">
+         <label class="text-label email-label" for="email">Email</label>
+       </div>
+       <div class="text-top">
+         <input id="email" class="form-control" type="text" placeholder="邮箱" name="email" ng-model="register.usermail" />
+       </div>
+       <div class="label-top">
+         <label class="text-label name-label" for="password">Password</label>
+         <label class="text-label password-label" for="confirmpwd">Password</label>
+       </div>
+       <div class="text-bottom  has-feedback">
+         <input id="password" class="form-control" type="password" placeholder="密码" name="password" ng-model="register.password">
+         <span class="form-control-feedback fui-lock"></span>
+       </div>
+       <div class="has-feedback">
+         <input id="confirmpwd" class="form-control" type="password" placeholder="确认密码" name="confirmpwd" ng-model="register.passwordConfirmation">
+         <span class="form-control-feedback fui-lock"></span>
+       </div>
+
+
+       <div class="wings">
+         <div class="wings-wing"></div>
+         <span class="text-register">期望工作的地点</span>
+         <div class="wings-wing"></div>
+       </div>
+       <div class="talent-location">
+         <span class="radio">
+           <label for="talent-location-0">
+             <div class="talent-radio">
+               <input class="radio_buttons" id="talent-location-0" type="radio" value="0">北京
+             </div>
+           </label>
+         </span>
+          <span class="radio">
+           <label for="talent-location-1">
+             <div class="talent-radio">
+               <input class="radio_buttons" id="talent-location-1" type="radio" value="1">上海
+             </div>
+           </label>
+         </span>
+          <span class="radio">
+           <label for="talent-location-2">
+             <div class="talent-radio">
+               <input class="radio_buttons" id="talent-location-2" type="radio" value="2">深圳
+             </div>
+           </label>
+         </span>
+          <span class="radio">
+           <label for="talent-location-3">
+             <div class="talent-radio">
+               <input class="radio_buttons" id="talent-location-3" type="radio" value="3">杭州
+             </div>
+           </label>
+         </span>
+          <span class="radio">
+           <label for="talent-location-4">
+             <div class="talent-radio">
+               <input class="radio_buttons" id="talent-location-4" type="radio" value="4">其他
+             </div>
+             <input id="other-location" class="other-input" type="text" placeholder="其他">
+           </label>
+         </span>
+       </div>
+       <div class="terms-service">
+         <div class="terms">
+          <label>
+            <input id="terms-of-service" type="checkbox" value="1" checked="checked">我已阅读并同意
+          </label>
+         </div>
+        <div class="service">
+          <a target="_blank" href="/terms-of-service">unDrizzle注册协议</a>
+        </div>
+       </div>
+       <div class="reg-end">
+         <md-button class="md-raised md-primary" ng-click="register(register.usermail, register.password, register.passwordConfirmation, register.role)">注册</md-button>
+         <RaisedButton label="Primary" primary={true} />
+       </div>
+     </form> -->
+
+</div>
 </div>
