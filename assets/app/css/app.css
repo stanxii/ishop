@@ -233,28 +233,25 @@ body {
   white-space: nowrap;
   width: 0.1rem;
 }
+.logo img {
+  width: 170px;
+}
 
 
-  .sidebar {
-    position: fixed;
-    top: 51px;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
-    display: block;
-    padding: 20px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    background-color: #f5f5f5;
-    border-right: 1px solid #eee;
-  }
-
-  .nav-sidebar {
-    margin-right: -21px;
-    margin-bottom: 20px;
-    margin-left: -20px;
-  }
-
-  .logo img {
-    width: 170px;
-  }
+.error-messages.ng-active {
+  background: maroon;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 15px;
+  position: relative;
+}
+.error-messages.ng-active:after {
+  position: absolute;
+  top: -10px;
+  content: "";
+  left: 20px;
+  border-style: solid;
+  border-color: transparent transparent maroon;
+  border-width: 5px;
+}
