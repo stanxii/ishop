@@ -243,7 +243,7 @@ body {
   color: white;
   padding: 5px;
   border-radius: 5px;
-  margin-top: 15px;
+  margin-top: 20px;
   position: relative;
 }
 .error-messages.ng-active:after {

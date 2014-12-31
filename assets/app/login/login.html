@@ -22,7 +22,7 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3 login-box">
-    <form name="signin_form" ng-controller="FormCtrl" ng-submit="submit()" novalidate>
+    <form name="signin_form" ng-controller="LoginCtrl" ng-submit="submit()" novalidate>
       <div class="login-head">
         <h1>登录</h1>
       </div>
@@ -30,16 +30,17 @@
         <a class="login-third-left" href="/users/auth/github">GitHub</a>
         <a class="login-third-right" href="/user/auth/stack overflow">Stack Overflow</a>
         <div class="signin-email">
-          <input type="email" class="form-control floating-label" data-hint="请输入你的邮箱" placeholder="邮箱" name="email_address" id="input_email_address" ng-model="user.username" require />
-          <div class="error-messages"  ng-messages="signin_form.email_address.$error" ng-message-include="form-messages/error-messages.html">
+          <input type="email" class="form-control floating-label" data-hint="请输入你的邮箱" placeholder="邮箱" name="email_address" id="input_email_address" ng-model="user.username" fake-remote-record-validator="fakeEmails" required >
+          <div class="error-messages"  ng-if="interacted(signin_form.email_address)" ng-messages="signin_form.email_address.$error" ng-messages-include="app/form-messages/error-messages.html">
             <div ng-message="required">请输入你的邮箱</div>
           </div>
         </div>
         <div class="signin-password">
-          <input type="password" class="form-control floating-label" data-hint="请输入你的密码" placeholder="密码" ng-model="user.password">
+          <input type="password" class="form-control floating-label" data-hint="请输入你的密码" placeholder="密码" name="password" id="input_password" ng-model="user.password" required>
+          <div class="error-messages" ng-if="interacted(signin_form.password)"></div>
         </div>
         <div class="signin-button">
-          <button class="btn btn-primary btn-full" type="submit" ng-click="signIn(user.username, user.password, 'coder')">登录</button>
+          <button class="btn btn-primary btn-full" ng-click="signIn(user.username, user.password, 'coder')">登录</button>
         </div>
         <div class="signin-bottom">
           <a class="link" href="/users/password/new">忘记密码?</a>
@@ -47,34 +48,6 @@
           <a class="link" href="#/register">立即注册</a>
         </div>
       </div>
-    </form>
-
-    <form name="userForm">
-      <div class="field">
-        <label for="emailAddress">Enter your email address:</label>
-        <input type="email"
-               name="emailAddress"
-               ng-model="data.email"
-               ng-minlength="5"
-               ng-maxlength="30"
-               required />
-
-        <div ng-messages="userForm.emailAddress.$error">
-          <!-- the required message is displayed first... -->
-          <div ng-message="required">You forgot to enter your email address...</div>
-
-          <!-- then, incase the message is too short, show the message right after -->
-          <div ng-message="minlength">Your email address is too short...</div>
-
-          <!-- of if is too long then let us know -->
-          <div ng-message="maxlength">Your email address is too long...</div>
-
-          <!-- otherwise let us know if the email itself is invalid -->
-          <div ng-message="email">You did not enter your email address correctly...</div>
-        </div>
-      </div>
-
-      <input type="submit" />
     </form>
   </div>
 </div>
