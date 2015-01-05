@@ -31,9 +31,9 @@
           <div class="wings-wing"></div>
         </div>
         <form name="signup_form" novalidate accept-charset="UTF-8" class="col-md-10 col-md-offset-1">
-          <div class="">
-            <label class="" for="email">Email</label>
-            <label class="" for="location">Location</label>
+          <div class="labels">
+            <label class="left-label" for="email">Email</label>
+            <label class="right-label" for="location">Location</label>
           </div>
           <div class="col-md-6 has-feedback">
             <input id="email" class="input-control" type="text" placeholder="邮箱" name="email" ng-model="register.usermail" />
@@ -43,9 +43,9 @@
             <input id="location" class="input-control" type="text" placeholder="城市" name="location" ng-model="register.location" />
             <span class="form-control-feedback mdi-social-location-city"></span>
           </div>
-          <div class="">
-            <label class="" for="password">Password</label>
-            <label class="" for="confirmpassword">Password</label>
+          <div class="labels bottom-label">
+            <label class="left-label" for="password">Password</label>
+            <label class="right-labels" for="confirmpassword">Password</label>
           </div>
           <div class="col-md-6 has-feedback">
             <input id="password" class="input-control" type="password" placeholder="密码" name="password" ng-model="register.password" />
@@ -57,7 +57,7 @@
           </div>
 
           <div class="terms-service">
-            <div class="checkbox">
+            <div class="checkbox terms">
               <label>
                 <input id="terms-of-service" type="checkbox" value="1" checked="checked">我已阅读并同意
               </label>
@@ -72,7 +72,40 @@
         </form>
       </div>
       <div ng-show="!signtype" class="regtypeChange">
-        <h2>HR注册页面</h2>
+        <div class="wings">
+          <div class="wings-wing"></div>
+          <span class="text-register">立即注册</span>
+          <div class="wings-wing"></div>
+        </div>
+        <form name="signup_form" novalidate accept-charset="UTF-8" class="col-md-10 col-md-offset-1">
+          <div class="labels">
+            <label class="left-label" for="company">Company</label>
+            <label class="right-labels" for="phone">Phone</label>
+          </div>
+          <div class="col-md-6 has-feedback">
+            <input id="company" class="input-control" type="text" placeholder="公司" name="company" ng-model="register.company" />
+            <span class="form-control-feedback mdi-communication-business"></span>
+          </div>
+          <div class="col-md-6 has-feedback">
+            <input id="phone" class="input-control" type="text" placeholder="手机号码" name="phone" ng-model="register.phone" />
+            <span class="form-control-feedback mdi-hardware-phone-iphone"></span>
+          </div>
+          <div class="labels bottom-label">
+            <label class="left-label" for="email">Email</label>
+            <label class="right-label" for="password">Password</label>
+          </div>
+          <div class="col-md-6 has-feedback">
+            <input id="hremail" class="input-control" type="password" placeholder="邮箱" name="hremail" ng-model="register.hremail" />
+            <span class="form-control-feedback mdi-content-mail"></span>
+          </div>
+          <div class="col-md-6 has-feedback">
+            <input id="hrpassword" class="input-control" type="password" placeholder="密码" name="hrpassword" ng-model="register.hrpassword" />
+            <span class="form-control-feedback mdi-action-lock"></span>
+          </div>
+          <div class="reg-ends">
+            <button class="btn btn-primary btn-full" ng-click="register(register.usermail, register.location, register.password, register.passwordConfirmation, register.role)">注册</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>

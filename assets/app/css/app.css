@@ -269,9 +269,64 @@ body {
 .terms-service {
   margin-top: 30px;
 }
-
-
-
+.labels {
+  font-size: 18px;
+  color: #53545b;
+}
+.left-label:after {
+  color: #eb4d4d;
+  content: ' *';
+}
+.left-label {
+  margin-left: 20px;
+}
+.right-label {
+  margin-left: 313px;
+}
+.right-label:after {
+  color: #eb4d4d;
+  content: ' *';
+}
+.bottom-label {
+  margin-top: 50px;
+}
+.right-labels {
+  margin-left: 278px;
+}
+.right-labels:after {
+  color: #eb4d4d;
+  content: ' *';
+}
+.terms-service {
+  margin-top: 20px;
+  margin-left: 10px;
+  display: inline-block;
+  width: 100%;
+}
+.terms {
+  display: inline-block;
+}
+.service {
+  display: inline-block;
+}
+.service a {
+  color: #4caf50;
+  text-decoration: none !important;
+}
+.service a:hover {
+  color: #00ec00;
+}
+.reg-end {
+  margin-top: 30px;
+}
+.reg-ends {
+  margin-top: 100px;
+}
+/*   profile     */
+.profile-body {
+  margin-top: 100px;
+}
+/*   ng-message    */
 .error-messages.ng-active {
   background: maroon;
   color: white;
