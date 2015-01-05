@@ -20,6 +20,19 @@
 </div>
 
 <div class="row">
+  <button class="btn btn-primary btn-full" type="submit" ng-click="editProfile()">登录
+
+    <div data-ng-class="{'field--invalid': [].length}" class="field xs-pr1 xs-book xs-epsilon">
+      <div data-ng-transclude="">
+        <button class="button button--small button--primary xs-prl1 ng-scope" data-ng-disabled="!candidateForm.$dirty" type="submit" disabled="disabled">
+          <span data-ng-hide="isSaving" class="">Save Changes</span>
+          <span data-ng-show="isSaving" class="ng-hide">Saving...</span>
+        </button>
+        <a class="sm-pt1 list-navigation__link xs-epsilon text-light text-gray-dark ng-scope" href="/profile" target="_self">View Profile ⇢</a>
+      </div>
+      <!-- ngRepeat: error in errorsValue -->
+    </div>
+
 </div>
 
 <div class="row">

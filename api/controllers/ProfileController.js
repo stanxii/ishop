@@ -127,7 +127,7 @@ module.exports = {
   /**
    * `ProfileController.update()`
    */
-  update: function (req, res) {
+  saveChanges: function (req, res) {
     return res.json({
       todo: 'update() is not implemented yet!'
     });
