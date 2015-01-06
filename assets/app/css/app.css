@@ -356,7 +356,19 @@ a:hover {
   margin: 30px 25px;
 }
 .profile-main {
-  margin-top: 50px;
+  margin-top: 35px;
+  margin-left: -15px;
+}
+.header-logo {
+  margin-left: -15px;
+}
+.social-btn {
+  margin-left: -15px;
+  margin-bottom: 0;
+}
+.github {
+  font-size: 20px;
+  margin-right: 10px;
 }
 /*   ng-message    */
 .error-messages.ng-active {
