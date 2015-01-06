@@ -1,8 +1,16 @@
 body {
   background: #f1f2f4;
 }
-
-
+p {
+  margin: 0;
+}
+a {
+  color: #4caf50;
+  text-decoration: none !important;
+}
+a:hover {
+  color: #00ec00;
+}
 .header-logo {
   display: inline-block;
   margin-top: 1em;
@@ -309,13 +317,6 @@ body {
 .service {
   display: inline-block;
 }
-.service a {
-  color: #4caf50;
-  text-decoration: none !important;
-}
-.service a:hover {
-  color: #00ec00;
-}
 .reg-end {
   margin-top: 30px;
 }
@@ -325,6 +326,37 @@ body {
 /*   profile     */
 .profile-body {
   margin-top: 100px;
+}
+.panel {
+  padding: 15px;
+  border: 1px solid #92b0bb;
+  border-radius: 2px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+  height: auto;
+  background-color: #d7e9ed;
+}
+.right-panel {
+  padding-left: 11px;
+}
+.b-button {
+  border-radius: 6px;
+  font-size: 20px;
+  min-width: 260px;
+  padding: 25px 20px;
+  text-align: center;
+  border: 1px solid #fff;
+  color: #fff;
+}
+.b-button:hover {
+  cursor: pointer;
+  color: #4aa9d3;
+  border-color: #4aa9d3;
+}
+.sub {
+  margin: 30px 25px;
+}
+.profile-main {
+  margin-top: 50px;
 }
 /*   ng-message    */
 .error-messages.ng-active {

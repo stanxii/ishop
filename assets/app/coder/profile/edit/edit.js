@@ -45,8 +45,6 @@ angular.module('myApp.coder.profile.edit', ['ngRoute'])
       return $scope.submitted || field.$dirty;
     };
 
-    $scope.
-
     ///////////////////////////////////////////////////////
 		var user= JSON.parse($window.sessionStorage.user);
 
