@@ -11,6 +11,9 @@ a {
 a:hover {
   color: #00ec00;
 }
+.fright {
+  float: right;
+}
 .header-logo {
   display: inline-block;
   margin-top: 1em;
@@ -359,16 +362,20 @@ a:hover {
   margin-top: 35px;
   margin-left: -15px;
 }
-.header-logo {
+.header-image {
   margin-left: -15px;
 }
 .social-btn {
   margin-left: -15px;
   margin-bottom: 0;
+  width: 100%;
 }
 .github {
   font-size: 20px;
   margin-right: 10px;
+}
+.edit-icon {
+  font-size: 15pt;
 }
 /*   ng-message    */
 .error-messages.ng-active {
