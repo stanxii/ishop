@@ -376,6 +376,57 @@ a:hover {
 }
 .edit-icon {
   font-size: 15pt;
+  margin-top: 15px;
+}
+.edit-icons {
+  font-size: 15pt;
+  margin-top: 3px;
+}
+.inline {
+  display: inline-block;
+  vertical-align: top;
+}
+.name {
+  font-size: 36px;
+}
+.line {
+  margin: 20px 0;
+  border: 0;
+  border-top: 1px solid rgba(119,119,119,0.4);
+}
+.edit-header {
+  font-size: 18pt;
+}
+.content {
+  margin-top: 25px;
+  font-size: 16px;
+  overflow: hidden;
+}
+.ns-button {
+  margin: 15px;
+  width: auto;
+}
+.l-button {
+  background: none;
+  border: 2px  solid #e40000;
+  border-radius: 2rem;
+  color: #e40000;
+  padding: 8px 20px;
+  -webkit-transition: -webkit-transform 0.1s;
+  transition: transform 0.1s;
+  font-size: 16px;
+}
+.l-button:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  font-size: 16px;
+  color: #e40000;
+}
+.l-button:active {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
 }
 /*   ng-message    */
 .error-messages.ng-active {
