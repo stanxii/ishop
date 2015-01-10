@@ -40,7 +40,7 @@ module.exports = {
                         error: err
                     });
                 } else {
-                    
+
                     var token = jwt.sign(user, secret, { expiresInMinutes: 60*24 });
                     res.send({
                         success: true,
@@ -51,7 +51,7 @@ module.exports = {
             }
     })(req, res);
   },
-  
+
   // http://developer.github.com/v3/
   // http://developer.github.com/v3/oauth/#scopes
   github: function(req, res) {
@@ -64,7 +64,7 @@ module.exports = {
         }
 
         res.redirect('/');
-        
+
         return;
       });
     })(req, res);

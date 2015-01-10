@@ -4,9 +4,12 @@
  * @description :: Server-side logic for managing profiles
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
+var redisPublishServer = require('../services/redisPublishService');
+var async = require('async');
+
 
 var createProfileHandler = function (personInfo, jobPreferences, education, workHistory, summary, profile) {
-    PersonalInfo.create({
+  Profile.create({
           personInfo: personInfo,
           jobPreferences: jobPreferences,
           education: education,
@@ -32,7 +35,7 @@ var createProfileHandler = function (personInfo, jobPreferences, education, work
 
 var createSummaryHandler = function (personInfo, jobPreferences, education, workHistory, summary, profile, creatcreateProfileHandlerCallback) {
 
-  JobPreferences.create(summary).exec(function createCB(err,summaryCB){
+  Summary.create(summary).exec(function createCB(err,summaryCB){
     if(err){
       return res.json({
         success: false
@@ -45,7 +48,7 @@ var createSummaryHandler = function (personInfo, jobPreferences, education, work
 
 var createWorkHistoryHandler = function (personInfo, jobPreferences, education, workHistory, summary, profile, createSummaryHandlerCallback ) {
 
-  JobPreferences.create(workHistory).exec(function createCB(err,workHistoryCB){
+  WorkHistory.create(workHistory).exec(function createCB(err,workHistoryCB){
     if(err){
       return res.json({
         success: false
@@ -58,7 +61,7 @@ var createWorkHistoryHandler = function (personInfo, jobPreferences, education, 
 
 var createEducationHandler = function (personInfo, jobPreferences, education, workHistory, summary, profile, createWorkHistoryHandlerCallback ) {
 
-    JobPreferences.create(education).exec(function createCB(err,educationCB){
+  Education.create(education).exec(function createCB(err,educationCB){
       if(err){
             return res.json({
               success: false
@@ -109,8 +112,74 @@ module.exports = {
     var education = req.param('education');
     var workHistory = req.param('workHistory');
     var summary = req.param('summary');
+
     var profile = req.param('profile');
-    createPersonInfoHandler(personInfo, jobPreferences, education, workHistory, summary, profile);
+    //createPersonInfoHandler(personInfo, jobPreferences, education, workHistory, summary, profile);
+
+
+
+    async.waterfall([
+      function(cb){
+        PersonalInfo.create(profile.personInfo).exec(function createCB(err, personInfoCB){
+            cb(err, personInfoCB);
+        });
+        console.log('1');
+      },
+      function(personInfoCB,  cb){
+        JobPreferences.create(jobPreferences).exec(function createCB(err,jobPreferencesCB){
+          cb(err, personInfoCB, jobPreferencesCB);
+        });
+        console.log('2');
+        console.log(personInfoCB);
+      },
+      function(personInfoCB, jobPreferencesCB, cb){
+        Education.create(education).exec(function createCB(err,educationCB){
+          cb(err, personInfoCB, jobPreferencesCB, educationCB);
+        });
+        console.log('3');
+      },
+      function(personInfoCB, jobPreferencesCB, educationCB, cb){
+        WorkHistory.create(workHistory).exec(function createCB(err,workHistoryCB){
+          cb(err, personInfoCB, jobPreferencesCB, educationCB, workHistoryCB);
+        });
+        console.log('3');
+      },
+      function(personInfoCB, jobPreferencesCB, educationCB, workHistoryCB, cb){
+        Summary.create(summary).exec(function createCB(err,summaryCB){
+          cb(err, personInfoCB, jobPreferencesCB, educationCB, workHistoryCB, summaryCB);
+        });
+        console.log(arg1);
+      },
+      function(personInfoCB, jobPreferencesCB, educationCB, workHistoryCB, summaryCB, cb){
+        Profile.create({
+          personInfo: personInfoCB,
+          jobPreferences: jobPreferencesCB,
+          education: educationCB,
+          workHistory: workHistoryCB,
+          summary: summaryCB
+        }).exec(function createCB(err,profileCB){
+          if(err){
+            return res.json({
+              success: false
+            });
+          }else {
+            console.log('Created Profile with id ' + profileCB.userid);
+            console.log('Created personInfo with name ' + personInfo.name);
+
+            return res.json({
+              success: true,
+              profile: profileCB
+            });
+          }
+        });
+        cb(err,  profileCB);
+      }
+    ], function (err, result) {
+      // result now equals 'done'
+       console.log('done');
+       console.log(result);
+    });
+
   },
 
 
@@ -118,6 +187,11 @@ module.exports = {
    * `ProfileController.show()`
    */
   show: function (req, res) {
+
+    Profile.findOne({name:'Jessie'}).exec(function findOneCB(err,found){
+      console.log('We found '+found.name);
+    });
+
     return res.json({
       todo: 'show() is not implemented yet!'
     });

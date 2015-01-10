@@ -13,22 +13,26 @@ angular.module('myApp.coder.profile.index', ['ngRoute'])
 	function($scope, $http, $sails, $location, $window, UserService, AuthenticationService) {
 	/* 隐藏layout部分*/
 
-	$scope.getprofile = function getprofile() {
-
-		var user= JSON.parse($window.sessionStorage.user);
+    var user= JSON.parse($window.sessionStorage.user);
 
     var personInfo = {};
     var jobPreferences = {};
     var education = {};
     var workHistory = {};
     var summary = {};
-    var profile = {userid: user.id};
+    var profile = {"userid": user.id};
 
+    (function () {
+      $sails.on("node2html.editProfile.res", function (message) {
+        if (message.verb === "created") {
+          $scope.bars.push(message.data);
+        }
+      });
+    }());
+
+	$scope.getprofile = function getprofile() {
 		$http.post('/api/v1/profile/create', personInfo, jobPreferences, education, workHistory, summary, profile);
-
-
 		$http.get('/profile/');
-
 		console.log('kkkk');
 	}
 
