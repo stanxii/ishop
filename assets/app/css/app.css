@@ -1,5 +1,6 @@
 body {
   background: #f1f2f4;
+  font:16px 微软雅黑,黑体,sans-serif;
 }
 p {
   margin: 0;
@@ -356,11 +357,16 @@ a:hover {
   border-color: #4aa9d3;
 }
 .sub {
-  margin: 30px 25px;
+  margin: 44px 0;
 }
 .profile-main {
   margin-top: 35px;
   margin-left: -15px;
+}
+.profile-main-right {
+  margin-top: 35px;
+  margin-left: 15px;
+  padding: 0;
 }
 .header-image {
   margin-left: -15px;
@@ -427,6 +433,59 @@ a:hover {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
+}
+.promise {
+  margin-top: 30px;
+  border: 1px solid #dddddd;
+}
+.promise .content {
+  padding: 0 25px 10px 25px;
+  font-size: 15px;
+  line-height: 25px;
+  margin: 0 auto;
+}
+.text-header {
+  text-align: center;
+  font-size: 20px;
+  height: 50px;
+  line-height: 50px;
+}
+/*  edit profile   */
+.welcome {
+  margin-top: 60px;
+  background: #e6e4db;
+  border-bottom: 2px solid #6f5499;
+  height: 80px;
+}
+.big-text {
+  font-size: 24px;
+  line-height: 80px;
+}
+.mid-text {
+  font-size: 20px;
+  text-align: center;
+  margin-top: 15px;
+}
+.middle-text {
+  font-size: 18px;
+  color: #a9a9a9;
+  margin-top: 15px;
+}
+.small-text {
+  color: #a9a9a9;
+}
+.wel {
+  padding-right: 130px;
+}
+.editpro-nav {
+  height: 60px;
+  background: #e6e4db;
+  border-bottom: 2px solid #6f5499;
+}
+.profile-nav {
+  margin-left: 40px;
+  margin-top: 15px;
+  font-size: 18px;
 }
 /*   ng-message    */
 .error-messages.ng-active {

@@ -20,19 +20,41 @@
 </div>
 
 <div class="row">
-  <button class="btn btn-primary btn-full" type="submit" ng-click="editProfile()">登录
-
-    <div data-ng-class="{'field--invalid': [].length}" class="field xs-pr1 xs-book xs-epsilon">
-      <div data-ng-transclude="">
-        <button class="button button--small button--primary xs-prl1 ng-scope" data-ng-disabled="!candidateForm.$dirty" type="submit" disabled="disabled">
-          <span data-ng-hide="isSaving" class="">Save Changes</span>
-          <span data-ng-show="isSaving" class="ng-hide">Saving...</span>
-        </button>
-        <a class="sm-pt1 list-navigation__link xs-epsilon text-light text-gray-dark ng-scope" href="/profile" target="_self">View Profile ⇢</a>
+  <div class="welcome">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="big-text inline">
+        欢迎来到GitOffer !
       </div>
-      <!-- ngRepeat: error in errorsValue -->
+      <div class="fright wel inline">
+        <div class="mid-text">
+          请花15分钟完善简历并提交申请。
+        </div>
+        <div class="small-text">
+          一旦您的申请通过，我们会立即将您加入到下一次的程序员拍卖中。
+        </div>
+      </div>
     </div>
-
+  </div>
+  <div class="editpro-nav">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="middle-text inline">
+        您还需要填写：
+      </div>
+      <div class="profile-nav inline">
+        <a class="todo" href="http://192.168.1.249:1337/#/coder/profile/edit#message">短信验证</a>
+        <span class="separator">|</span>
+        <a class="todo" href="http://192.168.1.249:1337/#/coder/profile/edit#personalInfo">个人信息</a>
+        <span class="separator">|</span>
+        <a class="todo" href="http://192.168.1.249:1337/#/coder/profile/edit#jobPreferences">期望工作</a>
+        <span class="separator">|</span>
+        <a class="todo" href="http://192.168.1.249:1337/#/coder/profile/edit#education">教育经历</a>
+        <span class="separator">|</span>
+        <a class="todo" href="http://192.168.1.249:1337/#/coder/profile/edit#workHistory">工作经历</a>
+        <span class="separator">|</span>
+        <a class="todo" href="http://192.168.1.249:1337/#/coder/profile/edit#summary">技术总结</a>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="row">
