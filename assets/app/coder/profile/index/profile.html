@@ -20,30 +20,197 @@
 </div>
 
 <div class="row">
-  <div><input name="talent[chinese_name]" text="姓名" type="text"></div>
-  <div class="submit for approval">
-    Hello YuXi,
-    You're almost there - just complete your profile, submit it for approval, and we'll get back to you soon. Your
-    profile page represents you on our marketplace and affects the quality of interview requests you will receive.
-
-    Employers will need the following information in order to make you a solid offer:
-    Personal Info | Job Preferences | Education | Work History | Summary
+  <div class="col-md-7 col-md-offset-1 profile-body">
+    <div class="col-md-11 col-md-offset-1 panel">
+      <div class="col-md-2">
+        <img alt="Ivy Lee" src="app/images/Ivy Lee.jpg" />
+        <div class="text-center">
+          <b>Ivy Lee</b>
+          <br>
+          招聘体验师
+        </div>
+      </div>
+      <div class="col-md-10">
+        <p>
+         Hello 李乐意，感谢您注册GitOffer。
+        </p>
+        <br>
+        <p>
+         在您完整填写简历，并且提交申请给我们后，很快就会收到我们审核的结果。因为如果您通过了审
+         核，您的简历就会被很多HR浏览，所以请认真填写简历，完整详尽的简历更容易获得面试邀请。
+        </p>
+        <br>
+        <p>
+          HR需要您填写以下信息:
+          <br>
+          <a class="todo" href="http://192.168.1.249:1337/#/coder/profile/edit#personalInfo">个人信息</a>
+          <span class="separator">|</span>
+          <a class="todo" href="http://192.168.1.249:1337/#/coder/profile/edit#jobPreferences">期望工作</a>
+          <span class="separator">|</span>
+          <a class="todo" href="http://192.168.1.249:1337/#/coder/profile/edit#education">教育经历</a>
+          <span class="separator">|</span>
+          <a class="todo" href="http://192.168.1.249:1337/#/coder/profile/edit#workHistory">工作经历</a>
+          <span class="separator">|</span>
+          <a class="todo" href="http://192.168.1.249:1337/#/coder/profile/edit#summary">技术总结</a>
+        </p>
+      </div>
+    </div>
   </div>
-
-  <p>
-    Employers will need the following information in order to make you a solid offer:
-    <br>
-    <a class="todo" href="http://192.168.1.249:1337/#/coder/profile/edit#personalInfo">Personal Info</a>
-    <span class="separator">|</span>
-    <a class="todo" href="http://192.168.1.249:1337/#/coder/profile/edit#jobPreferences">Job Preferences</a>
-    <span class="separator">|</span>
-    <a class="todo" href="http://192.168.1.249:1337/#/coder/profile/edit#education">Education</a>
-    <span class="separator">|</span>
-    <a class="todo" href="http://192.168.1.249:1337/#/coder/profile/edit#workHistory">Work History</a>
-    <span class="separator">|</span>
-    <a class="todo" href="http://192.168.1.249:1337/#/coder/profile/edit#summary">Summary</a>
-  </p>
-
-  <button type="submit" class="btn btn-default" ng-click="getprofile()">Get Profile</button>
-
+  <div class="col-md-3 profile-body right-panel">
+    <div class="col-md-11 panel">
+      <div class="sub">
+        <div class="b-button" ng-click="getprofile()">提交申请</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-7 col-md-offset-1">
+    <div class="col-md-11 col-md-offset-1">
+      <div class="col-md-4 profile-main">
+        <div class="header-image">
+          <a href="" target="_blank">
+            <img src="app/images/header-logo.jpg">
+          </a>
+        </div>
+        <a href="" target="_blank">
+          <div class="btn btn-default btn-raised social-btn">
+            <i class="github">
+             <img src="app/images/mark-github.png">
+            </i>绑定GitHub
+          </div>
+        </a>
+        <a href="" target="_blank">
+          <div class="btn btn-default btn-raised social-btn">
+            <i class="github">
+              <img src="app/images/mark-github.png">
+            </i>绑定豆瓣
+          </div>
+        </a>
+        <a href="" target="_blank">
+          <div class="btn btn-default btn-raised social-btn">
+            <i class="github">
+              <img src="app/images/mark-github.png">
+            </i>添加知乎
+          </div>
+        </a>
+        <a href="" target="_blank">
+          <div class="btn btn-default btn-raised social-btn">
+            <i class="github">
+              <img src="app/images/mark-github.png">
+            </i>添加LinkedIn
+          </div>
+        </a>
+      </div>
+      <div class="col-md-8 profile-main-right">
+        <div class="title">
+          <div class="name inline">
+            李乐意
+          </div>
+          <div class="fright inline">
+            <a href="" target="_blank">
+              <div class="mdi-editor-mode-edit mdi-material-pink edit-icon"></div>
+            </a>
+          </div>
+        </div>
+        <div class="basic">
+          <span>男</span>
+          <span>|</span>
+          <span>本科</span>
+          <span>三年工作经验</span>
+          <span>|</span>
+          <span>
+            <a href="" target="_blank">13082816776(未验证)</a>
+          </span>
+          <br>
+          <span>357419894@qq.com</span>
+          <br>
+          <br>
+          <span>杭州</span>
+          <br>
+          <span>C/C++ | Javascript</span>
+        </div>
+        <div class="line"></div>
+        <div class="edu">
+          <div class="head-pro">
+            <div class="mdi-social-school mdi-material-lightblue edit-header inline">
+              <div class="edit-header inline">教育经历</div>
+            </div>
+            <div class="fright inline">
+              <a href="" target="_blank">
+                <div class="mdi-editor-mode-edit mdi-material-pink edit-icons"></div>
+              </a>
+            </div>
+          </div>
+          <div class="content">
+            填写一下自己的母校和学历吧!
+              <div class="ns-button">
+               <button class="l-button">添加教育经历</button>
+              </div>
+          </div>
+        </div>
+        <div class="line"></div>
+        <div class="work">
+          <div class="head-pro">
+            <div class="mdi-action-work mdi-material-lightblue edit-header inline">
+              <div class="edit-header inline">工作经历</div>
+            </div>
+            <div class="fright inline">
+              <a href="" target="_blank">
+                <div class="mdi-editor-mode-edit mdi-material-pink edit-icons"></div>
+              </a>
+            </div>
+          </div>
+          <div class="content">
+            描述一下自己工作过的公司和经历吧!
+            <div class="ns-button">
+              <button class="l-button">添加工作经历</button>
+            </div>
+          </div>
+        </div>
+        <div class="line"></div>
+        <div class="tech">
+          <div class="head-pro">
+            <div class="mdi-editor-format-list-numbered mdi-material-lightblue edit-header inline">
+              <div class="edit-header inline">技术总结</div>
+            </div>
+            <div class="fright inline">
+              <a href="" target="_blank">
+                <div class="mdi-editor-mode-edit mdi-material-pink edit-icons"></div>
+              </a>
+            </div>
+          </div>
+          <div class="content">
+            总结一下自己的技术强项吧!
+            <div class="ns-button">
+              <button class="l-button">添加技术总结</button>
+            </div>
+          </div>
+        </div>
+        <div class="line"></div>
+        <div class="privacy">
+          <div class="head-pro">
+            <div class="mdi-action-lock mdi-material-lightblue edit-header inline">
+              <div class="edit-header inline">隐私保护</div>
+            </div>
+            <div class="fright inline">
+              <a href="" target="_blank">
+                <div class="mdi-editor-mode-edit mdi-material-pink edit-icons"></div>
+              </a>
+            </div>
+          </div>
+          <div class="content">
+            屏蔽公司邮箱后缀
+            <div class="ns-button">
+              <button class="l-button">添加需要屏蔽的HR邮箱后缀</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="col-md-11 promise">
+      <div class="text-header">我们承诺</div>
+      <div class="content">您的简历只会在拍卖期间被展示给企业的HR。在您同意面试邀请前，企业查看不到您的姓名与联系方式。而且，您可以屏蔽三个查看的企业邮箱。</div>
+    </div>
+  </div>
 </div>
