@@ -438,6 +438,57 @@ a:hover {
   margin-top: 30px;
   border: 1px solid #dddddd;
 }
+.profile-step {
+  margin-top: 30px;
+  border: 1px solid #dddddd;
+}
+.step {
+  padding-top: 4px;
+}
+.step-header {
+  height: 40px;
+  text-align: center;
+  padding-top: 8px;
+}
+.index {
+  background-color: #54C8DB;
+  width: 20px;
+  height: 20px;
+  line-height: 22px;
+  border-radius: 10px;
+  font-size: 12px;
+  color: white;
+  margin-right: 10px;
+}
+.step-title {
+  color: #54C8DB;
+  font-size: 16px;
+}
+.glyphicon {
+  position: absolute;
+  color: white;
+  left: 150px;
+  top: 35px;
+  z-index: 11;
+  text-shadow: 0 0 0 #FFFFFF;
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+.gray {
+  color: rgba(119,119,119,0.4);
+  top: 37px;
+  left: 150px;
+  z-index: 10;
+}
+.profile-step:hover {
+  background-color: white;
+  border: 1px solid rgba(119,119,119,0.4);
+  margin-bottom: -1px;
+}
+
 .promise .content {
   padding: 0 25px 10px 25px;
   font-size: 15px;

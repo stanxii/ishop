@@ -16,4 +16,4 @@ subscribe.on('pmessage', function(pat,ch,data) {
     }
 
   }
-}
+});
