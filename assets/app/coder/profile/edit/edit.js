@@ -13,58 +13,36 @@ angular.module('myApp.coder.profile.edit', ['ngRoute'])
 	function($scope, $http, $sails, $location, $window, UserService, AuthenticationService, fakeQueryService) {
 	/* 隐藏layout部分*/
 
-	$scope.getprofile = function getprofile() {
+	  ///////////////////////////////////////////////////////
 
 
-    $scope.genders = [
-      'Male',
-      'Female'
-    ];
 
-    $http.get('./locations.json').success(function(locations) {
-      $scope.locations = locations;
-    });
-
-    $scope.phoneNumberRegex = /\(\d{3}\) \d{3}-\d{4}/;
-
-    $scope.fakeUsernames = ['angular', 'username', 'user', 'john', 'eric', 'noob', 'ng'];
-    $scope.fakeEmails = [
-      'email@email.com',
-      'email@gmail.com',
-      'email@website.com',
-      'jon@gmail.com',
-      'fake@gmail.com',
-      'fake@email.com'
-    ];
-
-    $scope.submitted = false;
-    $scope.submit = function() {
-      $scope.submitted = true;
+    $scope.profile = {
+      userid: "548fde8075b961b50f515fdd",
+      personInfo: {
+        name: "stanhangzhou"
+      },
+      jobPreferences: {
+        'skills': ['c', 'c++','object c', 'java', 'android', 'java script']
+      },
+      education: {},
+      workHistory: {},
+      summary: {}
     };
-    $scope.interacted = function(field) {
-      return $scope.submitted || field.$dirty;
-    };
-
-    $scope.saveChanges = function( ) {
-
-    };
-
-    ///////////////////////////////////////////////////////
-		var user= JSON.parse($window.sessionStorage.user);
-
-    var personInfo = {};
-    var jobPreferences = {};
-    var education = {};
-    var workHistory = {};
-    var summary = {};
-    var profile = {userid: user.id};
 
 		//$http.post('/api/v1/profile/create', personInfo, jobPreferences, education, workHistory, summary, profile);
 
+    $scope.saveChanges = function( ) {
+      if("undefined" != $window.sessionStorage.user){
+        var user= JSON.parse($window.sessionStorage.user);
+      }
 
-		$http.get('/profile/');
+      //$http.post('/api/v1/profile/create', personInfo, jobPreferences, education, workHistory, summary, profile);
+      $http.post('/api/v1/profile/edit', $scope.profile);
+    }
+
+		//$http.get('/profile/');
 
 		console.log('kkkk');
-	}
 
 }]);

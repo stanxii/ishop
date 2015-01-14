@@ -36,7 +36,7 @@ module.exports.routes = {
   'post /api/v1/account/signin': 'AuthController.sign',
   'get  /api/v1/account/logout': 'AuthController.logout',
 
-  'post  /api/v1/profile/create': 'ProfileController.create',
+  'post  /api/v1/profile/edit': 'ProfileController.edit',
 
   '/': {
     view: 'homepage'

@@ -4,7 +4,7 @@
  * @description :: Server-side logic for managing profiles
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
-var redisPublishServer = require('../services/redisPublishService');
+//var redisPublishServer = require('../services/redisPublishService');
 var async = require('async');
 
 
@@ -106,79 +106,100 @@ module.exports = {
   /**
    * `ProfileController.create()`
    */
-  create: function (req, res) {
-    var personInfo = req.param('personInfo');
-    var jobPreferences = req.param('jobPreferences');
-    var education = req.param('education');
-    var workHistory = req.param('workHistory');
-    var summary = req.param('summary');
+  edit: function (req, res) {
+    //var personInfo = req.param('personInfo');
+    //var jobPreferences = req.param('jobPreferences');
+    //var education = req.param('education');
+    //var workHistory = req.param('workHistory');
+    //var summary = req.param('summary');
 
     var profile = req.param('profile');
     //createPersonInfoHandler(personInfo, jobPreferences, education, workHistory, summary, profile);
 
+    Profile.findOne({'userid': profile.uid}).exec(function (err, theProfile) {
+      if (err) {
+        return res.json({
+          success: false,
+          uid: profile.uid
+        });
+      }
+      if (!theProfile) {
+         //did not fonu profile where uid indb then create it
+        async.waterfall([
+          function(cb){
+            PersonalInfo.create(profile.personInfo).exec(function createCB(err, personInfoCB){
+              cb(err, personInfoCB);
+            });
+            console.log('1');
+          },
+          function(personInfoCB,  cb){
+            JobPreferences.create(profile.jobPreferences).exec(function createCB(err,jobPreferencesCB){
+              cb(err, personInfoCB, jobPreferencesCB);
+            });
+            console.log('2');
+            console.log(personInfoCB);
+          },
+          function(personInfoCB, jobPreferencesCB, cb){
+            Education.create(profile.education).exec(function createCB(err,educationCB){
+              cb(err, personInfoCB, jobPreferencesCB, educationCB);
+            });
+            console.log('3');
+          },
+          function(personInfoCB, jobPreferencesCB, educationCB, cb){
+            WorkHistory.create(profile.workHistory).exec(function createCB(err,workHistoryCB){
+              cb(err, personInfoCB, jobPreferencesCB, educationCB, workHistoryCB);
+            });
+            console.log('4');
+          },
+          function(personInfoCB, jobPreferencesCB, educationCB, workHistoryCB, cb){
+            Summary.create(profile.summary).exec(function createCB(err,summaryCB){
+              cb(err, personInfoCB, jobPreferencesCB, educationCB, workHistoryCB, summaryCB);
+            });
+            console.log('5');
+          },
+          function(personInfoCB, jobPreferencesCB, educationCB, workHistoryCB, summaryCB, cb){
+            Profile.create({
+              personInfo: personInfoCB,
+              jobPreferences: jobPreferencesCB,
+              education: educationCB,
+              workHistory: workHistoryCB,
+              summary: summaryCB
+            }).exec(function createCB(err,profileCB){
+              cb(err,  profileCB);
+            });
+            console.log('6');
+          }
+        ], function (err, profileCB) {
+          // result now equals 'done'
+          console.log('done');
 
-
-    async.waterfall([
-      function(cb){
-        PersonalInfo.create(profile.personInfo).exec(function createCB(err, personInfoCB){
-            cb(err, personInfoCB);
-        });
-        console.log('1');
-      },
-      function(personInfoCB,  cb){
-        JobPreferences.create(jobPreferences).exec(function createCB(err,jobPreferencesCB){
-          cb(err, personInfoCB, jobPreferencesCB);
-        });
-        console.log('2');
-        console.log(personInfoCB);
-      },
-      function(personInfoCB, jobPreferencesCB, cb){
-        Education.create(education).exec(function createCB(err,educationCB){
-          cb(err, personInfoCB, jobPreferencesCB, educationCB);
-        });
-        console.log('3');
-      },
-      function(personInfoCB, jobPreferencesCB, educationCB, cb){
-        WorkHistory.create(workHistory).exec(function createCB(err,workHistoryCB){
-          cb(err, personInfoCB, jobPreferencesCB, educationCB, workHistoryCB);
-        });
-        console.log('3');
-      },
-      function(personInfoCB, jobPreferencesCB, educationCB, workHistoryCB, cb){
-        Summary.create(summary).exec(function createCB(err,summaryCB){
-          cb(err, personInfoCB, jobPreferencesCB, educationCB, workHistoryCB, summaryCB);
-        });
-        console.log(arg1);
-      },
-      function(personInfoCB, jobPreferencesCB, educationCB, workHistoryCB, summaryCB, cb){
-        Profile.create({
-          personInfo: personInfoCB,
-          jobPreferences: jobPreferencesCB,
-          education: educationCB,
-          workHistory: workHistoryCB,
-          summary: summaryCB
-        }).exec(function createCB(err,profileCB){
           if(err){
             return res.json({
               success: false
             });
           }else {
             console.log('Created Profile with id ' + profileCB.userid);
-            console.log('Created personInfo with name ' + personInfo.name);
+            console.log('Created personInfo with name ' + profileCB.personInfo.name);
 
             return res.json({
               success: true,
               profile: profileCB
             });
           }
+
+          console.log(profileCB);
         });
-        cb(err,  profileCB);
+
+      }else{
+        //exist
+        return res.json({
+          success: false,
+          profile: theProfile
+        });
       }
-    ], function (err, result) {
-      // result now equals 'done'
-       console.log('done');
-       console.log(result);
+
     });
+
 
   },
 

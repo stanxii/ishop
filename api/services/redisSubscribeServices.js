@@ -2,7 +2,11 @@
  * Created by Administrator on 2015/1/6.
  */
 
-var subscribe = require('redis').createClient();
+  /*
+var redis_ip = '192.168.1.111',
+  redis_port = '6379';
+
+var subscribe = require('redis').createClient(redis_ip, redis_port);
 
 subscribe.on('pmessage', function(pat,ch,data) {
 
@@ -17,3 +21,5 @@ subscribe.on('pmessage', function(pat,ch,data) {
 
   }
 }
+
+*/

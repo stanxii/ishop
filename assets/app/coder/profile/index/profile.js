@@ -31,7 +31,7 @@ angular.module('myApp.coder.profile.index', ['ngRoute'])
     }());
 
 	$scope.getprofile = function getprofile() {
-		$http.post('/api/v1/profile/create', personInfo, jobPreferences, education, workHistory, summary, profile);
+		$http.post('/api/v1/profile/edit', $scope.profile);
 		$http.get('/profile/');
 		console.log('kkkk');
 	}
