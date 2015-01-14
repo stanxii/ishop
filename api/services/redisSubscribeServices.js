@@ -2,7 +2,6 @@
  * Created by Administrator on 2015/1/6.
  */
 
-  /*
 var redis_ip = '192.168.1.111',
   redis_port = '6379';
 
@@ -20,6 +19,4 @@ subscribe.on('pmessage', function(pat,ch,data) {
     }
 
   }
-}
-
-*/
+});
