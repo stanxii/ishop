@@ -7,8 +7,8 @@
 
 module.exports = {
 
-  attributes: {  	
-  	userid: {
+  attributes: {
+  	uid: {
 		  type:'string',
 		  unique: true,
 		  required: true
@@ -25,13 +25,13 @@ module.exports = {
 	education: {
 		model: 'education'
 	},
-	
+
 	workHistory: {
 		model: 'workHistory'
 	},
 
 	summary: {
-		model: 'Summary'		
+		model: 'Summary'
 	},
 
 

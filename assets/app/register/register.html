@@ -22,8 +22,8 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2 login-box">
     <div ng-init="signtype= true">
-      <div class="col-md-6 coder" ng-click="signtype = true" ng-class="{selected:signtype}">程序员</div>
-      <div class="col-md-6 hr" ng-click="signtype = false" ng-class="{selected:!signtype}">HR</div>
+      <div class="col-md-6 coder" ng-click="selectRole('coder', true)" ng-class="{selected:signtype}">程序员</div>
+      <div class="col-md-6 hr" ng-click="selectRole('coder', true)" ng-class="{selected:!signtype}">HR</div>
       <div ng-show="signtype" class="regtypeChange">
         <div class="wings">
           <div class="wings-wing"></div>
@@ -52,7 +52,7 @@
             <span class="form-control-feedback mdi-action-lock"></span>
           </div>
           <div class="col-md-6 has-feedback">
-            <input id="confirmpassword" class="input-control" type="password" placeholder="确认密码" name="confirmpassword" ng-model="register.confirmpassword" />
+            <input id="confirmPassword" class="input-control" type="password" placeholder="确认密码" name="confirmPassword" ng-model="register.confirmPassword" />
             <span class="form-control-feedback mdi-action-lock"></span>
           </div>
 
@@ -67,7 +67,7 @@
             </div>
           </div>
           <div class="reg-end">
-            <button class="btn btn-primary btn-full" ng-click="register(register.usermail, register.location, register.password, register.passwordConfirmation, register.role)">注册</button>
+            <button class="btn btn-primary btn-full" ng-click="registerUser(register.usermail, register.location, register.password, register.confirmPassword, role)">注册</button>
           </div>
         </form>
       </div>

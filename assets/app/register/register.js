@@ -12,16 +12,23 @@ angular.module('myApp.register', ['ngRoute'])
 .controller('RegisterCtrl', ['$scope', '$http', '$sails', '$location', '$window', 'UserService', 'AuthenticationService',
           function($scope, $http, $sails, $location, $window, UserService, AuthenticationService) {
 
-    $scope.role="coder";
+  $scope.signtype = true;
+  $scope.role = 'coder';
 
-	$scope.register = function register(usermail, password, passwordConfirm, role) {
+  $scope.selectRole = function (role, signtype) {
+              $scope.signtype = signtype;
+              $scope.role = role;
+            }
+
+
+	$scope.registerUser = function (usermail, location, password, confirmPassword, role) {
             if (AuthenticationService.isAuthenticated) {
 
                 $location.path("/coder/basic");
             }
             else {
 
-                UserService.register(usermail, password, passwordConfirm, $scope.role).success(function(data) {
+                UserService.register(usermail, location, password, confirmPassword, role).success(function(data) {
                     $location.path("/coder/basic");
                 }).error(function(status, data) {
                     //user already exist in db, nav to login

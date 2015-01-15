@@ -4,7 +4,7 @@
  * @description :: Server-side logic for managing users
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
- 
+
  var crypto = require('crypto');
 
  function encryptPassword(password) {
@@ -12,18 +12,22 @@
  }
 
 module.exports = {
-	
+
 
   /**
    * `UserController.create()`
    */
 	register: function (req, res) {
-			var usermail = req.param('usermail');
-			var password = req.param('password');
-			var role = req.param('role');
-			var passwordConfirmation = req.body.passwordConfirmation || '';
+		var usermail = req.param('usermail');
+    var location = req.param('location');
+		var password = req.param('password');
+		var role = req.param('role');
+		var confirmPassword = req.body.confirmPassword || '';
 
-			if (usermail == '' || password == '' || password != passwordConfirmation) {
+    console.log('usermail=' + usermail);
+    console.log('confirmPassword=' + confirmPassword);
+
+			if (usermail == '' || password == '' || password != confirmPassword) {
 			return res.send(400);
 			}
 
@@ -36,7 +40,8 @@ module.exports = {
 
 				if(0 == found){
 					var enpass = encryptPassword(password);
-					
+
+          console.log('register enpass = ' + enpass);
 					User.create({
 						usermail: usermail,
 						password: enpass,
@@ -55,9 +60,9 @@ module.exports = {
 				}else{
 					//user already exist cant register
 					return res.send(1001);
-				}	 
+				}
 		   });
-	
+
   	}
 };
 

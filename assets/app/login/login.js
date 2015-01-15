@@ -13,14 +13,11 @@ angular.module('myApp.login', ['ngRoute','ngMessages'])
     function($scope, $http, $sails, $location, $window, UserService, AuthenticationService) {
     /* 隐藏layout部分*/
     $scope.$parent.j_islogin = false;
-    $scope.username = sessionStorage.getItem("username");
-    $scope.password = sessionStorage.getItem("password");
 
-
-    $scope.signIn = function signIn(usermail, password, role) {
+    $scope.signIn = function (usermail, password, role) {
               if (usermail != null && password != null && role !=null) {
 
-                  UserService.signIn(usermail, password, role).success(function(data) {
+                  UserService.signIn(usermail, password).success(function(data) {
 
                       AuthenticationService.isAuthenticated = true;
                       //$window.sessionStorage.user = JSON.stringify(data.user);

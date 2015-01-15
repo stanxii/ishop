@@ -48,17 +48,17 @@ appServices.factory('TokenInterceptor', function ($q, $window, $location, Authen
 
 appServices.factory('UserService', function ($http) {
     return {
-        signIn: function(usermail, password,role) {
-            return $http.post('/api/v1/account/signin', {username: usermail, password: password, role:role});
+        signIn: function(usermail, password, confirmPassword, role) {
+            return $http.post('/api/v1/account/signin', {username: usermail, password: password, confirmPassword: confirmPassword});
         },
 
         logOut: function() {
             return $http.get('/user/logout');
         },
 
-        register: function(usermail, password, passwordConfirmation, role) {
+        register: function(usermail, location, password, confirmPassword, role) {
             //return $http.post(options.api.base_url + '/api/v1/account/register', {usermail: usermail, password: password, passwordConfirmation: passwordConfirmation, role:role });
-            return $http.post('/api/v1/account/register', {usermail: usermail, password: password, passwordConfirmation: passwordConfirmation, role:role });
+            return $http.post('/api/v1/account/register', {usermail: usermail, location: location, password: password, confirmPassword: confirmPassword, role:role });
         }
     }
 });

@@ -1,7 +1,7 @@
 var passport = require('passport')
     , LocalStrategy = require('passport-local').Strategy
     , GitHubStrategy = require('passport-github').Strategy;
-  
+
 var crypto = require('crypto');
 
 function encryptPassword(password) {
@@ -11,7 +11,7 @@ function encryptPassword(password) {
 
 var localHander = function(username, password,  done) {
   process.nextTick(function() {
-    console.log('localHander localHander for passport');  
+    console.log('localHander localHander for passport ' + username + password);
     var enpass = encryptPassword(password);
     console.log(enpass);
     User.findOne({ usermail: username, password: enpass }, function(err, user) {
@@ -19,10 +19,10 @@ var localHander = function(username, password,  done) {
       if (!user) {
         return done(null, false, { message: 'Incorrect usermail or password.' });
       }
-      
+
       return done(null, user);
     });
-  });  
+  });
 }
 
 var verifyHandler = function(token, tokenSecret, profile, done) {
@@ -67,10 +67,10 @@ passport.deserializeUser(function(uid, done) {
   });
 });
 
-      
+
 
 passport.use(new LocalStrategy(localHander));
-    
+
 passport.use(new GitHubStrategy({
         clientID: "92685ae9b29935a246a1",
         clientSecret: "b2afcdc430daeaa945bc9655b425888cf68f63a7",
@@ -84,5 +84,5 @@ module.exports = {
             app.use(passport.initialize());
             app.use(passport.session());
         }
-    
+
 };

@@ -8,9 +8,9 @@
 var async = require('async');
 
 
-var createProfileHandler = function (personInfo, jobPreferences, education, workHistory, summary, profile) {
+var createProfileHandler = function (personalInfo, jobPreferences, education, workHistory, summary, profile) {
   Profile.create({
-          personInfo: personInfo,
+          personalInfo: personalInfo,
           jobPreferences: jobPreferences,
           education: education,
           workHistory: workHistory,
@@ -23,7 +23,7 @@ var createProfileHandler = function (personInfo, jobPreferences, education, work
               });
             }else {
               console.log('Created Profile with id ' + profileCB.userid);
-              console.log('Created personInfo with name ' + personInfo.name);
+              console.log('Created personalInfo with name ' + personalInfo.name);
 
               return res.json({
                 success: true,
@@ -33,7 +33,7 @@ var createProfileHandler = function (personInfo, jobPreferences, education, work
     });
 }
 
-var createSummaryHandler = function (personInfo, jobPreferences, education, workHistory, summary, profile, creatcreateProfileHandlerCallback) {
+var createSummaryHandler = function (personalInfo, jobPreferences, education, workHistory, summary, profile, creatcreateProfileHandlerCallback) {
 
   Summary.create(summary).exec(function createCB(err,summaryCB){
     if(err){
@@ -41,12 +41,12 @@ var createSummaryHandler = function (personInfo, jobPreferences, education, work
         success: false
       });
     }else{
-      creatcreateProfileHandlerCallback(personInfo, jobPreferences, education, workHistory, summaryCB, profile, creatcreateProfileHandler);
+      creatcreateProfileHandlerCallback(personalInfo, jobPreferences, education, workHistory, summaryCB, profile, creatcreateProfileHandler);
     }
   });
 }
 
-var createWorkHistoryHandler = function (personInfo, jobPreferences, education, workHistory, summary, profile, createSummaryHandlerCallback ) {
+var createWorkHistoryHandler = function (personalInfo, jobPreferences, education, workHistory, summary, profile, createSummaryHandlerCallback ) {
 
   WorkHistory.create(workHistory).exec(function createCB(err,workHistoryCB){
     if(err){
@@ -54,12 +54,12 @@ var createWorkHistoryHandler = function (personInfo, jobPreferences, education, 
         success: false
       });
     }else{
-      createSummaryHandlerCallback(personInfo, jobPreferences, education, workHistoryCB, summary, profile, createSummaryHandler);
+      createSummaryHandlerCallback(personalInfo, jobPreferences, education, workHistoryCB, summary, profile, createSummaryHandler);
     }
   });
 }
 
-var createEducationHandler = function (personInfo, jobPreferences, education, workHistory, summary, profile, createWorkHistoryHandlerCallback ) {
+var createEducationHandler = function (personalInfo, jobPreferences, education, workHistory, summary, profile, createWorkHistoryHandlerCallback ) {
 
   Education.create(education).exec(function createCB(err,educationCB){
       if(err){
@@ -67,13 +67,13 @@ var createEducationHandler = function (personInfo, jobPreferences, education, wo
               success: false
             });
         }else{
-        createWorkHistoryHandlerCallback(personInfo, jobPreferences, educationCB, workHistory, summary, profile, createWorkHistoryHandler);
+        createWorkHistoryHandlerCallback(personalInfo, jobPreferences, educationCB, workHistory, summary, profile, createWorkHistoryHandler);
         }
     });
 }
 
 
-var createJobPreHandler = function (personInfo, jobPreferences, education, workHistory, summary, profile, createEducationHandlerCallback ) {
+var createJobPreHandler = function (personalInfo, jobPreferences, education, workHistory, summary, profile, createEducationHandlerCallback ) {
 
     JobPreferences.create(jobPreferences).exec(function createCB(err,jobPreferencesCB){
       if(err){
@@ -82,20 +82,20 @@ var createJobPreHandler = function (personInfo, jobPreferences, education, workH
             });
         }else{
 
-        createEducationHandlerCallback(personInfo, jobPreferencesCB, education, workHistory, summary, profile, createEducationHandler );
+        createEducationHandlerCallback(personalInfo, jobPreferencesCB, education, workHistory, summary, profile, createEducationHandler );
         }
     });
 }
 
 
-var createPersonInfoHandler = function (personInfo, jobPreferences, education, workHistory, summary, profile, createJobPreHandlerCallback) {
-    PersonalInfo.create(personInfo).exec(function createCB(err,personInfoCB){
+var createpersonalInfoHandler = function (personalInfo, jobPreferences, education, workHistory, summary, profile, createJobPreHandlerCallback) {
+    PersonalInfo.create(personalInfo).exec(function createCB(err,personalInfoCB){
       if(err){
           return res.json({
             success: false
           });
       }else{
-        createJobPreHandlerCallback(personInfoCB, jobPreferences, education, workHistory, summary, profile, createJobPreHandler);
+        createJobPreHandlerCallback(personalInfoCB, jobPreferences, education, workHistory, summary, profile, createJobPreHandler);
       }
     });
 }
@@ -107,16 +107,17 @@ module.exports = {
    * `ProfileController.create()`
    */
   edit: function (req, res) {
-    //var personInfo = req.param('personInfo');
+    //var PersonalInfo = req.param('PersonalInfo');
     //var jobPreferences = req.param('jobPreferences');
     //var education = req.param('education');
     //var workHistory = req.param('workHistory');
     //var summary = req.param('summary');
 
     var profile = req.param('profile');
-    //createPersonInfoHandler(personInfo, jobPreferences, education, workHistory, summary, profile);
+    console.log(profile);
+    //createpersonalInfoHandler(personalInfo, jobPreferences, education, workHistory, summary, profile);
 
-    Profile.findOne({'userid': profile.uid}).exec(function (err, theProfile) {
+    Profile.findOne({'uid': profile.uid}).exec(function (err, theProfile) {
       if (err) {
         return res.json({
           success: false,
@@ -127,43 +128,44 @@ module.exports = {
          //did not fonu profile where uid indb then create it
         async.waterfall([
           function(cb){
-            PersonalInfo.create(profile.personInfo).exec(function createCB(err, personInfoCB){
-              cb(err, personInfoCB);
+            PersonalInfo.create(profile.personalInfo).exec(function createCB(err, personalInfoCB){
+              cb(err, personalInfoCB);
             });
             console.log('1');
           },
-          function(personInfoCB,  cb){
+          function(personalInfoCB,  cb){
             JobPreferences.create(profile.jobPreferences).exec(function createCB(err,jobPreferencesCB){
-              cb(err, personInfoCB, jobPreferencesCB);
+              cb(err, personalInfoCB, jobPreferencesCB);
             });
             console.log('2');
-            console.log(personInfoCB);
+            console.log(personalInfoCB);
           },
-          function(personInfoCB, jobPreferencesCB, cb){
+          function(personalInfoCB, jobPreferencesCB, cb){
             Education.create(profile.education).exec(function createCB(err,educationCB){
-              cb(err, personInfoCB, jobPreferencesCB, educationCB);
+              cb(err, personalInfoCB, jobPreferencesCB, educationCB);
             });
             console.log('3');
           },
-          function(personInfoCB, jobPreferencesCB, educationCB, cb){
+          function(personalInfoCB, jobPreferencesCB, educationCB, cb){
             WorkHistory.create(profile.workHistory).exec(function createCB(err,workHistoryCB){
-              cb(err, personInfoCB, jobPreferencesCB, educationCB, workHistoryCB);
+              cb(err, personalInfoCB, jobPreferencesCB, educationCB, workHistoryCB);
             });
             console.log('4');
           },
-          function(personInfoCB, jobPreferencesCB, educationCB, workHistoryCB, cb){
+          function(personalInfoCB, jobPreferencesCB, educationCB, workHistoryCB, cb){
             Summary.create(profile.summary).exec(function createCB(err,summaryCB){
-              cb(err, personInfoCB, jobPreferencesCB, educationCB, workHistoryCB, summaryCB);
+              cb(err, personalInfoCB, jobPreferencesCB, educationCB, workHistoryCB, summaryCB);
             });
             console.log('5');
           },
-          function(personInfoCB, jobPreferencesCB, educationCB, workHistoryCB, summaryCB, cb){
+          function(personalInfoCB, jobPreferencesCB, educationCB, workHistoryCB, summaryCB, cb){
             Profile.create({
-              personInfo: personInfoCB,
-              jobPreferences: jobPreferencesCB,
-              education: educationCB,
-              workHistory: workHistoryCB,
-              summary: summaryCB
+              uid: profile.uid,
+              personalInfo: profile.personalInfo,
+              jobPreferences: profile.jobPreferences,
+              education: profile.education,
+              workHistory: profile.workHistory,
+              summary: profile.summary
             }).exec(function createCB(err,profileCB){
               cb(err,  profileCB);
             });
@@ -174,12 +176,13 @@ module.exports = {
           console.log('done');
 
           if(err){
+            console.log('error '+ err);
             return res.json({
               success: false
             });
           }else {
-            console.log('Created Profile with id ' + profileCB.userid);
-            console.log('Created personInfo with name ' + profileCB.personInfo.name);
+            console.log('Created Profile with id ' + profileCB.uid);
+            console.log('Created personalInfo with name ' + profileCB.personalInfo.name);
 
             return res.json({
               success: true,

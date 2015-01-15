@@ -18,8 +18,8 @@ angular.module('myApp.coder.profile.edit', ['ngRoute'])
 
 
     $scope.profile = {
-      userid: "548fde8075b961b50f515fdd",
-      personInfo: {
+      uid: "548fde8075b961b50f515fdd",
+      personalInfo: {
         name: "stanhangzhou"
       },
       jobPreferences: {
@@ -38,7 +38,7 @@ angular.module('myApp.coder.profile.edit', ['ngRoute'])
       }
 
       //$http.post('/api/v1/profile/create', personInfo, jobPreferences, education, workHistory, summary, profile);
-      $http.post('/api/v1/profile/edit', $scope.profile);
+      $http.post('/api/v1/profile/edit', {profile: $scope.profile});
     }
 
 		//$http.get('/profile/');
