@@ -1,9 +1,9 @@
 
-/*
+
 var redis_ip='192.168.1.111',
   redis_port ='6379';
 
-var publish = require('redis').createClient(redis_ip, redis_port);
+var publish = require('redis').createClient(redis_port, redis_ip);
 
 
 
@@ -37,4 +37,4 @@ function  pubgetProfileById(req, res){
 
 exports.redisPublis = pubEditProfile;
 exports.pubgetProfileById = pubgetProfileById;
-*/
+
