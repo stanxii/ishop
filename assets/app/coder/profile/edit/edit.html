@@ -1,4 +1,4 @@
-﻿<div class="row">
+﻿<div class="row" xmlns="http://www.w3.org/1999/html">
   <nav class="navbar  navbar-fixed-top navbar-background-color">
     <div class="navbar-header">
       <a class="navbar-brand logo" href="#/index">
@@ -54,7 +54,6 @@
         <a class="todo" href="http://192.168.1.249:1337/#/coder/profile/edit#summary">技术总结</a>
       </div>
       <div class="b-s-button inline pro-submit">提交申请</div>
-      <button class="btn btn-primary btn-full" ng-click="saveChanges()">保存</button>
     </div>
   </div>
   <div class="col-md-1 col-md-offset-2 sidebar">
@@ -91,5 +90,19 @@
         <div class="mdi-navigation-arrow-forward inline arrow"></div>
       </li>
     </ul>
+  </div>
+  <div class="col-md-7 col-md-offset-3">
+    <div class="msg-verify" id="verify">
+      <div class="mdi-communication-textsms msg-text">短信验证</div>
+      <br>
+      <div class="ph-num">
+        <input class="b-border" />
+        <div class="input-btn">免费发送验证短信</div>
+      </div>
+      <div class="mdi-action-report-problem ph-info">
+        <span>手机验证成功后方可提交申请</span>
+      </div>
+    </div>
+    <div class="line"></div>
   </div>
 </div>
