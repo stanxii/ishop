@@ -503,10 +503,12 @@ a:hover {
 }
 /*  edit profile   */
 .welcome {
-  margin-top: 60px;
   background: #e6e4db;
   border-bottom: 2px solid #6f5499;
   height: 80px;
+}
+.edit-profile-main {
+  margin-top: 200px;
 }
 .big-text {
   font-size: 24px;
@@ -548,7 +550,7 @@ a:hover {
 }
 .pro-submit {
   margin-top: 10px;
-  margin-left: 170px;
+  float: right;
 }
 /*
  * Sidebar
@@ -625,7 +627,7 @@ a:hover {
   height: 50px;
   padding: 4px 12px;
   font-family: Lato,Helvetica,Arial,sans-serif;
-  font-size: 18px;
+  font-size: 25px;
   line-height: 1.467;
   color: #34495e;
   border: 2px solid #bdc3c7;
@@ -661,6 +663,57 @@ a:hover {
   font-size: 18px;
   margin-top: 20px;
   margin-left: 25px;
+}
+.per-info {
+  margin: 30px 0 30px 50px;
+}
+.img-tainer {
+  margin-left: 25px;
+}
+.upload-pic {
+  margin-bottom: 50px;
+}
+.img-button {
+  margin-left: 10px;
+  display: inline-block;
+  vertical-align: bottom;
+}
+.button-info {
+  font-size: 18px;
+  color: #ffffff;
+  text-align: center;
+  cursor: pointer;
+  background-color: #535A62;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 40px;
+  line-height: 40px;
+}
+.next-input {
+  margin-bottom: 30px;
+}
+.select-arrow {
+  position: absolute;
+  top: 42%;
+  right: 20px;
+  display: inline-block;
+  border-color: #000 transparent;
+  border-style: solid;
+  border-width: 10px 8px;
+  border-bottom-style: none;
+  -webkit-transform: scale(1.001);
+}
+.job-performance {
+  margin: 30px 0 30px 50px;
+}
+.talent-skill {
+  margin-left: 25px;
+}
+.location-text {
+  height: 30px;
+  font-size: 18px;
+  margin-top: 5px;
+  margin-left: -20px;
 }
 /*   ng-message    */
 .error-messages.ng-active {
