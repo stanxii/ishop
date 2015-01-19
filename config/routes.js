@@ -37,6 +37,7 @@ module.exports.routes = {
   'get  /api/v1/account/logout': 'AuthController.logout',
 
   'post  /api/v1/profile/edit': 'ProfileController.edit',
+  'post  /api/v1/profile/:pid': 'ProfileController.show',
 
   '/': {
     view: 'homepage'

@@ -13,14 +13,6 @@ angular.module('myApp.coder.profile.index', ['ngRoute'])
 	function($scope, $http, $sails, $location, $window, UserService, AuthenticationService) {
 	/* 隐藏layout部分*/
 
-    var user= JSON.parse($window.sessionStorage.user);
-
-    var personInfo = {};
-    var jobPreferences = {};
-    var education = {};
-    var workHistory = {};
-    var summary = {};
-    var profile = {"userid": user.id};
 
     (function () {
       $sails.on("node2html.editProfile.res", function (message) {
@@ -30,10 +22,20 @@ angular.module('myApp.coder.profile.index', ['ngRoute'])
       });
     }());
 
-	$scope.getprofile = function getprofile() {
-		$http.post('/api/v1/profile/edit', $scope.profile);
-		$http.get('/profile/');
-		console.log('kkkk');
-	}
+
+	$scope.getprofile = function( ) {
+    var user= JSON.parse($window.sessionStorage.getItem('user'));
+
+    if(user && user.pid) {
+      var getProfileUrl = '/profile/';
+      getProfileUrl += user.pid;
+      $http.get(getProfileUrl)
+        .success(function (profileOk) {
+          console.log('get profile ok' + profileOk);
+      });
+    }
+  }
+    $scope.getprofile();
+
 
 }]);

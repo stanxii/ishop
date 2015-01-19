@@ -24,8 +24,7 @@ module.exports = {
 		var role = req.param('role');
 		var confirmPassword = req.body.confirmPassword || '';
 
-    console.log('usermail=' + usermail);
-    console.log('confirmPassword=' + confirmPassword);
+    //console.log('usermail=' + usermail);
 
 			if (usermail == '' || password == '' || password != confirmPassword) {
 			return res.send(400);
@@ -41,21 +40,29 @@ module.exports = {
 				if(0 == found){
 					var enpass = encryptPassword(password);
 
-          console.log('register enpass = ' + enpass);
 					User.create({
 						usermail: usermail,
 						password: enpass,
 						role: role
 					}).exec(function createCB(error,user){
 						if(error){
-							console.log('--create----error----'+JSON.stringify(err));
 							return res.send(400);
 						}
-							console.log('Created user with name '+user.usermail);
-							console.log('--create----xxxx----'+JSON.stringify(user));
+							console.log('--create----xxxx----user objeid=' + user.id + 'string userid=' +JSON.stringify(user));
 							console.log('--now get objid to string='+ JSON.stringify(user.toJSON()));
-							return res.send(200);
-					});
+              Profile.create({
+                uid: user.id
+              }).exec(function createCB(error, profile){
+                if(error){
+                  return res.send(400);
+                }
+                console.log('--create----xxxx----'+JSON.stringify(user));
+                console.log('--now get objid to string='+ JSON.stringify(user.toJSON()));
+                return res.send(200);
+              });
+
+                return res.send(200);
+            });
 
 				}else{
 					//user already exist cant register

@@ -19,15 +19,19 @@ angular.module('myApp.login', ['ngRoute','ngMessages'])
 
                   UserService.signIn(usermail, password).success(function(data) {
 
-                      AuthenticationService.isAuthenticated = true;
-                      //$window.sessionStorage.user = JSON.stringify(data.user);
-                      $window.sessionStorage.user = JSON.stringify(data.user);
-                      $window.sessionStorage.token = data.token;
+                      console.log('signIn login result' + data)
 
-                      if(true == data.success)
+                      if(data.success){
+                        AuthenticationService.isAuthenticated = true;
+                        $window.sessionStorage.user = JSON.stringify(data.user);
+                        $window.sessionStorage.setItem('token', data.token);
                         $location.path("/coder/profile");
-                      else
+                      }else{
+                        console.log('sigin err')
                         $location.path("/");
+                      }
+
+
 
                       // if("coder" == data.user.role){
                       // 	$location.path("/coder/basic");

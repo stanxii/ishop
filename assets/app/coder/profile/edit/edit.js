@@ -13,32 +13,27 @@ angular.module('myApp.coder.profile.edit', ['ngRoute'])
 	function($scope, $http, $sails, $location, $window, UserService, AuthenticationService, fakeQueryService) {
 	/* 隐藏layout部分*/
 
-	  ///////////////////////////////////////////////////////
-
-
-
-    $scope.profile = {
-      uid: "548fde8075b961b50f515fdd",
-      personalInfo: {
-        name: "stanhangzhou"
-      },
-      jobPreferences: {
-        'skills': ['c', 'c++','object c', 'java', 'android', 'java script']
-      },
-      education: {},
-      workHistory: {},
-      summary: {}
-    };
-
-		//$http.post('/api/v1/profile/create', personInfo, jobPreferences, education, workHistory, summary, profile);
-
     $scope.saveChanges = function( ) {
-      if("undefined" != $window.sessionStorage.user){
-        var user= JSON.parse($window.sessionStorage.user);
-      }
+      if($window.sessionStorage.user){
+        var user= JSON.parse($window.sessionStorage.getItem('user'));
 
-      //$http.post('/api/v1/profile/create', personInfo, jobPreferences, education, workHistory, summary, profile);
-      $http.post('/api/v1/profile/edit', {profile: $scope.profile});
+        var profile = {
+          uid: user.uid,
+          personalInfo: {
+            name: "stanhangzhou"
+          },
+          jobPreferences: {
+            'skills': ['c', 'c++','object c', 'java', 'android', 'java script']
+          },
+          education: {},
+          workHistory: {},
+          summary: {}
+        };
+
+        $http.post('/api/v1/profile/edit', {profile: profile});
+      }else{
+        console.log('profile sav change error has no user');
+      }
     }
 
 		//$http.get('/profile/');

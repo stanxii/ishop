@@ -15,23 +15,18 @@ module.exports = {
 	},
 
 	personalInfo: {
-		model: 'personalInfo'
 	},
 
 	jobPreferences: {
-		model: 'jobPreferences'
 	},
 
 	education: {
-		model: 'education'
 	},
 
 	workHistory: {
-		model: 'workHistory'
 	},
 
 	summary: {
-		model: 'Summary'
 	},
 
 
