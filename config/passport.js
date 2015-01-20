@@ -11,9 +11,9 @@ function encryptPassword(password) {
 
 var localHander = function(username, password,  done) {
   process.nextTick(function() {
-    console.log('localHander localHander for passport ' + username + password);
-    var enpass = encryptPassword(password);
-    console.log(enpass);
+    //console.log('localHander localHander for passport ');
+    var enpass = encryptPassword(password)
+
     User.findOne({ usermail: username, password: enpass }, function(err, user) {
       if (err) { return done(err); }
       if (!user) {

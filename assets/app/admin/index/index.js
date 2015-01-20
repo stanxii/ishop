@@ -11,7 +11,7 @@ angular.module('myApp.admin.index', ['ngRoute'])
 
 .controller('AdminIndexCtrl', ['$scope', '$sails', '$location', function($scope, $sails, $location) {
 
-		$scope.username = sessionStorage.getItem("username");
+		$scope.user = sessionStorage.getItem("user");
 
 		//check if user is login in session
 

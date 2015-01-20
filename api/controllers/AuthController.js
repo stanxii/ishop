@@ -42,11 +42,27 @@ module.exports = {
                 } else {
 
                     var token = jwt.sign(user, secret, { expiresInMinutes: 60*24 });
-                    res.send({
-                        success: true,
-                        user: {uid: user.id},
-                        token: token
+
+                   console.log('user='+user + 'userid=' + user.id);
+
+                    Profile.findOne({uid: user.id}).exec(function findOneCB(err,found){
+                      console.log('We found '+JSON.stringify(found));
+                      if(!found){
+                        res.send({
+                          success: true,
+                          user: {uid: user.id},
+                          token: token
+                        });
+                      }else{
+                        res.send({
+                          success: true,
+                          user: {uid: user.id, pid: found.id},
+                          token: token
+                        });
+                      }
+
                     });
+
                 }
             }
     })(req, res);

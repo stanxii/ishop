@@ -20,8 +20,8 @@ config(function ($httpProvider) {
     $httpProvider.interceptors.push('TokenInterceptor');
 }).
 config(['$sailsProvider', function ($sailsProvider) {
-    $sailsProvider.url = 'localhost:1337';
-		//$sailsProvider.url = 'http://192.168.1.249:1337';
+    //$sailsProvider.url = 'localhost:1337';
+		$sailsProvider.url = 'http://192.168.1.249:1337';
 
 }]).
 config(['$routeProvider', function($routeProvider) {
