@@ -718,7 +718,7 @@ a:hover {
 .edu-history {
   margin: 30px 0 30px 50px;
 }
-.edu-edit {
+.detail-edit {
   background: #ffffff;
   padding: 15px 15px;
 }
@@ -733,6 +733,9 @@ a:hover {
 .input-group-addon {
   border-bottom: 2px solid #cccccc;
   border-top: 2px solid #cccccc;
+}
+.work-history {
+  margin: 30px 0 30px 50px;
 }
 /*   ng-message    */
 .error-messages.ng-active {
