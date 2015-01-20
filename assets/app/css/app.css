@@ -715,6 +715,25 @@ a:hover {
   margin-top: 5px;
   margin-left: -20px;
 }
+.edu-history {
+  margin: 30px 0 30px 50px;
+}
+.edu-edit {
+  background: #ffffff;
+  padding: 15px 15px;
+}
+
+.edu-btn {
+  text-align: center;
+}
+.edu-info {
+  color: #b6b6b6;
+  margin-top: 20px;
+}
+.input-group-addon {
+  border-bottom: 2px solid #cccccc;
+  border-top: 2px solid #cccccc;
+}
 /*   ng-message    */
 .error-messages.ng-active {
   background: maroon;
