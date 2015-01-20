@@ -355,11 +355,13 @@
           </div>
           <div class="row">
             <div class="col-sm-6">
-              <div class="input-group">
-                <span class="input-group-addon">开始</span>
-                <input class="b-border inline" name="edu-history[starttime]" type="text" value="2015-01">
-                <span class="input-group-addon">结束</span>
-                <input class="b-border inline" name="edu-history[stoptime]" type="text" value="2015-01">
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon start-time">开始</span>
+                  <input class="b-border inline" name="edu-history[starttime]" type="text" value="2015-01" />
+                  <span class="input-group-addon stop-time">结束</span>
+                  <input class="b-border inline" name="edu-history[stoptime]" type="text" value="2015-01" />
+                </div>
               </div>
             </div>
             <div class="col-sm-6 next-input">
@@ -387,17 +389,41 @@
     <div class="line"></div>
     <div class="work-history" id="work-history">
       <div class="mdi-action-work msg-text">工作经历</div>
-      <form>
+      <form class="form-inline">
         <div class="detail-edit">
           <div class="row">
             <div class="col-sm-6 next-input">
               <input class="b-border" placeholder="公司名称">
             </div>
             <div class="col-sm-6 next-input">
-              <input class="b-border" placeholder="学校名称">
+              <input class="b-border" placeholder="职位名称">
             </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 next-input">
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon start-time">开始</span>
+                  <input class="b-border inline" name="work-history[starttime]" type="text" value="2015-01" />
+                  <span class="input-group-addon stop-time">结束</span>
+                  <input class="b-border inline" name="work-history[stoptime]" type="text" value="2015-01" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <textarea class="b-border" id="exp_work_description" name="exp_work[description]" rows="5" style="min-height: 200px; width: 100%; overflow: hidden; word-wrap: break-word; resize: horizontal; height: 280px;" text="工作经验描述" placeholder="工作经验描述"></textarea>
+        <div class="edu-btn">
+          <button class="btn btn-primary">增加</button>
+        </div>
       </form>
+      <div class="edu-info">
+        <p>工作经历最能体现自己的工作能力，</p>
+        <br>
+        <p>且完善后才可投递简历哦！</p>
+      </div>
     </div>
+    <div class="line"></div>
   </div>
 </div>
 
