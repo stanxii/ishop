@@ -745,6 +745,13 @@ a:hover {
   border-right: none !important;
   border-left: none !important;
 }
+.tech-summary {
+  margin: 30px 0 30px 50px;
+}
+.text-tech {
+  margin-left: 30px;
+  color: #333333;
+}
 /*   ng-message    */
 .error-messages.ng-active {
   background: maroon;
