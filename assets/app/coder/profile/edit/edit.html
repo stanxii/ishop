@@ -108,8 +108,7 @@
           <div class="img-tainer">
             <img alt="blank" src="app/images/header-logo.jpg">
             <div class="img-button">
-              <div class="button-info" id="upload-btn">上传头像</div>
-              <input id="file-choose" name="talent[avatar]" style="display:none" type="file">
+              <button type="file" class="btn btn-primary" ng-file-select="onFileSelect($files)" ng-model="user.photo" accept="*.jpg,*.png,*.gif">上传头像</button>
             </div>
           </div>
         </div>

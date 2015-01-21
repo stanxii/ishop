@@ -23,7 +23,7 @@ angular.module('myApp.coder.profile.index', ['ngRoute'])
     }());
 
 
-	$scope.getprofile = function( ) {
+	$scope.getprofile = function() {
     var user= JSON.parse($window.sessionStorage.getItem('user'));
 
     if(user && user.pid) {
@@ -34,7 +34,7 @@ angular.module('myApp.coder.profile.index', ['ngRoute'])
           console.log('get profile ok' + profileOk);
       });
     }
-  }
+  };
     $scope.getprofile();
 
 

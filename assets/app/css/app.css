@@ -677,6 +677,7 @@ a:hover {
   margin-left: 10px;
   display: inline-block;
   vertical-align: bottom;
+  margin-bottom: -10px;
 }
 .button-info {
   font-size: 18px;
@@ -762,3 +763,4 @@ a:hover {
   border-color: transparent transparent maroon;
   border-width: 5px;
 }
+
