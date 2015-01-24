@@ -36,7 +36,7 @@ angular.module('myApp.coder.profile.edit', ['ngRoute'])
       }
     }
 
-		//$http.get('/profile/');
+		//$http.get('/profile/:id');
 
 		console.log('kkkk');
 
