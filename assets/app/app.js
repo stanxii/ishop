@@ -14,7 +14,8 @@ angular.module('myApp', [
   'myApp.coder.profile.index',
   'myApp.coder.profile.edit',
   'myApp.appServices',
-  'myApp.appDirectives'
+  'myApp.appDirectives',
+  'angularFileUpload'
 ]).
 config(function ($httpProvider) {
     $httpProvider.interceptors.push('TokenInterceptor');

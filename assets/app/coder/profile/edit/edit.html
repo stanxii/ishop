@@ -108,8 +108,7 @@
           <div class="img-tainer">
             <img alt="blank" src="app/images/header-logo.jpg">
             <div class="img-button">
-              <div class="button-info" id="upload-btn">上传头像</div>
-              <input id="file-choose" name="talent[avatar]" style="display:none" type="file">
+              <button type="file" class="btn btn-primary" ng-file-select="onFileSelect($files)" ng-model="user.photo" accept="*.jpg,*.png,*.gif">上传头像</button>
             </div>
           </div>
         </div>
@@ -355,11 +354,13 @@
           </div>
           <div class="row">
             <div class="col-sm-6">
-              <div class="input-group">
-                <span class="input-group-addon">开始</span>
-                <input class="b-border inline" name="edu-history[starttime]" type="text" value="2015-01">
-                <span class="input-group-addon">结束</span>
-                <input class="b-border inline" name="edu-history[stoptime]" type="text" value="2015-01">
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon start-time">开始</span>
+                  <input class="b-border inline" name="edu-history[starttime]" type="text" value="2015-01" />
+                  <span class="input-group-addon stop-time">结束</span>
+                  <input class="b-border inline" name="edu-history[stoptime]" type="text" value="2015-01" />
+                </div>
               </div>
             </div>
             <div class="col-sm-6 next-input">
@@ -387,16 +388,59 @@
     <div class="line"></div>
     <div class="work-history" id="work-history">
       <div class="mdi-action-work msg-text">工作经历</div>
-      <form>
+      <form class="form-inline">
         <div class="detail-edit">
           <div class="row">
             <div class="col-sm-6 next-input">
               <input class="b-border" placeholder="公司名称">
             </div>
             <div class="col-sm-6 next-input">
-              <input class="b-border" placeholder="学校名称">
+              <input class="b-border" placeholder="职位名称">
             </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 next-input">
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon start-time">开始</span>
+                  <input class="b-border inline" name="work-history[starttime]" type="text" value="2015-01" />
+                  <span class="input-group-addon stop-time">结束</span>
+                  <input class="b-border inline" name="work-history[stoptime]" type="text" value="2015-01" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <textarea class="b-border" id="exp_work_description" name="exp_work[description]" rows="5" style="min-height: 200px; width: 100%; overflow: hidden; word-wrap: break-word; resize: horizontal; height: 280px;" text="工作经验描述" placeholder="工作经验描述"></textarea>
+        <div class="edu-btn">
+          <button class="btn btn-primary">增加</button>
+        </div>
       </form>
+      <div class="edu-info">
+        <p>工作经历最能体现自己的工作能力，</p>
+        <br>
+        <p>且完善后才可投递简历哦！</p>
+      </div>
+    </div>
+    <div class="line"></div>
+    <div class="tech-summary" id="tech-summary">
+      <div class="mdi-editor-format-list-numbered msg-text">技术总结</div>
+      <h4 class="text-tech">一份详细的技术总结，可以帮助您获得最好的机会。</h4>
+      <a href="https://sg-avatars.b0.upaiyun.com/etc/tech_intro_sample.jpg" style="float:left;" target="_blank">
+        <img alt="tech-intro-sample" src="app/images/tech_intro_sample.png">
+      </a>
+      <ul class="intro-description" style="margin-left: 120px;">
+        <li>在工作中做的项目的技术细节</li>
+        <li>克服过的技术难点与细节</li>
+        <li>感兴趣的技术</li>
+        <li>在程序马拉松上参加的项目或者是业余的个人项目</li>
+        <li>如果您领导过技术团队，请写下您带的团队的规模与管理风格</li>
+      </ul>
+      <div class="mt20 markdown-editor" id="self-intro">
+        <form accept-charset="UTF-8">
+
+        </form>
+      </div>
     </div>
   </div>
 </div>

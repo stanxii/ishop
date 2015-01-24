@@ -15,6 +15,7 @@
     "sails.io.js": "~0.11.4",
     "angular-sails": "~1.0.5",
     "angular-messages": "~1.3.8",
-    "bootstrap": "~3.3.1"
+    "bootstrap": "~3.3.1",
+    "ng-file-upload": "~2.1.1"
   }
 }
