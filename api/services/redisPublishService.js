@@ -1,5 +1,5 @@
-var redis_ip='192.168.1.111',
-//var redis_ip='127.0.0.1',
+//var redis_ip='192.168.1.111',
+var redis_ip='127.0.0.1',
   redis_port ='6379';
 
 var publish = require('redis').createClient(redis_port, redis_ip);
