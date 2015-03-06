@@ -23,7 +23,7 @@ angular.module('myApp.coder.profile.edit', ['ngRoute'])
             name: "stanhangzhou"
           },
           jobPreferences: {
-            'skills': ['c', 'c++','object c', 'java', 'android', 'java script']
+            'skills': ['c', 'c++','object c', 'java', 'android', 'javascript']
           },
           education: {},
           workHistory: {},
@@ -36,6 +36,34 @@ angular.module('myApp.coder.profile.edit', ['ngRoute'])
       }
     };
 
+    $scope.$on('$viewContentLoaded', function() {
+      $(function() {
+        $(".person-profile").click(function () {
+          $(this).addClass("current-menu-item");
+          $(".modify-profile").removeClass("current-menu-item");
+          $(".how-to-use").removeClass("current-menu-item");
+          $(".recommend-expert").removeClass("current-menu-item");
+        });
+        $(".modify-profile").click(function () {
+          $(this).addClass("current-menu-item");
+          $(".person-profile").removeClass("current-menu-item");
+          $(".how-to-use").removeClass("current-menu-item");
+          $(".recommend-expert").removeClass("current-menu-item");
+        });
+        $(".how-to-use").click(function () {
+          $(this).addClass("current-menu-item");
+          $(".person-profile").removeClass("current-menu-item");
+          $(".modify-profile").removeClass("current-menu-item");
+          $(".recommend-expert").removeClass("current-menu-item");
+        });
+        $(".recommend-expert").click(function () {
+          $(this).addClass("current-menu-item");
+          $(".person-profile").removeClass("current-menu-item");
+          $(".modify-profile").removeClass("current-menu-item");
+          $(".how-to-use").removeClass("current-menu-item");
+        });
+      });
+    });
 
 
 
