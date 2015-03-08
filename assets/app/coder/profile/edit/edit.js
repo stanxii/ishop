@@ -63,6 +63,8 @@ angular.module('myApp.coder.profile.edit', ['ngRoute'])
           $(".how-to-use").removeClass("current-menu-item");
         });
       });
+
+      $(".sidebar").attr("scroll","no");
     });
 
 

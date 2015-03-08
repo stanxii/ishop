@@ -44,6 +44,56 @@ ul li{
   border-bottom: 2px solid #c51525 !important;
   color: #0b8fa2 !important;
 }
+.set-container {
+  width: 30px;
+  height: 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(../images/react.png);
+  cursor: pointer;
+  margin-top: 15px;
+}
+/*   设置按钮 */
+.set-nav ul {
+  list-style: none;
+  background: #6daeb0;
+  padding: 5px 0;
+  position: absolute;
+  border-radius: 5px;
+  display: inline-table;
+  margin-left: -15px;
+}
+.set-nav ul:before {
+  background: #6daeb0;
+  content: "";
+  height: 8px;
+  left: 50%;
+  margin: -4px 0 0 -4px;
+  position: absolute;
+  top: 0;
+  transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  width: 8px;
+}
+.set-nav ul li {
+  float: none;
+}
+.set-nav ul li a {
+  color: #fff;
+}
+.set-nav ul li a:hover {
+  background-color: #5d9799;
+}
+.set-nav ul a {
+  color: #6daeb0;
+  display: block;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  width: 60px;
+}
 /*   index */
 #maincontent:after {
   clear:both;

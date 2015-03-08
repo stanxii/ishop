@@ -17,7 +17,23 @@
         </ul>
       </div>
     </div>
+    <div class="col-md-offset-1 col-md-1">
+      <div ng-init="show=false">
+        <div class="set-container" ng-click="show=!show"></div>
+      </div>
+    </div>
   </div>
+  <div class="row">
+    <div class="col-xs-offset-10 col-xs-1">
+      <div ng-show="show" class="set-nav">
+        <ul>
+          <li><a href="#"><span>设置</span></a></li>
+          <li><a href="#"><span>登出</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
     <div class="welcome">
       <div class="col-md-8 col-md-offset-2">
         <div class="big-text inline">
