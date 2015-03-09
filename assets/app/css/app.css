@@ -554,8 +554,7 @@ ul li{
 }
 /*  edit profile   */
 .welcome {
-  background: #e6e4db;
-  border-bottom: 2px solid #6f5499;
+  background: #fff;
   height: 80px;
 }
 .edit-profile-main {
@@ -564,11 +563,13 @@ ul li{
 .big-text {
   font-size: 24px;
   line-height: 80px;
+  color: #809ba4;
 }
 .mid-text {
   font-size: 20px;
   text-align: center;
   margin-top: 15px;
+  color: #809ba4;
 }
 .middle-text {
   font-size: 18px;
@@ -580,6 +581,14 @@ ul li{
 }
 .wel {
   padding-right: 130px;
+}
+.nav-icons img {
+  width: 40px;
+  height: auto;
+  display: inline;
+  padding: 27px 6px 0 6px;
+  float: right;
+  cursor: pointer;
 }
 .editpro-nav {
   height: 60px;

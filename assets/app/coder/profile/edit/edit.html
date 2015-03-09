@@ -33,8 +33,8 @@
       </div>
     </div>
   </div>
-
-    <div class="welcome">
+  <div class="welcome" ng-init="showwelcome=true" ng-show="showwelcome">
+    <div class="row">
       <div class="col-md-8 col-md-offset-2">
         <div class="big-text inline">
           欢迎来到GitOffer !
@@ -48,8 +48,14 @@
           </div>
         </div>
       </div>
+      <div class="col-md-1">
+        <div class="nav-icons" ng-click="showwelcome=!showwelcome">
+          <img src="app/images/icon_close@2x.jpg">
+        </div>
+      </div>
     </div>
-    <div class="editpro-nav">
+  </div>
+  <div class="editpro-nav">
       <div class="col-md-8 col-md-offset-2">
         <div class="middle-text inline">
           您还需要填写：
@@ -70,8 +76,8 @@
         <div class="b-s-button inline pro-submit">提交申请</div>
       </div>
     </div>
-  </nav>
-  <div class="col-md-1 col-md-offset-2 sidebar">
+</nav>
+<div class="col-md-1 col-md-offset-2 sidebar">
     <ul class="nav nav-sidebar">
       <li class="mdi-action-favorite mdi-material-bluegrey favorite">
         短信验证
@@ -106,7 +112,7 @@
       </li>
     </ul>
   </div>
-  <div class="col-md-7 col-md-offset-3 edit-profile-main">
+<div class="col-md-7 col-md-offset-3 edit-profile-main">
     <div class="msg-verify" id="message">
       <div class="mdi-communication-textsms msg-text">短信验证</div>
       <br>
@@ -461,5 +467,4 @@
       </div>
     </div>
   </div>
-</div>
 
