@@ -555,10 +555,9 @@ ul li{
 /*  edit profile   */
 .welcome {
   background: #fff;
-  height: 80px;
 }
 .edit-profile-main {
-  margin-top: 200px;
+
 }
 .big-text {
   font-size: 24px;
@@ -590,8 +589,11 @@ ul li{
   float: right;
   cursor: pointer;
 }
+.wel-info {
+  margin-top: 61px;
+  background: #fff;
+}
 .editpro-nav {
-  height: 60px;
   background: #e6e4db;
   border-bottom: 2px solid #6f5499;
 }
@@ -610,6 +612,7 @@ ul li{
 }
 .pro-submit {
   margin-top: 10px;
+  margin-bottom: 10px;
   float: right;
 }
 /*

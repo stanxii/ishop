@@ -1,4 +1,4 @@
-<nav class="navbar  navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="row navbar-background-color">
     <div class="col-md-offset-1 col-md-3">
       <div class="navbar-header">
@@ -33,29 +33,31 @@
       </div>
     </div>
   </div>
+</nav>
+<div class="row wel-info">
   <div class="welcome" ng-init="showwelcome=true" ng-show="showwelcome">
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        <div class="big-text inline">
-          欢迎来到GitOffer !
-        </div>
-        <div class="fright wel inline">
-          <div class="mid-text">
-            请花15分钟完善简历并提交申请。
-          </div>
-          <div class="small-text">
-            一旦您的申请通过，我们会立即将您加入到下一次的程序员拍卖中。
-          </div>
-        </div>
+    <div class="col-md-8 col-md-offset-2">
+      <div class="big-text inline">
+        欢迎来到GitOffer !
       </div>
-      <div class="col-md-1">
-        <div class="nav-icons" ng-click="showwelcome=!showwelcome">
-          <img src="app/images/icon_close@2x.jpg">
+      <div class="fright wel inline">
+        <div class="mid-text">
+          请花15分钟完善简历并提交申请。
+        </div>
+        <div class="small-text">
+          一旦您的申请通过，我们会立即将您加入到下一次的程序员拍卖中。
         </div>
       </div>
     </div>
+    <div class="col-md-1">
+      <div class="nav-icons" ng-click="showwelcome=!showwelcome">
+        <img src="app/images/icon_close@2x.jpg">
+      </div>
+    </div>
   </div>
+</div>
   <div class="editpro-nav">
+    <div class="row">
       <div class="col-md-8 col-md-offset-2">
         <div class="middle-text inline">
           您还需要填写：
@@ -76,8 +78,10 @@
         <div class="b-s-button inline pro-submit">提交申请</div>
       </div>
     </div>
-</nav>
-<div class="col-md-1 col-md-offset-2 sidebar">
+  </div>
+
+<div class="row edit-profile-main">
+  <div class="col-md-1 col-md-offset-2 sidebar">
     <ul class="nav nav-sidebar">
       <li class="mdi-action-favorite mdi-material-bluegrey favorite">
         短信验证
@@ -112,18 +116,19 @@
       </li>
     </ul>
   </div>
-<div class="col-md-7 col-md-offset-3 edit-profile-main">
-    <div class="msg-verify" id="message">
-      <div class="mdi-communication-textsms msg-text">短信验证</div>
-      <br>
-      <div class="ph-num">
-        <input class="b-border" />
-        <div class="input-btn">免费发送验证短信</div>
+
+  <div class="col-md-7 col-md-offset-3">
+      <div class="msg-verify" id="message">
+        <div class="mdi-communication-textsms msg-text">短信验证</div>
+        <br>
+        <div class="ph-num">
+          <input class="b-border" />
+          <div class="input-btn">免费发送验证短信</div>
+        </div>
+        <div class="mdi-action-report-problem ph-info">
+          <span>手机验证成功后方可提交申请</span>
+        </div>
       </div>
-      <div class="mdi-action-report-problem ph-info">
-        <span>手机验证成功后方可提交申请</span>
-      </div>
-    </div>
     <div class="line"></div>
     <div class="per-info" id="personalInfo">
       <div class="mdi-action-bookmark-outline msg-text">个人信息</div>
@@ -468,3 +473,4 @@
     </div>
   </div>
 
+</div>
