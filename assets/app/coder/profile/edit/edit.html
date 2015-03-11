@@ -1,14 +1,11 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="row navbar-background-color">
-    <div class="col-md-offset-1 col-md-3">
-      <div class="navbar-header">
+  <div class="container-fluid">
+    <div class="navbar-header">
         <a class="navbar-brand logo" href="#/index">
           <img alt="GitOffer" src="app/images/logo.png"/>
         </a>
       </div>
-    </div>
-    <div class="col-md-5">
-      <div id="navbar" class="navbar-collapse collapse">
+    <div id="navbar" class="navbar-collapse collapse">
         <ul class="main-nav-list">
           <li ><a class="person-profile" href="#/coder/profile/index">个人简历</a></li>
           <li ><a class="modify-profile" href="#/coder/profile/edit#personInfo">修改简历</a></li>
@@ -16,26 +13,24 @@
           <li ><a class="recommend-expert" href="#/">推荐高手</a></li>
         </ul>
       </div>
-    </div>
-    <div class="col-md-offset-1 col-md-1">
-      <div ng-init="show=false">
+    <div ng-init="show=false">
         <div class="set-container" ng-click="show=!show"></div>
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-offset-10 col-xs-1">
-      <div ng-show="show" class="set-nav">
-        <ul>
-          <li><a href="#"><span>设置</span></a></li>
-          <li><a href="#"><span>登出</span></a></li>
-        </ul>
-      </div>
-    </div>
   </div>
 </nav>
-<div class="row wel-info">
-  <div class="welcome" ng-init="showwelcome=true" ng-show="showwelcome">
+<div class="row">
+  <div class="col-xs-offset-10 col-xs-1">
+    <div ng-show="show" class="set-nav">
+      <ul>
+        <li><a href="#"><span>设置</span></a></li>
+        <li><a href="#"><span>登出</span></a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div ng-init="showwelcome=true" ng-show="showwelcome">
     <div class="col-md-8 col-md-offset-2">
       <div class="big-text inline">
         欢迎来到GitOffer !
@@ -56,6 +51,7 @@
     </div>
   </div>
 </div>
+  <!--
   <div class="editpro-nav">
     <div class="row">
       <div class="col-md-8 col-md-offset-2">

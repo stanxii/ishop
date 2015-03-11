@@ -11,11 +11,11 @@
     "angular-loader": "~1.3.8",
     "angular-mocks": "~1.3.8",
     "html5-boilerplate": "~4.3.0",
-    "bootstrap-material-design": "~0.2.1",
     "sails.io.js": "~0.11.4",
     "angular-sails": "~1.0.5",
     "angular-messages": "~1.3.8",
     "bootstrap": "~3.3.1",
-    "ng-file-upload": "~2.1.1"
+    "ng-file-upload": "~2.1.1",
+    "flat-ui": "~2.2.2"
   }
 }
